@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "cassini-planetary-protection",
+    "title": "The Grand Finale: Cassini at Saturn",
+    "mission": "Cassini-Huygens",
+    "hardware_slug": "cassini-huygens",
+    "destination": "Saturn",
+    "year": "2017",
+    "badge_name": "Planetary Protector",
+    "badge_points": 300,
+    "context": "After 13 revolutionary years exploring Saturn, its spectacular ring system, and its bizarre moons, the Cassini orbiter is critically low on monopropellant fuel. Without attitude control thrusters, NASA controllers will no longer be able to steer the spacecraft.",
+    "dilemma": "Cassini discovered that Enceladus has a global subsurface ocean with hydrothermal vents, and Titan has prebiotic organic chemistry. If left unguided in orbit, gravitational tugs from giant moons could cause Cassini to crash into Enceladus or Titan, potentially contaminating these pristine alien biospheres with resilient Earth microbes. What is your flight trajectory decision?",
+    "options": [
+      {
+        "id": "opt-1",
+        "label": "Plunge Deliberately into Saturn's Atmosphere",
+        "description": "Execute a series of 22 daring dives between the planet and its innermost rings, culminating in a final dive directly into Saturn's crushing upper atmosphere.",
+        "is_optimal": true,
+        "consequence": "Cassini safely vaporizes within minutes at thousands of degrees, eliminating all contamination risk while its spectrometers beam back humanity's first-ever direct in-situ samples of Saturn's upper atmosphere!",
+        "historical_fact": "This was NASA's real decision! Known as 'The Grand Finale', Cassini transmitted precious atmospheric data until its thrusters fired at 100% capacity to fight atmospheric drag, disintegrating gracefully on September 15, 2017."
+      },
+      {
+        "id": "opt-2",
+        "label": "Leave the Spacecraft in a High Parking Orbit",
+        "description": "Boost Cassini into a distant, stable graveyard orbit millions of kilometers away from Saturn and power down its transmitters.",
+        "is_optimal": false,
+        "consequence": "While stable in the short term, chaos theory and complex gravitational resonance perturbations from giant moons Titan and Iapetus would eventually destabilize the orbit over decades, risking an uncontrolled impact on an ocean moon.",
+        "historical_fact": "NASA mission designers evaluated this option and rejected it. Long-term simulations showed that Saturn's complex gravitational field could not guarantee orbital safety beyond a few centuries, violating international COSPAR Planetary Protection guidelines."
+      },
+      {
+        "id": "opt-3",
+        "label": "Attempt an Escape Burn Toward Deep Space",
+        "description": "Fire the main engine to escape Saturn's gravity well entirely and enter a solar orbit.",
+        "is_optimal": false,
+        "consequence": "Cassini's fuel reserves are far too depleted to achieve the high delta-v (velocity change) needed to escape Saturn's massive gravitational well. The engine would burn out mid-maneuver, leaving the spacecraft stranded in an erratic orbit.",
+        "historical_fact": "Escaping Saturn's deep gravitational well requires substantial fuel. Cassini's engineers calculated that only a few kilograms of propellant remained, making this mathematically impossible."
+      }
+    ],
+    "educational_takeaway": "NASA's Planetary Protection policy adheres to Article IX of the United Nations Outer Space Treaty, mandating that robotic missions preserve celestial bodies from biological contamination so that future searches for extraterrestrial life remain scientifically untainted."
+  },
+  {
+    "slug": "perseverance-landing-site",
+    "title": "Jezero Crater Touchdown Dilemma",
+    "mission": "Perseverance Rover",
+    "hardware_slug": "perseverance",
+    "destination": "Mars",
+    "year": "2020",
+    "badge_name": "Astrobiology Scout",
+    "badge_points": 300,
+    "context": "NASA is selecting the final landing target for the flagship Perseverance rover. The mission's primary objective is to search for ancient biosignatures (fossilized remnants of past microbial life) and collect cored rock samples for return to Earth.",
+    "dilemma": "You must select between a topographically flat volcanic plain with near-zero landing risk vs. Jezero Crater, an ancient river delta packed with steep cliffs, boulder fields, and sand dunes. How do you balance mission safety against revolutionary astrobiological discoveries?",
+    "options": [
+      {
+        "id": "opt-1",
+        "label": "Target the Ancient River Delta in Jezero Crater",
+        "description": "Commit to Jezero Crater by enabling newly engineered 'Terrain-Relative Navigation' (TRN) computer vision to autonomously divert away from hazardous cliffs and boulders in real-time during parachute descent.",
+        "is_optimal": true,
+        "consequence": "Perseverance safely touches down right beside the fossilized river delta! The rover discovers fine-grained mudstones, carbonate minerals, and organic molecules that formed in standing lake water billions of years ago.",
+        "historical_fact": "NASA scientists chose Jezero! On February 18, 2021, the Terrain-Relative Navigation system compared live descent images against orbital maps and successfully steered the rover to a smooth, safe touchdown in Jezero."
+      },
+      {
+        "id": "opt-2",
+        "label": "Choose the Super-Flat Volcanic Plain",
+        "description": "Target a wide, featureless basaltic volcanic basin with virtually zero rocks or slopes to guarantee the highest probability of a soft landing.",
+        "is_optimal": false,
+        "consequence": "The rover lands with 99.9% safety, but the volcanic basalt rock contains no ancient clay minerals, no sedimentary layers, and zero prospects for preserving ancient microbial fossils, heavily compromising the core astrobiology mission.",
+        "historical_fact": "Early Mars landers like Viking 1 had to prioritize ultra-flat terrain because they had no autonomous hazard avoidance. By 2020, NASA's confidence in automated navigation enabled targeting scientifically rich, high-reward terrains."
+      },
+      {
+        "id": "opt-3",
+        "label": "Land on the Edge of Olympus Mons",
+        "description": "Target the lower slopes of the solar system's tallest volcano to examine young volcanic flows.",
+        "is_optimal": false,
+        "consequence": "The atmospheric density at high Martian volcanic altitudes is too thin for parachutes to deploy effectively, and severe thermal updrafts would cause the descent stage to crash before reaching terminal velocity.",
+        "historical_fact": "High-altitude landings on Mars are aerodynamically unviable for heavy rovers without immense rocket fuel payloads; spacecraft need low-elevation plains so Mars's thin atmosphere has enough depth to decelerate them."
+      }
+    ],
+    "educational_takeaway": "Modern robotic exploration leverages real-time computer vision and autonomous machine intelligence (Terrain-Relative Navigation) to unlock scientifically rich landing zones that were previously considered far too hazardous."
+  },
+  {
+    "slug": "parker-solar-shield",
+    "title": "Solar Corona Autonomous Defense",
+    "mission": "Parker Solar Probe",
+    "hardware_slug": "parker-solar-probe",
+    "destination": "The Sun",
+    "year": "2021",
+    "badge_name": "Solar Shield Engineer",
+    "badge_points": 300,
+    "context": "Parker Solar Probe is performing a perihelion pass just 10 million kilometers from the solar photosphere, travelling at 500,000 km/h. The sun-facing side of its 4.5-inch carbon-composite heat shield (TPS) is incandescent at 1,400°C (2,500°F).",
+    "dilemma": "A solar flare generates turbulent magnetic plasma waves, causing the spacecraft's attitude to tilt slightly. If the heat shield moves off-center by just two degrees, direct sunlight will slice onto the spacecraft's delicate titanium chassis and melt its scientific instruments in seconds. Radio signals take 15 minutes to reach Earth. What autonomous programming must take command?",
+    "options": [
+      {
+        "id": "opt-1",
+        "label": "Execute Autonomous Limb-Sensor Reaction Wheel Correction",
+        "description": "Allow onboard optical solar limb sensors to detect stray sunlight creeping past the shield perimeter and instantly fire internal reaction wheels to torque the heat shield back into alignment, ignoring all Earth communications.",
+        "is_optimal": true,
+        "consequence": "The spacecraft re-centers its heat shield in milliseconds! The scientific instruments remain safely nestled in the cool 29°C (85°F) shadow, successfully sampling the solar wind's magnetic switchbacks.",
+        "historical_fact": "Parker Solar Probe was designed to be completely autonomous near perihelion! Seven optical limb sensors detect the slightest penumbra of sunlight around the shield, prompting autonomous attitude correction without human intervention."
+      },
+      {
+        "id": "opt-2",
+        "label": "Send Emergency Telemetry to Earth and Wait for Human Command",
+        "description": "Broadcast an urgent warning ping through the Deep Space Network to let flight controllers at Johns Hopkins APL calculate a corrective maneuver.",
+        "is_optimal": false,
+        "consequence": "Disaster! Radio signals take over 15 minutes each way (a 30-minute round trip). By the time controllers on Earth read the alert, the searing 1,400°C sunlight would have liquefied the spacecraft's wiring and science payloads.",
+        "historical_fact": "Near the Sun, light-speed latency makes real-time human piloting impossible. All mission-critical protective reflexes must be delegated to onboard autonomous software."
+      },
+      {
+        "id": "opt-3",
+        "label": "Deploy Solar Arrays to Reflect the Heat Away",
+        "description": "Extend both solar panels outward to act as auxiliary mirrors and reflect away the excessive heat.",
+        "is_optimal": false,
+        "consequence": "The solar arrays are water-cooled and designed to tuck almost entirely behind the heat shield during close approach. Exposing them to direct coronal sunlight would vaporize the photovoltaic cells and boil the cooling loops instantly.",
+        "historical_fact": "Parker's solar arrays actually retract behind the heat shield during perihelion, leaving only a tiny sliver exposed at a steep grazing angle to generate just enough electricity without overheating."
+      }
+    ],
+    "educational_takeaway": "Deep-space robotics operating in extreme thermodynamic environments require total onboard autonomy. Because light-speed communication delays exceed critical failure times, autonomous sensors must act as the machine's biological survival reflexes."
+  },
+  {
+    "slug": "opportunity-martian-winter",
+    "title": "Opportunity's Winter Slopes",
+    "mission": "Opportunity Rover",
+    "hardware_slug": "opportunity",
+    "destination": "Mars",
+    "year": "2007",
+    "badge_name": "Martian Sunseeker",
+    "badge_points": 300,
+    "context": "Martian winter is arriving in the southern hemisphere. Sunlight is dramatically weakening, and a thin film of reddish dust has settled across Opportunity's solar panels, cutting energy generation from 900 watt-hours per sol down to just 240 watt-hours.",
+    "dilemma": "Nighttime temperatures plunge below -90°C (-130°F). If the internal electrical heaters lose power, the rover's lithium-ion batteries and delicate electronics will freeze and die permanently. How do you navigate the rover to survive the multi-month Martian winter?",
+    "options": [
+      {
+        "id": "opt-1",
+        "label": "Drive onto a 15-Degree North-Facing Crater Slope",
+        "description": "Maneuver the rover onto the steep, north-facing interior rim of a nearby crater and shut down all scientific instruments to enter low-power sleep mode.",
+        "is_optimal": true,
+        "consequence": "Tilting the rover 15 degrees north faces the solar panels directly toward the low midday winter sun, capturing 30% more solar photons! The heaters stay warm, and Opportunity survives to explore Mars for another decade!",
+        "historical_fact": "NASA rover drivers nicknamed this the 'solar tilt maneuver'. They parked Opportunity on the north-facing slope of Cape York and Endeavour Crater for multiple winters, tilting panels toward the Sun to keep the rover alive."
+      },
+      {
+        "id": "opt-2",
+        "label": "Drive Full Speed into the Sun Every Afternoon",
+        "description": "Keep driving continuously across the flat plains toward the setting sun to catch the maximum daylight.",
+        "is_optimal": false,
+        "consequence": "Driving the six motorized wheels consumes immense electrical power (over 100 watts). The battery would be completely drained before dusk, leaving the heaters unpowered through the night, freezing the rover permanently.",
+        "historical_fact": "Driving in low-power winter conditions quickly leads to a terminal energy deficit. Conserving battery reserves is far more crucial than covering distance."
+      },
+      {
+        "id": "opt-3",
+        "label": "Fire the Rocket Thrusters to Blow Dust off the Panels",
+        "description": "Ignite onboard thrusters to create a blast of exhaust that clears the solar arrays.",
+        "is_optimal": false,
+        "consequence": "Opportunity is a surface rover with zero rocket engines or thrusters (it used airbags to land). Trying to fire non-existent thrusters does nothing, and the rover would freeze.",
+        "historical_fact": "Opportunity had no active cleaning mechanism; it relied exclusively on random natural Martian wind gusts (cleaning events) to blow dust off its solar arrays."
+      }
+    ],
+    "educational_takeaway": "Long-duration solar-powered spacecraft must master orbital geometry and planetary axial tilt. When energy margins become critical, survival hinges on maximizing exposure angle and hibernating science operations."
+  }
+]

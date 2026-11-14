@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { 
   GraduationCap, 
-  Award, 
-  CheckCircle, 
-  XCircle, 
-  Sparkles, 
-  RotateCcw, 
   ArrowRight, 
-  Trophy,
-  HelpCircle,
-  Lightbulb
+  Trophy, 
+  Award, 
+  Sparkles, 
+  CheckCircle, 
+  Lock,
+  Layers
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { api } from '../services/api';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 
-export default function AcademyPage() {
-  const [quizzes, setQuizzes] = useState([]);
-  const [activeQuiz, setActiveQuiz] = useState(null);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
-  const [quizCompleted, setQuizCompleted] = useState(false);
-  const [loading, setLoading] = useState(true);
+import AcademyHero from '../components/academy/AcademyHero';
+import LearningPathSelector from '../components/academy/LearningPathSelector';
+import InteractiveQuizEngine from '../components/academy/InteractiveQuizEngine';
+import MissionSimulator from '../components/academy/MissionSimulator';
+import DailyChallengeCard from '../components/academy/DailyChallengeCard';
+import AchievementTrophyRoom, { ALL_BADGES } from '../components/academy/AchievementTrophyRoom';
+import PrintableCertificateModal from '../components/academy/PrintableCertificateModal';
 
-  // User Profile / Badges from LocalStorage
+export default function AcademyPage() {
+  // Persistent Cadet State
   const [userPoints, setUserPoints] = useState(() => {
     return parseInt(localStorage.getItem('beyond_earth_points') || '0', 10);
   });
@@ -36,31 +32,73 @@ export default function AcademyPage() {
       return [];
     }
   });
+  const [completedQuizzes, setCompletedQuizzes] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('beyond_earth_completed_quizzes') || '[]');
+    } catch {
+      return [];
+    }
+  });
+  const [completedSims, setCompletedSims] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('beyond_earth_completed_sims') || '[]');
+    } catch {
+      return [];
+    }
+  });
+  const [dailyStreak, setDailyStreak] = useState(() => {
+    return parseInt(localStorage.getItem('beyond_earth_daily_streak') || '0', 10);
+  });
+  const [lastDailyDate, setLastDailyDate] = useState(() => {
+    return localStorage.getItem('beyond_earth_last_daily') || '';
+  });
 
+  // UI Navigation State
+  const [activeTab, setActiveTab] = useState('quizzes'); // 'quizzes', 'simulations', 'daily', 'trophy'
+  const [activeTier, setActiveTier] = useState(''); // '', 'CADET', 'EXPLORER', 'COMMANDER'
+  const [activeQuizDetail, setActiveQuizDetail] = useState(null);
+  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false);
+
+  // Data Store
+  const [quizzes, setQuizzes] = useState([]);
+  const [simulations, setSimulations] = useState([]);
+  const [dailyChallenge, setDailyChallenge] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch initial academy data
   useEffect(() => {
-    async function loadQuizzes() {
+    async function loadAcademyData() {
+      setLoading(true);
       try {
-        const list = await api.getQuizzes();
-        setQuizzes(list || []);
+        const [qList, sList, dChallenge] = await Promise.all([
+          api.getQuizzes(),
+          api.getSimulations(),
+          api.getDailyChallenge()
+        ]);
+        setQuizzes(qList || []);
+        setSimulations(sList || []);
+        setDailyChallenge(dChallenge || null);
       } catch (err) {
-        console.error('Failed to load quizzes:', err);
+        console.error('Failed to load Space Academy curriculum:', err);
       } finally {
         setLoading(false);
       }
     }
-    loadQuizzes();
+    loadAcademyData();
   }, []);
 
+  // Filter quizzes by active difficulty tier
+  const filteredQuizzes = activeTier
+    ? quizzes.filter(q => q.difficulty.toUpperCase() === activeTier.toUpperCase())
+    : quizzes;
+
+  // Start a specific quiz
   const handleStartQuiz = async (slug) => {
     setLoading(true);
     try {
       const fullQuiz = await api.getQuiz(slug);
-      setActiveQuiz(fullQuiz);
-      setCurrentQuestionIndex(0);
-      setSelectedOption(null);
-      setIsAnswerSubmitted(false);
-      setScore(0);
-      setQuizCompleted(false);
+      setActiveQuizDetail(fullQuiz);
+      window.scrollTo({ top: 200, behavior: 'smooth' });
     } catch (err) {
       console.error('Failed to load quiz details:', err);
     } finally {
@@ -68,302 +106,211 @@ export default function AcademyPage() {
     }
   };
 
-  const handleSelectOption = (index) => {
-    if (isAnswerSubmitted) return;
-    setSelectedOption(index);
-  };
+  // Handle completed quiz submission
+  const handleQuizComplete = ({ quiz, score, totalQuestions, passed }) => {
+    if (passed) {
+      // Award points
+      const newPoints = userPoints + (quiz.badge_points || 100);
+      setUserPoints(newPoints);
+      localStorage.setItem('beyond_earth_points', newPoints.toString());
 
-  const handleSubmitAnswer = () => {
-    if (selectedOption === null || isAnswerSubmitted) return;
-    setIsAnswerSubmitted(true);
+      // Award badge if not already unlocked
+      if (quiz.badge_name && !unlockedBadges.includes(quiz.badge_name)) {
+        const updatedBadges = [...unlockedBadges, quiz.badge_name];
+        setUnlockedBadges(updatedBadges);
+        localStorage.setItem('beyond_earth_badges', JSON.stringify(updatedBadges));
+      }
 
-    const currentQuestion = activeQuiz.questions[currentQuestionIndex];
-    if (selectedOption === currentQuestion.correct_option_index) {
-      setScore((prev) => prev + 1);
-    }
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex + 1 < activeQuiz.questions.length) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-      setSelectedOption(null);
-      setIsAnswerSubmitted(false);
-    } else {
-      // Completed quiz!
-      setQuizCompleted(true);
-      const passed = score >= Math.ceil(activeQuiz.questions.length * 0.7);
-
-      if (passed) {
-        // Trigger celebratory confetti
-        try {
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-          });
-        } catch (e) {
-          // ignore if canvas-confetti is not loaded
-        }
-
-        const newPoints = userPoints + activeQuiz.badge_points;
-        setUserPoints(newPoints);
-        localStorage.setItem('beyond_earth_points', newPoints.toString());
-
-        if (!unlockedBadges.includes(activeQuiz.badge_name)) {
-          const newBadges = [...unlockedBadges, activeQuiz.badge_name];
-          setUnlockedBadges(newBadges);
-          localStorage.setItem('beyond_earth_badges', JSON.stringify(newBadges));
-        }
+      // Record completed quiz
+      if (!completedQuizzes.includes(quiz.slug)) {
+        const updatedCompleted = [...completedQuizzes, quiz.slug];
+        setCompletedQuizzes(updatedCompleted);
+        localStorage.setItem('beyond_earth_completed_quizzes', JSON.stringify(updatedCompleted));
       }
     }
   };
 
-  const handleResetQuiz = () => {
-    setActiveQuiz(null);
-    setCurrentQuestionIndex(0);
-    setSelectedOption(null);
-    setIsAnswerSubmitted(false);
-    setScore(0);
-    setQuizCompleted(false);
+  // Handle completed mission simulation
+  const handleSimulationComplete = ({ sim, points, badge }) => {
+    const newPoints = userPoints + points;
+    setUserPoints(newPoints);
+    localStorage.setItem('beyond_earth_points', newPoints.toString());
+
+    if (badge && !unlockedBadges.includes(badge)) {
+      const updatedBadges = [...unlockedBadges, badge];
+      setUnlockedBadges(updatedBadges);
+      localStorage.setItem('beyond_earth_badges', JSON.stringify(updatedBadges));
+    }
+
+    if (!completedSims.includes(sim.slug)) {
+      const updatedSims = [...completedSims, sim.slug];
+      setCompletedSims(updatedSims);
+      localStorage.setItem('beyond_earth_completed_sims', JSON.stringify(updatedSims));
+    }
   };
+
+  // Handle daily space challenge completion
+  const handleDailyComplete = ({ date, isCorrect, points }) => {
+    const newPoints = userPoints + points;
+    setUserPoints(newPoints);
+    localStorage.setItem('beyond_earth_points', newPoints.toString());
+
+    // Update streak
+    const today = new Date().toISOString().slice(0, 10);
+    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+
+    let newStreak = dailyStreak;
+    if (lastDailyDate === yesterday) {
+      newStreak += 1;
+    } else if (lastDailyDate !== today) {
+      newStreak = 1;
+    }
+
+    setDailyStreak(newStreak);
+    setLastDailyDate(today);
+    localStorage.setItem('beyond_earth_daily_streak', newStreak.toString());
+    localStorage.setItem('beyond_earth_last_daily', today);
+  };
+
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const hasCompletedDailyToday = lastDailyDate === todayStr;
 
   return (
     <div className="min-h-screen pt-24 pb-20 bg-deep-space">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
-          <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-space-cyan mb-1 flex items-center gap-1.5">
-              <GraduationCap className="w-4 h-4" />
-              <span>NASA Space Academy Cadet Terminal</span>
-            </div>
-            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-              Space Academy
-            </h1>
-            <p className="mt-2 text-slate-300 max-w-xl text-sm leading-relaxed">
-              Test your knowledge of robotic exploration, planetary geology, and space physics to earn NASA rank badges.
-            </p>
-          </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Cadet Profile & Telemetry Header */}
+        <AcademyHero
+          userPoints={userPoints}
+          unlockedBadges={unlockedBadges}
+          completedQuizzes={completedQuizzes}
+          completedSims={completedSims}
+          dailyStreak={dailyStreak}
+          onOpenCertificate={() => setIsCertificateModalOpen(true)}
+        />
 
-          {/* User Score Pill */}
-          <div className="glass-panel px-5 py-3 rounded-2xl flex items-center gap-4 self-start sm:self-auto">
-            <div className="w-10 h-10 rounded-xl bg-space-cyan/20 border border-space-cyan/40 flex items-center justify-center text-space-cyan">
-              <Trophy className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-slate-400 block">Cadet Score</span>
-              <span className="text-xl font-heading font-bold text-white text-space-cyan">
-                {userPoints} PTS
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Unlocked Badges Bar */}
-        {unlockedBadges.length > 0 && (
-          <div className="glass-panel p-4 rounded-2xl mb-8 flex flex-wrap items-center gap-3">
-            <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
-              <Award className="w-4 h-4 text-space-violet" />
-              Earned Badges:
-            </span>
-            {unlockedBadges.map((badge, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 rounded-lg text-xs font-mono bg-space-violet/20 text-space-violet border border-space-violet/40 font-semibold"
-              >
-                🏅 {badge}
-              </span>
-            ))}
-          </div>
+        {/* Learning Path & Mode Navigation */}
+        {!activeQuizDetail && (
+          <LearningPathSelector
+            activeTab={activeTab}
+            onSelectTab={setActiveTab}
+            activeTier={activeTier}
+            onSelectTier={setActiveTier}
+          />
         )}
 
+        {/* Content Body Based on Active Tab & State */}
         {loading ? (
-          <LoadingSpinner message="Calibrating flight exam terminal..." />
-        ) : !activeQuiz ? (
-          /* Quiz Selection Grid */
+          <LoadingSpinner message="Calibrating Space Academy flight terminal..." />
+        ) : activeQuizDetail ? (
+          /* Active Interactive Quiz Engine */
+          <InteractiveQuizEngine
+            quiz={activeQuizDetail}
+            onComplete={handleQuizComplete}
+            onExit={() => setActiveQuizDetail(null)}
+          />
+        ) : activeTab === 'quizzes' ? (
+          /* Quizzes Grid Catalog */
           <div className="space-y-6">
-            <h2 className="font-heading font-bold text-xl text-white">
-              Available Mission Challenges
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {quizzes.map((quiz) => (
-                <div
-                  key={quiz.slug}
-                  className="glass-panel p-6 rounded-3xl border border-space-border flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[11px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-space-cyan/15 text-space-cyan border border-space-cyan/30">
-                        {quiz.difficulty} TIER
-                      </span>
-                      <span className="text-xs font-mono text-amber-400 font-bold">
-                        +{quiz.badge_points} PTS
-                      </span>
-                    </div>
-
-                    <h3 className="font-heading font-bold text-2xl text-white mb-2">
-                      {quiz.title}
-                    </h3>
-                    <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                      {quiz.description}
-                    </p>
-                    <div className="text-xs font-mono text-slate-400 mb-6">
-                      Questions: {quiz.question_count} Missions | Reward: 🏅 {quiz.badge_name}
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => handleStartQuiz(quiz.slug)}
-                    className="w-full py-3 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 transition-all flex items-center justify-center gap-2 shadow-cyan-glow"
-                  >
-                    <span>Start Flight Exam</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : quizCompleted ? (
-          /* Quiz Results View */
-          <div className="glass-panel p-8 sm:p-12 rounded-3xl text-center max-w-xl mx-auto">
-            <div className="w-16 h-16 rounded-2xl bg-space-cyan/20 border border-space-cyan/40 text-space-cyan flex items-center justify-center mx-auto mb-4">
-              <Trophy className="w-8 h-8" />
-            </div>
-
-            <h2 className="font-heading font-extrabold text-3xl text-white mb-2">
-              Mission Exam Completed!
-            </h2>
-            <p className="text-sm text-slate-300 mb-6">
-              You scored <strong className="text-space-cyan">{score}</strong> out of{' '}
-              <strong className="text-white">{activeQuiz.questions.length}</strong> questions correct.
-            </p>
-
-            <div className="p-4 rounded-2xl bg-space-navy/80 border border-space-border mb-8 text-xs text-slate-300">
-              {score >= Math.ceil(activeQuiz.questions.length * 0.7) ? (
-                <div className="text-emerald-400 font-semibold">
-                  🎉 Congratulations Cadet! You passed the evaluation and unlocked the{' '}
-                  <strong>{activeQuiz.badge_name}</strong> badge and +{activeQuiz.badge_points} points!
-                </div>
-              ) : (
-                <div className="text-amber-400">
-                  Keep studying! Review the Hardware and Science wings to score 70% or higher and claim your badge.
-                </div>
-              )}
-            </div>
-
-            <button
-              onClick={handleResetQuiz}
-              className="px-6 py-3 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 transition-all flex items-center justify-center gap-2 mx-auto"
-            >
-              <RotateCcw className="w-4 h-4" />
-              <span>Take Another Challenge</span>
-            </button>
-          </div>
-        ) : (
-          /* Active Question View */
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl max-w-2xl mx-auto">
-            {/* Progress header */}
-            <div className="flex items-center justify-between pb-4 border-b border-space-border mb-6 text-xs font-mono">
-              <span className="text-space-cyan font-bold">
-                Question {currentQuestionIndex + 1} of {activeQuiz.questions.length}
+            <div className="flex items-center justify-between">
+              <h2 className="font-heading font-extrabold text-2xl text-white">
+                Available Mission Exams ({filteredQuizzes.length})
+              </h2>
+              <span className="text-xs font-mono text-slate-400">
+                Score 70%+ to unlock flight badge
               </span>
-              <button
-                onClick={handleResetQuiz}
-                className="text-slate-400 hover:text-white"
-              >
-                Exit Exam
-              </button>
             </div>
 
-            {/* Question Text */}
-            <h3 className="font-heading font-bold text-xl sm:text-2xl text-white mb-6">
-              {activeQuiz.questions[currentQuestionIndex].question_text}
-            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredQuizzes.map((quiz) => {
+                const isPassed = completedQuizzes.includes(quiz.slug);
 
-            {/* Options */}
-            <div className="space-y-3 mb-6">
-              {activeQuiz.questions[currentQuestionIndex].options.map((opt, idx) => {
-                const isSelected = selectedOption === idx;
-                const isCorrect = idx === activeQuiz.questions[currentQuestionIndex].correct_option_index;
-
-                let optionStyle = 'bg-space-navy/80 border-space-border hover:border-slate-500 text-slate-200';
-                if (isSelected && !isAnswerSubmitted) {
-                  optionStyle = 'bg-space-cyan/20 border-space-cyan text-white';
-                }
-                if (isAnswerSubmitted) {
-                  if (isCorrect) {
-                    optionStyle = 'bg-emerald-500/20 border-emerald-500 text-emerald-300';
-                  } else if (isSelected && !isCorrect) {
-                    optionStyle = 'bg-rose-500/20 border-rose-500 text-rose-300';
-                  } else {
-                    optionStyle = 'bg-space-navy/40 border-space-border opacity-50';
-                  }
+                let badgeColor = 'bg-space-cyan/15 text-space-cyan border-space-cyan/30';
+                if (quiz.difficulty === 'EXPLORER') {
+                  badgeColor = 'bg-space-violet/15 text-space-violet border-space-violet/30';
+                } else if (quiz.difficulty === 'COMMANDER') {
+                  badgeColor = 'bg-amber-400/15 text-amber-300 border-amber-400/30';
                 }
 
                 return (
-                  <button
-                    key={idx}
-                    disabled={isAnswerSubmitted}
-                    onClick={() => handleSelectOption(idx)}
-                    className={`w-full p-4 rounded-2xl border text-left text-sm transition-all flex items-center justify-between ${optionStyle}`}
+                  <div
+                    key={quiz.slug}
+                    className="glass-panel p-6 rounded-3xl border border-space-border flex flex-col justify-between hover:border-space-cyan/40 transition-all group"
                   >
-                    <span>{opt}</span>
-                    {isAnswerSubmitted && isCorrect && (
-                      <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 ml-2" />
-                    )}
-                    {isAnswerSubmitted && isSelected && !isCorrect && (
-                      <XCircle className="w-5 h-5 text-rose-400 shrink-0 ml-2" />
-                    )}
-                  </button>
+                    <div>
+                      {/* Top Badges */}
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full border ${badgeColor}`}>
+                          {quiz.difficulty} TIER
+                        </span>
+
+                        {isPassed ? (
+                          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-400 font-bold">
+                            <CheckCircle className="w-3.5 h-3.5" />
+                            <span>Passed</span>
+                          </span>
+                        ) : (
+                          <span className="text-xs font-mono text-amber-400 font-bold">
+                            +{quiz.badge_points} PTS
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="font-heading font-bold text-xl text-white group-hover:text-space-cyan transition-colors mb-2">
+                        {quiz.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-300 leading-relaxed mb-4 line-clamp-3">
+                        {quiz.description}
+                      </p>
+
+                      <div className="text-[11px] font-mono text-slate-400 mb-6 flex items-center gap-2">
+                        <Award className="w-3.5 h-3.5 text-space-violet" />
+                        <span>Reward: 🏅 {quiz.badge_name}</span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleStartQuiz(quiz.slug)}
+                      className="w-full py-3 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 transition-all flex items-center justify-center gap-2 shadow-cyan-glow"
+                    >
+                      <span>{isPassed ? 'Retake Exam' : 'Start Flight Exam'}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 );
               })}
             </div>
-
-            {/* Answer Explanation & Fun Fact (if submitted) */}
-            {isAnswerSubmitted && (
-              <div className="space-y-3 mb-6 animate-fadeIn">
-                <div className="p-4 rounded-2xl bg-space-navy border border-space-border text-xs leading-relaxed">
-                  <strong className="text-space-cyan font-mono block mb-1">
-                    Scientific Explanation:
-                  </strong>
-                  <p className="text-slate-200">
-                    {activeQuiz.questions[currentQuestionIndex].explanation}
-                  </p>
-                </div>
-
-                {activeQuiz.questions[currentQuestionIndex].fun_fact && (
-                  <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs flex items-start gap-2.5 text-amber-200">
-                    <Lightbulb className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="text-amber-300 block mb-0.5">Cosmic Fun Fact:</strong>
-                      {activeQuiz.questions[currentQuestionIndex].fun_fact}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Action Button */}
-            {!isAnswerSubmitted ? (
-              <button
-                disabled={selectedOption === null}
-                onClick={handleSubmitAnswer}
-                className="w-full py-3 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-              >
-                Submit Answer
-              </button>
-            ) : (
-              <button
-                onClick={handleNextQuestion}
-                className="w-full py-3 rounded-xl bg-space-violet text-white font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-violet/90 transition-all flex items-center justify-center gap-2"
-              >
-                <span>
-                  {currentQuestionIndex + 1 < activeQuiz.questions.length ? 'Next Question' : 'View Results'}
-                </span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            )}
           </div>
+        ) : activeTab === 'simulations' ? (
+          /* Mission Simulator */
+          <MissionSimulator
+            simulations={simulations}
+            completedSims={completedSims}
+            onCompleteSimulation={handleSimulationComplete}
+          />
+        ) : activeTab === 'daily' ? (
+          /* Daily Space Challenge */
+          <DailyChallengeCard
+            dailyData={dailyChallenge}
+            hasCompletedToday={hasCompletedDailyToday}
+            streak={dailyStreak}
+            onCompleteDaily={handleDailyComplete}
+          />
+        ) : activeTab === 'trophy' ? (
+          /* Trophy Room & Badges */
+          <AchievementTrophyRoom
+            unlockedBadges={unlockedBadges}
+            onOpenCertificate={() => setIsCertificateModalOpen(true)}
+          />
+        ) : null}
+
+        {/* Printable Completion Certificate Modal */}
+        {isCertificateModalOpen && (
+          <PrintableCertificateModal
+            userPoints={userPoints}
+            unlockedBadges={unlockedBadges}
+            onClose={() => setIsCertificateModalOpen(false)}
+          />
         )}
       </div>
     </div>

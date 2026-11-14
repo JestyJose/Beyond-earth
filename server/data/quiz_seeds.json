@@ -3,7 +3,8 @@
     "slug": "cadet-solar-system",
     "title": "Solar System Cadet Challenge",
     "difficulty": "CADET",
-    "description": "Test your fundamental knowledge about spacecraft, planets, and NASA's greatest missions!",
+    "category": "PLANETARY_SCIENCE",
+    "description": "Test your fundamental knowledge about spacecraft, planets, and NASA's greatest exploration missions!",
     "badge_points": 100,
     "badge_name": "Junior Flight Controller",
     "questions": [
@@ -17,8 +18,8 @@
           "Apollo 11 Lunar Module"
         ],
         "correct_option_index": 1,
-        "explanation": "Voyager 1 was launched in 1977 and entered interstellar space in 2012. It is currently over 24 billion kilometers (165 AU) from Earth!",
-        "fun_fact": "A radio signal travelling at the speed of light takes over 22 hours to reach Voyager 1 from Earth."
+        "explanation": "Voyager 1 was launched in 1977 and crossed into interstellar space in 2012. It is currently over 24 billion kilometers (over 165 AU) from Earth!",
+        "fun_fact": "A radio transmission travelling at the speed of light takes over 22 hours to travel one way between Voyager 1 and Earth."
       },
       {
         "id": "q2",
@@ -30,12 +31,12 @@
           "Mercury"
         ],
         "correct_option_index": 2,
-        "explanation": "Mars gets its reddish color from iron oxide (rust) covering its surface rocks and regolith.",
-        "fun_fact": "Olympus Mons on Mars is the largest volcano in the solar system, three times taller than Mount Everest!"
+        "explanation": "Mars gets its iconic reddish hue from abundant iron oxide (rust) covering its surface rocks and atmospheric dust.",
+        "fun_fact": "Olympus Mons on Mars is the tallest shield volcano in the solar system, standing three times higher than Mount Everest!"
       },
       {
         "id": "q3",
-        "question_text": "How did the Perseverance rover land safely on Mars without crashing?",
+        "question_text": "How did the one-ton Perseverance rover land safely on Mars without crashing?",
         "options": [
           "Bouncing air bags like a giant beach ball",
           "A rocket-powered Sky Crane that lowered it on nylon cables",
@@ -43,70 +44,336 @@
           "It glided down with wings like an airplane"
         ],
         "correct_option_index": 1,
-        "explanation": "Because Perseverance weighs over 1,000 kg, NASA used a rocket-powered Sky Crane to gently lower it onto its wheels in Jezero Crater.",
-        "fun_fact": "The landing took 7 minutes, but communication took 11 minutes to reach Earth, meaning the rover was already safe before scientists knew!"
+        "explanation": "Because Perseverance weighs 1,025 kg, parachutes alone could not slow it enough in Mars's thin air. NASA engineered a rocket-powered Sky Crane that hovered and gently lowered the rover on bridles.",
+        "fun_fact": "The landing sequence took 7 minutes, but communication took 11 minutes to reach Earth, meaning the rover was already safe on Mars before controllers on Earth received the first entry signal."
       },
       {
         "id": "q4",
         "question_text": "What is the purpose of the Apollo 11 Lunar Ranging Retroreflector left on the Moon in 1969?",
         "options": [
-          "To reflect sunlight to melt ice",
+          "To reflect sunlight to melt polar ice",
           "To bounce laser beams from Earth to measure the exact distance to the Moon",
           "To transmit television signals",
-          "To power the rover battery"
+          "To power the descent stage battery"
         ],
         "correct_option_index": 1,
-        "explanation": "The retroreflector is an array of corner prisms that bounce laser pulses straight back to Earth observatories, measuring the Moon's distance to millimeter precision.",
-        "fun_fact": "This experiment proved that the Moon is moving 3.8 centimeters farther away from Earth each year!"
+        "explanation": "The retroreflector is an array of corner prisms that bounce laser pulses straight back to Earth observatories, measuring the Earth-Moon distance down to millimeter precision.",
+        "fun_fact": "This passive experiment is still operational today and proved that the Moon spirals away from Earth at a rate of 3.8 cm per year."
+      }
+    ]
+  },
+  {
+    "slug": "cadet-lunar-pioneers",
+    "title": "Lunar Pioneers & Apollo Heritage",
+    "difficulty": "CADET",
+    "category": "LUNAR_EXPLORATION",
+    "description": "Discover the hardware, landing sites, and scientific instruments deployed on the Moon during the Apollo era.",
+    "badge_points": 100,
+    "badge_name": "Lunar Pioneer",
+    "questions": [
+      {
+        "id": "q5",
+        "question_text": "What happened to the descent stage of the Apollo 11 Lunar Module Eagle after landing?",
+        "options": [
+          "It flew back to Earth with the astronauts",
+          "It crashed into the Sun",
+          "It remained permanently on the Moon at Tranquility Base as a launch platform",
+          "It burned up in Earth's atmosphere"
+        ],
+        "correct_option_index": 2,
+        "explanation": "The descent stage served as a stationary launch pad for the ascent stage when Neil Armstrong and Buzz Aldrin blasted off, remaining permanently on the lunar surface as a historic monument.",
+        "fun_fact": "A commemorative stainless steel plaque mounted on the descent stage ladder reads: 'Here men from the planet Earth first set foot upon the Moon. We came in peace for all mankind.'"
+      },
+      {
+        "id": "q6",
+        "question_text": "Why do footprints and rover wheel tracks stay preserved on the Moon for millions of years?",
+        "options": [
+          "The Moon is coated in liquid cement",
+          "The Moon has virtually no atmosphere, so there is no wind or rain to erode them",
+          "Astronauts sprayed them with protective lacquer",
+          "Magnetic fields lock the dust in place"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Because the Moon has no substantial atmosphere, there is no weather, wind, or liquid water. Only microscopic micrometeorite bombardment very slowly alters the surface over millions of years.",
+        "fun_fact": "Lunar dust grains are extremely sharp and jagged like crushed volcanic glass because they have never been rounded by water or wind erosion."
+      },
+      {
+        "id": "q7",
+        "question_text": "What powered the Apollo Lunar Surface Experiments Package (ALSEP) left on the Moon?",
+        "options": [
+          "Wind turbines",
+          "Radioisotope Thermoelectric Generators (SNAP-27 nuclear generators)",
+          "Rechargeable AA batteries",
+          "Steam engines"
+        ],
+        "correct_option_index": 1,
+        "explanation": "During the two-week-long freezing lunar nights (-130°C), solar panels produce zero power. NASA used SNAP-27 RTGs fueled by Plutonium-238 to supply continuous electricity and warmth.",
+        "fun_fact": "The Apollo ALSEP stations operated reliably on the Moon for up to 8 years, transmitting seismic and solar wind data back to Earth until 1977."
+      },
+      {
+        "id": "q8",
+        "question_text": "Which lunar sea did the Apollo 11 Lunar Module touch down upon on July 20, 1969?",
+        "options": [
+          "Sea of Rains (Mare Imbrium)",
+          "Sea of Serenity (Mare Serenitatis)",
+          "Sea of Tranquility (Mare Tranquillitatis)",
+          "Ocean of Storms (Oceanus Procellarum)"
+        ],
+        "correct_option_index": 2,
+        "explanation": "Apollo 11 landed in the southern part of Mare Tranquillitatis (Sea of Tranquility), chosen for its relatively smooth, flat basaltic lava plains.",
+        "fun_fact": "Neil Armstrong had to take manual semi-automatic control to fly the Lunar Module 60 meters past a boulder-strewn crater before setting down with only 25 seconds of fuel remaining!"
       }
     ]
   },
   {
     "slug": "explorer-deep-space",
-    "title": "Deep Space Explorer Challenge",
+    "title": "Deep Space & Nuclear Power",
     "difficulty": "EXPLORER",
-    "description": "Demonstrate your understanding of deep space propulsion, nuclear power, and ocean worlds!",
+    "category": "DEEP_SPACE_PROPULSION",
+    "description": "Demonstrate your understanding of deep space propulsion, nuclear power, and planetary gravity assists!",
     "badge_points": 250,
     "badge_name": "Deep Space Navigator",
     "questions": [
       {
-        "id": "q5",
-        "question_text": "Why do deep space probes like Voyager 1, Cassini, and New Horizons use RTGs instead of solar panels?",
+        "id": "q9",
+        "question_text": "Why do deep space probes like Voyager, Cassini, and New Horizons use RTGs instead of solar panels?",
         "options": [
-          "Solar panels are too heavy for rockets to launch",
-          "The Sun's light is too weak billions of kilometers away in the outer solar system",
-          "Solar panels attract dangerous space dust",
-          "Nuclear batteries generate infinite electricity forever"
+          "Solar panels are too heavy for launch rockets",
+          "Sunlight weakens with the square of distance, making solar panels inadequate billions of kilometers out",
+          "Solar panels attract hazardous cosmic dust particles",
+          "Nuclear batteries produce perpetual electricity forever"
         ],
         "correct_option_index": 1,
-        "explanation": "Sunlight follows the inverse-square law. At Saturn and Pluto, sunlight is hundreds or thousands of times weaker than on Earth, making solar panels ineffective.",
-        "fun_fact": "RTGs use the natural decay heat of Plutonium-238 converted into electricity by thermocouples with no moving parts."
+        "explanation": "Sunlight follows the inverse-square law. At Saturn, sunlight is 100 times weaker than at Earth, and at Pluto, it is 1,000 times weaker. RTGs use the steady decay heat of Plutonium-238 to provide reliable electricity.",
+        "fun_fact": "RTGs have zero moving parts; they convert radioactive thermal heat directly into electricity using solid-state thermocouple alloys."
       },
       {
-        "id": "q6",
-        "question_text": "Why did NASA deliberately steer the Cassini spacecraft into Saturn's atmosphere at the end of its mission?",
+        "id": "q10",
+        "question_text": "Why did NASA deliberately steer the Cassini spacecraft into Saturn's atmosphere at mission conclusion in 2017?",
         "options": [
-          "Because its thrusters were broken",
-          "To protect ocean moons Enceladus and Titan from potential microbial contamination",
-          "To ignite Saturn's gas clouds",
-          "To break the off-world speed record"
+          "Its thrusters were completely non-functional",
+          "To satisfy Planetary Protection protocols and avoid accidental collision with potentially habitable moons Enceladus or Titan",
+          "To ignite Saturn's upper cloud decks",
+          "To achieve a solar system speed record"
         ],
         "correct_option_index": 1,
-        "explanation": "Cassini discovered that Enceladus has a warm subsurface ocean capable of harboring life. NASA crashed Cassini into Saturn so Earth bacteria could never contaminate Enceladus.",
-        "fun_fact": "This protocol is known as Planetary Protection, established under the international Outer Space Treaty."
+        "explanation": "Cassini confirmed that Enceladus has a warm subsurface ocean with hydrothermal vents and organic molecules. To ensure zero Earth microbes could ever contaminate that habitat, NASA burned Cassini in Saturn.",
+        "fun_fact": "Cassini was transmitting real-time spectrometer data of Saturn's atmosphere until its thrusters fired at 100% and the spacecraft disintegrated like a shooting star."
       },
       {
-        "id": "q7",
-        "question_text": "What is a 'gravity assist' (slingshot maneuver) in space navigation?",
+        "id": "q11",
+        "question_text": "How does a spacecraft gain velocity during a planetary gravity assist (slingshot maneuver)?",
         "options": [
-          "Using a planet's gravity and orbital momentum to speed up or redirect a spacecraft without burning fuel",
-          "Throwing heavy weights off the back of the spacecraft",
-          "Deploying a giant parachute in planetary atmospheres",
-          "Turning off the engine to let gravity pull you into the Sun"
+          "It takes a tiny fraction of the planet's orbital momentum as it passes behind the planet's orbital path",
+          "It ejects heavy ballast weights to accelerate forward",
+          "It fires giant atmospheric parachutes",
+          "It shuts off engines and relies on the solar wind"
         ],
         "correct_option_index": 0,
-        "explanation": "A spacecraft steals a tiny sliver of a planet's orbital momentum as it swings around it, dramatically boosting its velocity through space.",
-        "fun_fact": "Voyager 2 used gravity assists from Jupiter, Saturn, and Uranus to reach Neptune in just 12 years instead of 30!"
+        "explanation": "In the Sun's frame of reference, a spacecraft swinging closely behind a moving planet steals an imperceptibly tiny fraction of the planet's orbital momentum, increasing the spacecraft's speed substantially.",
+        "fun_fact": "Voyager 2 utilized sequential gravity assists from Jupiter, Saturn, and Uranus to reach Neptune in only 12 years instead of over 30 years!"
+      },
+      {
+        "id": "q12",
+        "question_text": "What iconic artifact was bolted to the hulls of both Voyager 1 and Voyager 2 before launch in 1977?",
+        "options": [
+          "An American flag made of solid gold",
+          "The Golden Record: a 12-inch gold-plated copper phonograph record carrying sounds, music, and images of Earth",
+          "A supercomputer memory drive",
+          "A sealed time capsule containing Earth seeds"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Curated by Carl Sagan, the Golden Record contains 115 analog photographs, greetings in 55 languages, natural Earth sounds, and 90 minutes of worldwide music as a cultural message for potential extraterrestrial civilizations.",
+        "fun_fact": "The cover of the Golden Record includes visual instructions for playback and an atomic pulsar map showing the exact location of the Sun in our galaxy."
+      }
+    ]
+  },
+  {
+    "slug": "explorer-martian-chronicles",
+    "title": "The Martian Surface Armada",
+    "difficulty": "EXPLORER",
+    "category": "MARS_EXPLORATION",
+    "description": "Master the geological discoveries, atmospheric hurdles, and robotic engineering behind humanity's exploration of Mars.",
+    "badge_points": 250,
+    "badge_name": "Martian Geologist",
+    "questions": [
+      {
+        "id": "q13",
+        "question_text": "What critical geological discovery did the Opportunity rover make in 2004 that proved Mars once had liquid water?",
+        "options": [
+          "A subterranean liquid river",
+          "Hematite-rich spherical concretions nicknamed 'blueberries' that only precipitate in water",
+          "Fossilized dinosaur bones",
+          "Active rainfall in Gusev Crater"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Opportunity discovered tiny gray spherules made of hematite (nicknamed 'blueberries') embedded in sulfate rock layers, indicating they formed inside standing, mineral-rich groundwater eons ago.",
+        "fun_fact": "Designed for a 90-day primary mission, Opportunity operated on Mars for over 14 years, driving an Olympic-marathon-beating 45.16 kilometers!"
+      },
+      {
+        "id": "q14",
+        "question_text": "How did the Ingenuity Mars Helicopter fly in an atmosphere with only 1% the density of Earth's air?",
+        "options": [
+          "Using tiny jet engines burning hydrazine",
+          "Using dual counter-rotating carbon-fiber blades spinning at over 2,400 RPM",
+          "Using helium balloons inside the fuselage",
+          "It bounced using pressurized nitrogen gas"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Because Mars's atmosphere at ground level is as thin as Earth's atmosphere at 100,000 feet, Ingenuity utilized ultra-lightweight carbon-fiber rotors spinning at ~2,400 RPM (5 times faster than Earth helicopters).",
+        "fun_fact": "Ingenuity carried a small swatch of fabric from the wing of the 1903 Wright Brothers flyer tucked beneath its solar panel."
+      },
+      {
+        "id": "q15",
+        "question_text": "What chemical element discovered by Curiosity in Gale Crater mudstones proved ancient Mars was habitable?",
+        "options": [
+          "Pure liquid mercury",
+          "Organic carbon compounds along with sulfur, nitrogen, oxygen, phosphorus, and chlorine",
+          "Uranium crystals",
+          "Industrial plastics"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Curiosity's SAM instrument analyzed drilled mudstone samples and identified organic carbon molecules and essential building blocks of life, confirming ancient Gale Crater held a neutral-pH freshwater lake.",
+        "fun_fact": "Curiosity climbs Mount Sharp, a 5-kilometer mountain of sedimentary layers inside Gale Crater that records millions of years of changing Martian climate."
+      },
+      {
+        "id": "q16",
+        "question_text": "What natural hazard finally ended the missions of the solar-powered Opportunity rover and InSight lander?",
+        "options": [
+          "Falling into deep volcanic lava tubes",
+          "Martian dust settling on solar panels, blocking sunlight and depleting battery power",
+          "Extreme gravitational fluctuations",
+          "Freezing into polar carbon dioxide dry ice"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Mars experiences planet-encircling dust storms. Without RTGs (which power Curiosity and Perseverance), dust gradually blankets the solar panels until the landers cannot heat their batteries through freezing nights.",
+        "fun_fact": "Before succumbing to a massive global dust storm in 2018, Opportunity had sent over 217,000 raw images back to Earth."
+      }
+    ]
+  },
+  {
+    "slug": "advanced-outer-horizons",
+    "title": "Ice Giants & Interstellar Physics",
+    "difficulty": "COMMANDER",
+    "category": "INTERSTELLAR_SCIENCE",
+    "description": "Tackle the extreme frontiers of the heliopause, Kuiper Belt dwarf planets, and the mysterious magnetospheres of Uranus and Neptune.",
+    "badge_points": 500,
+    "badge_name": "Interstellar Voyager",
+    "questions": [
+      {
+        "id": "q17",
+        "question_text": "What boundary in space marks the true edge where the Sun's solar wind stops and interstellar space begins?",
+        "options": [
+          "The Kuiper Belt Cliff",
+          "The Heliopause",
+          "The Oort Cloud Core",
+          "The Asteroid Belt"
+        ],
+        "correct_option_index": 1,
+        "explanation": "The heliopause is the boundary where the outgoing supersonic solar wind from our Sun is halted by the opposing pressure of the interstellar medium. Voyager 1 crossed it in August 2012.",
+        "fun_fact": "When Voyager 1 crossed the heliopause, its plasma wave instrument registered an abrupt 40-fold jump in plasma density, confirming it had left the solar bubble."
+      },
+      {
+        "id": "q18",
+        "question_text": "What unique geological feature did New Horizons discover on Pluto's surface in July 2015?",
+        "options": [
+          "A massive glacier of actively convecting nitrogen and methane ice named Sputnik Planitia",
+          "Active liquid water oceans open to the sky",
+          "Thousands of active sulfur volcanoes",
+          "Giant metallic craters"
+        ],
+        "correct_option_index": 0,
+        "explanation": "Sputnik Planitia is a Texas-sized basin filled with nitrogen ice that churns through thermal convection cells like a cosmic lava lamp, flanked by towering water-ice mountain ranges.",
+        "fun_fact": "At Pluto's frigid surface temperature of -230°C (-380°F), water ice is as hard as granite and forms mountains 3,500 meters tall!"
+      },
+      {
+        "id": "q19",
+        "question_text": "What bizarre magnetic anomaly did Voyager 2 discover during its 1986 flyby of Uranus?",
+        "options": [
+          "Uranus has zero magnetic field whatsoever",
+          "The magnetic axis is tilted 59 degrees from the rotational axis and offset by one-third of the planet's radius",
+          "The magnetic field pulses like a pulsar star",
+          "The magnetic field is oriented upside-down relative to Earth"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Unlike Earth or Jupiter whose magnetic fields align roughly with rotational axes, Uranus's magnetic dynamo is tilted nearly 60° and origin lies far outside the planet's geometric center, likely generated in an outer convective water-ammonia mantle.",
+        "fun_fact": "Because Uranus also rolls on its side with an axial tilt of 98°, its magnetosphere corkscrews wildly behind it through deep space."
+      },
+      {
+        "id": "q20",
+        "question_text": "What did Voyager 2 observe erupting on Neptune's moon Triton during its 1989 encounter?",
+        "options": [
+          "Superheated molten basalt lava",
+          "Cryovolcanic geysers blasting plumes of liquid nitrogen and dark dust 8 km into the sky",
+          "Steam geysers identical to Yellowstone",
+          "Methane rainstorms"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Triton is so cold (-235°C) that nitrogen freezes solid. Solar heating below transparent nitrogen ice vaporizes subsurface pockets, creating explosive cryovolcanic plumes that shoot dark dust kilometers high.",
+        "fun_fact": "Triton orbits Neptune backwards (retrograde), indicating it was once a free-flying Kuiper Belt dwarf planet captured by Neptune's massive gravity."
+      }
+    ]
+  },
+  {
+    "slug": "advanced-astrophysics",
+    "title": "Solar Corona & Cosmic Eyes",
+    "difficulty": "COMMANDER",
+    "category": "ASTROPHYSICS",
+    "description": "Explore the physics of stellar coronas, cosmic expansion, and deep optical surveys that revolutionized astrophysics.",
+    "badge_points": 500,
+    "badge_name": "Astrophysics Commander",
+    "questions": [
+      {
+        "id": "q21",
+        "question_text": "In 2021, the Parker Solar Probe officially 'touched the Sun'. What physical threshold did it cross?",
+        "options": [
+          "The Sun's solid metal core",
+          "The Alfvén critical surface, entering the Sun's magnetically dominated corona",
+          "The Oort Cloud perihelion",
+          "The solar tachocline layer"
+        ],
+        "correct_option_index": 1,
+        "explanation": "The Alfvén critical surface marks the boundary where solar magnetic fields and gravity can no longer hold onto solar plasma, allowing it to accelerate outward as the solar wind. Parker was the first machine to fly inside it.",
+        "fun_fact": "Parker Solar Probe reaches speeds over 690,000 km/h (430,000 mph) — fast enough to travel from New York to Tokyo in less than one minute!"
+      },
+      {
+        "id": "q22",
+        "question_text": "What revolutionary insight did the 1995 Hubble Deep Field provide to human cosmology?",
+        "options": [
+          "The universe is empty outside the Milky Way",
+          "A tiny speck of seemingly blank space equivalent to a grain of sand held at arm's length held over 3,000 distant galaxies",
+          "Stars only form in binary systems",
+          "The solar system is in the geometric center of the universe"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Astronomers pointed Hubble at a dark, empty patch of sky near Ursa Major for 10 consecutive days. The resulting exposure revealed thousands of never-before-seen galaxies stretching back nearly to the dawn of the universe.",
+        "fun_fact": "The Hubble Deep Field proved that our observable universe contains hundreds of billions of galaxies, each home to hundreds of billions of stars."
+      },
+      {
+        "id": "q23",
+        "question_text": "How does Parker Solar Probe protect its scientific sensors from the Sun's 1,400°C (2,500°F) thermal furnace?",
+        "options": [
+          "Liquid nitrogen refrigeration tubes running to Earth",
+          "A 4.5-inch-thick carbon-composite heat shield (Thermal Protection System) coated in white reflective ceramic",
+          "By flying only on the dark side of the Sun",
+          "By using lead armor plating"
+        ],
+        "correct_option_index": 1,
+        "explanation": "The shield is made of carbon foam sandwiched between two carbon-carbon sheets, coated with alumina ceramic. While the sun-facing side glows at 1,400°C, the spacecraft instruments in its shadow remain at a comfortable 29°C (85°F).",
+        "fun_fact": "Parker Solar Probe's solar arrays have liquid water cooling loops that dump excess heat into radiators behind the heat shield."
+      },
+      {
+        "id": "q24",
+        "question_text": "What cosmic measurement did observations of distant Type Ia supernovae with the Hubble Space Telescope reveal in 1998?",
+        "options": [
+          "The universe's expansion is slowing down due to gravity",
+          "The expansion of the universe is accelerating, driven by mysterious Dark Energy",
+          "The speed of light changes with distance",
+          "Black holes are expanding faster than stars"
+        ],
+        "correct_option_index": 1,
+        "explanation": "By observing standard-candle supernovae, astronomers expected gravity to be decelerating cosmic expansion. Instead, they discovered expansion is accelerating, leading to the Nobel-prize-winning discovery of Dark Energy.",
+        "fun_fact": "Dark Energy is now understood to make up roughly 68% of the total energy density of the universe, yet its fundamental nature remains one of the greatest mysteries in modern physics."
       }
     ]
   }

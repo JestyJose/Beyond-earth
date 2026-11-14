@@ -56,6 +56,9 @@ export const api = {
   getStatusRadar: () => fetchJSON('/status/radar'),
 
   // Academy / Quizzes
-  getQuizzes: () => fetchJSON('/academy/quizzes'),
-  getQuiz: (slug) => fetchJSON(`/academy/quizzes/${slug}`)
+  getQuizzes: (difficulty) => fetchJSON(`/academy/quizzes${difficulty ? `?difficulty=${difficulty}` : ''}`),
+  getQuiz: (slug) => fetchJSON(`/academy/quizzes/${slug}`),
+  getSimulations: () => fetchJSON('/academy/quizzes/simulations'),
+  getSimulation: (slug) => fetchJSON(`/academy/quizzes/simulations/${slug}`),
+  getDailyChallenge: () => fetchJSON('/academy/quizzes/daily')
 };
