@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "rtg-nuclear-power",
+    "title": "Nuclear Hearts: How RTGs Power Deep Space Probes",
+    "headline": "Generating electricity from glowing radioactive decay in the frozen dark.",
+    "summary": "Deep in space beyond Mars, sunlight is far too dim to power solar panels. Spacecraft like Voyager, Cassini, Curiosity, and Perseverance carry an RTG (Radioisotope Thermoelectric Generator) — an extraordinary battery with zero moving parts.",
+    "how_it_works": [
+      {
+        "step": 1,
+        "title": "Natural Radioactive Heat",
+        "description": "Ceramic pellets of Plutonium-238 naturally decay, glowing red-hot at over 500 deg C without any nuclear explosion or chain reaction."
+      },
+      {
+        "step": 2,
+        "title": "The Seebeck Effect (Thermocouples)",
+        "description": "Special metals called thermocouples bridge the hot radioactive core and the icy cold of deep space (-270 deg C). This extreme temperature difference pushes electrons through the circuit, creating electrical current."
+      },
+      {
+        "step": 3,
+        "title": "Continuous Decades of Power",
+        "description": "Because Plutonium-238 has a half-life of 87.7 years, it reliably supplies steady electric power for over 45 years non-stop!"
+      }
+    ],
+    "why_it_matters_on_earth": "Thermocouple technology developed for deep space is now used in industrial waste-heat recycling, wearable electronics that harvest body heat, and remote oceanic sensors.",
+    "related_hardware_slugs": ["voyager-1", "voyager-2", "curiosity", "perseverance", "cassini-huygens", "new-horizons"]
+  },
+  {
+    "slug": "deep-space-network",
+    "title": "The Cosmic Whisper: The Deep Space Network (DSN)",
+    "headline": "Listening to spacecraft 24 billion kilometers away using giant 70-meter dish antennas.",
+    "summary": "When Voyager 1 broadcasts from interstellar space, its signal reaches Earth with the energy of a billionth of a trillionth of a watt — 20 billion times weaker than a wristwatch battery! How does NASA hear it?",
+    "how_it_works": [
+      {
+        "step": 1,
+        "title": "Three Global Stations",
+        "description": "NASA operates three giant dish antenna complexes located roughly 120 degrees apart on Earth: Goldstone (California), Madrid (Spain), and Canberra (Australia)."
+      },
+      {
+        "step": 2,
+        "title": "Uninterrupted 24/7 Coverage",
+        "description": "As our planet rotates, one antenna complex hands off the signal to the next, ensuring Earth never loses line-of-sight communication with any deep space probe."
+      },
+      {
+        "step": 3,
+        "title": "Cryogenic Liquid Helium Amplifiers",
+        "description": "The giant receivers are cooled to near absolute zero (-269 deg C) to eliminate molecular thermal noise, pulling the tiny spacecraft whisper out of background cosmic static."
+      }
+    ],
+    "why_it_matters_on_earth": "Ultra-sensitive DSN receiver technologies revolutionized modern cellular networks, satellite GPS navigation, and radio astronomy imaging of black holes.",
+    "related_hardware_slugs": ["voyager-1", "voyager-2", "pioneer-10", "new-horizons", "perseverance"]
+  },
+  {
+    "slug": "gravity-assists",
+    "title": "Cosmic Slingshots: The Magic of Gravity Assists",
+    "headline": "Stealing a fraction of a planet's speed to fly across the solar system for free.",
+    "summary": "Rockets alone could never carry enough chemical fuel to push heavy spacecraft all the way to Saturn, Pluto, or interstellar space. Instead, mission navigators use the orbital momentum of giant planets like Jupiter.",
+    "how_it_works": [
+      {
+        "step": 1,
+        "title": "Entering the Planet's Gravity Well",
+        "description": "A spacecraft approaches a massive moving planet from behind its orbital path. The planet's gravity pulls the probe inward, accelerating it."
+      },
+      {
+        "step": 2,
+        "title": "Stealing Orbital Momentum",
+        "description": "As the probe whips around the planet, it absorbs a tiny fraction of the planet's orbital speed around the Sun. The planet slows down by a trillionth of an atom's width, while the spacecraft gains thousands of kilometers per hour!"
+      },
+      {
+        "step": 3,
+        "title": "Flinging Toward Deep Space",
+        "description": "The probe departs with far greater velocity than it entered, redirected toward its next destination without burning a single drop of fuel."
+      }
+    ],
+    "why_it_matters_on_earth": "Orbital mechanics principles behind gravity assists are used to optimize satellite constellations, minimize fuel burn for orbital debris cleanup, and plan efficient trajectories.",
+    "related_hardware_slugs": ["voyager-1", "voyager-2", "cassini-huygens", "new-horizons", "parker-solar-probe"]
+  },
+  {
+    "slug": "laser-spectroscopy",
+    "title": "Laser Eyes: Reading Rock Chemistry from a Distance",
+    "headline": "Shooting lasers to zap Martian rocks into glowing plasma and reading their atomic rainbows.",
+    "summary": "Rovers cannot drive to every single rock they see on Mars. Using SuperCam and ChemCam, Curiosity and Perseverance can analyze rocks from 7 meters away in just seconds.",
+    "how_it_works": [
+      {
+        "step": 1,
+        "title": "High-Power Laser Pulse",
+        "description": "The rover's mast shoots an infrared laser pulse in a fraction of a second, heating a pinpoint spot on a rock to over 10,000 deg C — hotter than the surface of the Sun!"
+      },
+      {
+        "step": 2,
+        "title": "Vaporized Glowing Plasma",
+        "description": "The intense heat vaporizes a microscopic bit of the rock into a glowing bubble of ionized gas (plasma)."
+      },
+      {
+        "step": 3,
+        "title": "Spectrometer Rainbow Analysis",
+        "description": "A telescope on the rover captures the light from the plasma and splits it through a diffraction prism. Every chemical element (iron, carbon, silicon, calcium) shines at unique, exact color lines like an atomic fingerprint."
+      }
+    ],
+    "why_it_matters_on_earth": "LIBS (Laser-Induced Breakdown Spectroscopy) is used on Earth to instantly inspect toxic soil contamination, check alloys in steel mills, and detect counterfeit pharmaceuticals.",
+    "related_hardware_slugs": ["curiosity", "perseverance"]
+  }
+]

@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "cadet-solar-system",
+    "title": "Solar System Cadet Challenge",
+    "difficulty": "CADET",
+    "description": "Test your fundamental knowledge about spacecraft, planets, and NASA's greatest missions!",
+    "badge_points": 100,
+    "badge_name": "Junior Flight Controller",
+    "questions": [
+      {
+        "id": "q1",
+        "question_text": "What is the farthest human-made object from Earth?",
+        "options": [
+          "Curiosity Rover",
+          "Voyager 1",
+          "Hubble Space Telescope",
+          "Apollo 11 Lunar Module"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Voyager 1 was launched in 1977 and entered interstellar space in 2012. It is currently over 24 billion kilometers (165 AU) from Earth!",
+        "fun_fact": "A radio signal travelling at the speed of light takes over 22 hours to reach Voyager 1 from Earth."
+      },
+      {
+        "id": "q2",
+        "question_text": "Which planet is known as the 'Red Planet' and has hosted rovers like Curiosity and Perseverance?",
+        "options": [
+          "Venus",
+          "Jupiter",
+          "Mars",
+          "Mercury"
+        ],
+        "correct_option_index": 2,
+        "explanation": "Mars gets its reddish color from iron oxide (rust) covering its surface rocks and regolith.",
+        "fun_fact": "Olympus Mons on Mars is the largest volcano in the solar system, three times taller than Mount Everest!"
+      },
+      {
+        "id": "q3",
+        "question_text": "How did the Perseverance rover land safely on Mars without crashing?",
+        "options": [
+          "Bouncing air bags like a giant beach ball",
+          "A rocket-powered Sky Crane that lowered it on nylon cables",
+          "It landed in an ocean of liquid water",
+          "It glided down with wings like an airplane"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Because Perseverance weighs over 1,000 kg, NASA used a rocket-powered Sky Crane to gently lower it onto its wheels in Jezero Crater.",
+        "fun_fact": "The landing took 7 minutes, but communication took 11 minutes to reach Earth, meaning the rover was already safe before scientists knew!"
+      },
+      {
+        "id": "q4",
+        "question_text": "What is the purpose of the Apollo 11 Lunar Ranging Retroreflector left on the Moon in 1969?",
+        "options": [
+          "To reflect sunlight to melt ice",
+          "To bounce laser beams from Earth to measure the exact distance to the Moon",
+          "To transmit television signals",
+          "To power the rover battery"
+        ],
+        "correct_option_index": 1,
+        "explanation": "The retroreflector is an array of corner prisms that bounce laser pulses straight back to Earth observatories, measuring the Moon's distance to millimeter precision.",
+        "fun_fact": "This experiment proved that the Moon is moving 3.8 centimeters farther away from Earth each year!"
+      }
+    ]
+  },
+  {
+    "slug": "explorer-deep-space",
+    "title": "Deep Space Explorer Challenge",
+    "difficulty": "EXPLORER",
+    "description": "Demonstrate your understanding of deep space propulsion, nuclear power, and ocean worlds!",
+    "badge_points": 250,
+    "badge_name": "Deep Space Navigator",
+    "questions": [
+      {
+        "id": "q5",
+        "question_text": "Why do deep space probes like Voyager 1, Cassini, and New Horizons use RTGs instead of solar panels?",
+        "options": [
+          "Solar panels are too heavy for rockets to launch",
+          "The Sun's light is too weak billions of kilometers away in the outer solar system",
+          "Solar panels attract dangerous space dust",
+          "Nuclear batteries generate infinite electricity forever"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Sunlight follows the inverse-square law. At Saturn and Pluto, sunlight is hundreds or thousands of times weaker than on Earth, making solar panels ineffective.",
+        "fun_fact": "RTGs use the natural decay heat of Plutonium-238 converted into electricity by thermocouples with no moving parts."
+      },
+      {
+        "id": "q6",
+        "question_text": "Why did NASA deliberately steer the Cassini spacecraft into Saturn's atmosphere at the end of its mission?",
+        "options": [
+          "Because its thrusters were broken",
+          "To protect ocean moons Enceladus and Titan from potential microbial contamination",
+          "To ignite Saturn's gas clouds",
+          "To break the off-world speed record"
+        ],
+        "correct_option_index": 1,
+        "explanation": "Cassini discovered that Enceladus has a warm subsurface ocean capable of harboring life. NASA crashed Cassini into Saturn so Earth bacteria could never contaminate Enceladus.",
+        "fun_fact": "This protocol is known as Planetary Protection, established under the international Outer Space Treaty."
+      },
+      {
+        "id": "q7",
+        "question_text": "What is a 'gravity assist' (slingshot maneuver) in space navigation?",
+        "options": [
+          "Using a planet's gravity and orbital momentum to speed up or redirect a spacecraft without burning fuel",
+          "Throwing heavy weights off the back of the spacecraft",
+          "Deploying a giant parachute in planetary atmospheres",
+          "Turning off the engine to let gravity pull you into the Sun"
+        ],
+        "correct_option_index": 0,
+        "explanation": "A spacecraft steals a tiny sliver of a planet's orbital momentum as it swings around it, dramatically boosting its velocity through space.",
+        "fun_fact": "Voyager 2 used gravity assists from Jupiter, Saturn, and Uranus to reach Neptune in just 12 years instead of 30!"
+      }
+    ]
+  }
+]

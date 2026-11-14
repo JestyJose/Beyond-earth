@@ -1,0 +1,1254 @@
+[
+  {
+    "slug": "voyager-1",
+    "name": "Voyager 1",
+    "category": "DEEP_SPACE_PROBE",
+    "destination_slug": "interstellar-space",
+    "launch_date": "1977-09-05",
+    "launch_vehicle": "Titan IIIE-Centaur",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Actively communicating from interstellar space over 165 AU (~24.7 billion km) from Earth. In 2024, NASA engineers successfully resolved a telemetry memory synchronization issue, keeping its science instruments transmitting.",
+    "mission_purpose": "Originally designed to explore Jupiter and Saturn and their rings and moons. Following its primary mission, it embarked on the Voyager Interstellar Mission to characterize the outer boundaries of the heliosphere and interstellar space.",
+    "historical_significance": "The farthest human-made object from Earth and the first machine to cross the heliopause into interstellar space (August 25, 2012). Carries the famous Golden Record containing sounds and images of Earth.",
+    "power_source": "Radioisotope Thermoelectric Generators (MHW-RTG) powered by Plutonium-238",
+    "mass_kg": 815.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA17049/PIA17049~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Triaxial Fluxgate Magnetometer",
+        "acronym": "MAG",
+        "purpose_student_friendly": "Measures changes in magnetic fields in deep space, revealing when the probe exited our Sun's magnetic bubble.",
+        "technical_description": "High and low-field triaxial fluxgate sensors measuring interstellar magnetic field vectors and turbulence."
+      },
+      {
+        "name": "Cosmic Ray Subsystem",
+        "acronym": "CRS",
+        "purpose_student_friendly": "Counts high-energy particles from exploding stars and interstellar space.",
+        "technical_description": "High-energy and low-energy telescope systems detecting electrons, protons, and cosmic ray nuclei."
+      },
+      {
+        "name": "Low-Energy Charged Particle Instrument",
+        "acronym": "LECP",
+        "purpose_student_friendly": "Detects solar wind particles and cosmic rays flowing around the spacecraft.",
+        "technical_description": "Solid-state detector system mounted on a stepping motor assessing energy spectrum and directional distribution."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1977-09-05",
+        "title": "Launch from Cape Canaveral",
+        "description": "Voyager 1 launched aboard a Titan IIIE rocket, embarking on the historic Grand Tour of the outer planets.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1979-03-05",
+        "title": "Jupiter Closest Approach",
+        "description": "Flew within 349,000 km of Jupiter's cloud tops, discovering active sulfur volcanoes on moon Io.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "1980-11-12",
+        "title": "Saturn & Titan Flyby",
+        "description": "Examined Saturn's ring structure and passed close to Titan, revealing its thick, opaque nitrogen atmosphere.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "1990-02-14",
+        "title": "The Pale Blue Dot Portrait",
+        "description": "Turned cameras back toward Earth to capture the iconic 'Family Portrait', showing Earth as a tiny speck of light in a sunbeam.",
+        "event_type": "MILESTONE"
+      },
+      {
+        "date": "2012-08-25",
+        "title": "Entry into Interstellar Space",
+        "description": "First human machine to cross the heliopause, detecting an abrupt drop in solar particles and a surge in interstellar cosmic rays.",
+        "event_type": "DISCOVERY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "First Active Extraterrestrial Volcanoes",
+        "plain_english_summary": "Voyager 1 spotted violent volcanic eruptions on Jupiter's moon Io, proving Earth is not the only geologically active world.",
+        "why_it_matters": "Proved that tidal gravitational flexing from giant planets can heat a moon's interior, opening new frontiers in astrobiology.",
+        "scientific_domain": "GEOLOGY"
+      },
+      {
+        "title": "Mapping the Solar System's Boundary",
+        "plain_english_summary": "Discovered the exact boundary (heliopause) where the Sun's solar wind collides with matter between stars.",
+        "why_it_matters": "Helps scientists understand how our solar system is shielded from galactic cosmic radiation.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA Master Catalog: Voyager 1",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1977-084A",
+        "quotation_or_reference": "NSSDC ID: 1977-084A | Voyager 1 Primary Mission Profile"
+      },
+      {
+        "title": "NASA JPL Voyager Interstellar Mission",
+        "source_type": "JPL",
+        "url": "https://voyager.jpl.nasa.gov/mission/status/",
+        "quotation_or_reference": "Voyager Mission Status & Telemetry Updates"
+      }
+    ]
+  },
+  {
+    "slug": "voyager-2",
+    "name": "Voyager 2",
+    "category": "DEEP_SPACE_PROBE",
+    "destination_slug": "interstellar-space",
+    "launch_date": "1977-08-20",
+    "launch_vehicle": "Titan IIIE-Centaur",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Actively transmitting science data from interstellar space over 138 AU (~20.6 billion km) from Earth. Its Plasma Science instrument remains operational, measuring interstellar medium density.",
+    "mission_purpose": "Designed to conduct a grand tour of Jupiter, Saturn, Uranus, and Neptune using rare planetary gravitational alignment.",
+    "historical_significance": "The only spacecraft in human history to visit all four giant outer planets (Jupiter, Saturn, Uranus, and Neptune) and the second machine to enter interstellar space.",
+    "power_source": "Radioisotope Thermoelectric Generators (MHW-RTG)",
+    "mass_kg": 815.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA02219/PIA02219~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Plasma Science Experiment",
+        "acronym": "PLS",
+        "purpose_student_friendly": "Measures the temperature, speed, and density of electrified solar gas and interstellar plasma.",
+        "technical_description": "Modulated-grid Faraday cup measuring low-energy ionized particles in the range of 10 eV to 6 keV."
+      },
+      {
+        "name": "Magnetometer",
+        "acronym": "MAG",
+        "purpose_student_friendly": "Monitors the strength and direction of magnetic fields across the outer planets and beyond.",
+        "technical_description": "Triaxial fluxgate magnetometer payload."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1977-08-20",
+        "title": "Launched Before Voyager 1",
+        "description": "Launched 16 days before Voyager 1 on a longer, slower trajectory enabling visits to Uranus and Neptune.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1986-01-24",
+        "title": "Only Visit to Uranus",
+        "description": "Flew within 81,500 km of Uranus, discovering 10 new moons and its tilted, off-center magnetic field.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "1989-08-25",
+        "title": "Only Visit to Neptune",
+        "description": "Passed 4,950 km above Neptune's north pole, discovering the Great Dark Spot and nitrogen ice geysers on moon Triton.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "2018-11-05",
+        "title": "Crossed into Interstellar Space",
+        "description": "Exited the heliosphere, with its working plasma detector confirming entry into cold interstellar gas.",
+        "event_type": "DISCOVERY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Triton's Nitrogen Geysers",
+        "plain_english_summary": "Discovered active icy geysers erupting nitrogen gas and black dust 8 kilometers into the sky on Neptune's moon Triton.",
+        "why_it_matters": "Proved that geological activity can occur in the coldest environments in the solar system (-235 deg C).",
+        "scientific_domain": "GEOLOGY"
+      },
+      {
+        "title": "Tilted Magnetic Fields of Ice Giants",
+        "plain_english_summary": "Found that Uranus and Neptune have bizarre magnetic fields tilted far away from their rotational poles.",
+        "why_it_matters": "Showed that magnetic fields can be generated in churning fluid mantles rather than deep metal cores.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA Master Catalog: Voyager 2",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1977-076A",
+        "quotation_or_reference": "NSSDC ID: 1977-076A | Grand Tour Profile"
+      }
+    ]
+  },
+  {
+    "slug": "perseverance",
+    "name": "Perseverance Rover",
+    "category": "ROVER",
+    "destination_slug": "mars",
+    "launch_date": "2020-07-30",
+    "launch_vehicle": "Atlas V 541",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Actively exploring Jezero Crater, collecting sealed Martian rock and regolith core samples for future retrieval by the Mars Sample Return mission.",
+    "mission_purpose": "Seek signs of ancient microbial life, characterize Mars' past climate and geology, test oxygen generation from atmospheric CO2, and cache rock samples for Earth return.",
+    "historical_significance": "Carried the Ingenuity Mars Helicopter (the first powered flight on another planet) and generated breathable oxygen on Mars using MOXIE.",
+    "power_source": "Multi-Mission Radioisotope Thermoelectric Generator (MMRTG)",
+    "mass_kg": 1025.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA24487/PIA24487~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Mastcam-Z",
+        "acronym": "Mastcam-Z",
+        "purpose_student_friendly": "High-definition zoom cameras that act as the rover's eyes, taking 3D color panoramic photos.",
+        "technical_description": "Multispectral stereoscopic imaging system with 3:1 zoom capability."
+      },
+      {
+        "name": "SuperCam",
+        "acronym": "SuperCam",
+        "purpose_student_friendly": "Fires an infrared laser at rocks from up to 7 meters away to zap them into glowing vapor and read their minerals.",
+        "technical_description": "Laser-induced breakdown spectroscopy (LIBS), Raman, and time-resolved fluorescence spectroscopy with microphone."
+      },
+      {
+        "name": "Mars Oxygen ISRU Experiment",
+        "acronym": "MOXIE",
+        "purpose_student_friendly": "A technology demo that turned thin Martian carbon dioxide gas into pure, breathable oxygen like a mechanical tree.",
+        "technical_description": "Solid oxide electrolysis cell generating up to 10 g/hr of O2 from atmospheric CO2."
+      },
+      {
+        "name": "Radar Imager for Mars' Subsurface Experiment",
+        "acronym": "RIMFAX",
+        "purpose_student_friendly": "Ground-penetrating radar that peeks under the Martian soil up to 10 meters deep.",
+        "technical_description": "Frequency-modulated continuous-wave radar operating at 150-1200 MHz."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2020-07-30",
+        "title": "Launch toward Mars",
+        "description": "Lifted off from Cape Canaveral Air Force Station aboard an Atlas V rocket.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2021-02-18",
+        "title": "Touchdown in Jezero Crater",
+        "description": "Executed flawless entry, descent, and landing using the legendary Sky Crane maneuver.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "2021-04-19",
+        "title": "Ingenuity's First Flight",
+        "description": "Scout companion Ingenuity achieved the first powered, controlled flight on another world (Wright Brothers moment).",
+        "event_type": "MILESTONE"
+      },
+      {
+        "date": "2021-09-06",
+        "title": "First Cored Martian Rock Sample",
+        "description": "Successfully drilled and hermetically sealed sample 'Montdenier' inside an ultra-clean titanium tube.",
+        "event_type": "DISCOVERY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Confirmation of Ancient River Delta in Jezero",
+        "plain_english_summary": "Found rounded river stones, silt layers, and clay minerals proving Jezero Crater was filled with a deep lake billions of years ago.",
+        "why_it_matters": "Ancient lakes and river deltas are the premier environments where signs of microbial life could be preserved.",
+        "scientific_domain": "ASTROBIOLOGY"
+      },
+      {
+        "title": "Oxygen Generation on Another Planet",
+        "plain_english_summary": "MOXIE demonstrated that future astronauts can manufacture their own oxygen directly from the Martian air.",
+        "why_it_matters": "Reduces the payload and cost required for human missions to Mars.",
+        "scientific_domain": "ATMOSPHERE"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Mars 2020 Perseverance Mission Overview",
+        "source_type": "JPL",
+        "url": "https://mars.nasa.gov/mars2020/",
+        "quotation_or_reference": "Official NASA Mars 2020 Science Team Portal"
+      },
+      {
+        "title": "NASA NSSDCA: Mars 2020",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-052A",
+        "quotation_or_reference": "NSSDC ID: 2020-052A"
+      }
+    ]
+  },
+  {
+    "slug": "curiosity",
+    "name": "Curiosity Rover (MSL)",
+    "category": "ROVER",
+    "destination_slug": "mars",
+    "launch_date": "2011-11-26",
+    "launch_vehicle": "Atlas V 541",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Operating for over 14 years on Mars (over 4,300 sols), steadily climbing Mount Sharp (Aeolis Mons) to analyze rock layers that record billions of years of changing Martian climate.",
+    "mission_purpose": "Assess whether Mars ever had an environment capable of supporting microbial life (planetary habitability).",
+    "historical_significance": "First rover to use the revolutionary rocket-powered Sky Crane landing architecture and discovered definitive evidence of ancient freshwater lakes and organic molecules on Mars.",
+    "power_source": "Multi-Mission Radioisotope Thermoelectric Generator (MMRTG)",
+    "mass_kg": 899.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA16239/PIA16239~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Sample Analysis at Mars",
+        "acronym": "SAM",
+        "purpose_student_friendly": "A chemistry laboratory inside the rover's belly that bakes rock powders to sniff for carbon-based organic molecules.",
+        "technical_description": "Suite consisting of a quadrupole mass spectrometer, gas chromatograph, and tunable laser spectrometer."
+      },
+      {
+        "name": "Chemistry and Camera",
+        "acronym": "ChemCam",
+        "purpose_student_friendly": "Fires a rock-blasting laser to study rock compositions from a distance.",
+        "technical_description": "Laser-induced breakdown spectroscopy paired with a remote micro-imager."
+      },
+      {
+        "name": "Chemistry and Mineralogy",
+        "acronym": "CheMin",
+        "purpose_student_friendly": "Shines X-rays through powdered rocks to identify their exact crystal minerals.",
+        "technical_description": "X-ray diffraction and fluorescence instrument."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2011-11-26",
+        "title": "Launch from Earth",
+        "description": "Departed Earth on an Atlas V rocket from Space Launch Complex 41.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2012-08-06",
+        "title": "The 'Seven Minutes of Terror' Touchdown",
+        "description": "Landed safely in Gale Crater via guided atmospheric entry, parachute, and rocket-powered Sky Crane.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "2013-03-12",
+        "title": "Ancient Habitability Confirmed",
+        "description": "Analysis of rock samples at Yellowknife Bay confirmed ancient Mars had freshwater, carbon, hydrogen, oxygen, and nitrogen.",
+        "event_type": "DISCOVERY"
+      },
+      {
+        "date": "2018-06-07",
+        "title": "Ancient Organic Molecules Detected",
+        "description": "Identified diverse 3-billion-year-old organic carbon compounds in lakebed mudstones.",
+        "event_type": "DISCOVERY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Ancient Mars Was Habitable",
+        "plain_english_summary": "Discovered that Gale Crater once hosted calm, freshwater lakes with drinkable water and all basic chemical ingredients for life.",
+        "why_it_matters": "Proved that Mars had environmental conditions where life could have started and thrived.",
+        "scientific_domain": "ASTROBIOLOGY"
+      },
+      {
+        "title": "Methane Spikes in Martian Atmosphere",
+        "plain_english_summary": "Detected mysterious seasonal pulses of methane gas in the atmosphere that rise and fall with the Martian seasons.",
+        "why_it_matters": "Methane can be produced either by underground geological reactions or living microbes.",
+        "scientific_domain": "ATMOSPHERE"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Mars Science Laboratory / Curiosity",
+        "source_type": "JPL",
+        "url": "https://mars.nasa.gov/msl/",
+        "quotation_or_reference": "JPL Curiosity Mission Archives & Science Papers"
+      }
+    ]
+  },
+  {
+    "slug": "cassini-huygens",
+    "name": "Cassini-Huygens",
+    "category": "ORBITER",
+    "destination_slug": "saturn",
+    "launch_date": "1997-10-15",
+    "launch_vehicle": "Titan IVB/Centaur",
+    "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED",
+    "status_verified_date": "2017-09-15",
+    "status_summary": "Concluded its legendary 13-year tour of Saturn on September 15, 2017, with an intentional 'Grand Finale' dive into Saturn's atmosphere to protect ocean moons Enceladus and Titan from potential contamination.",
+    "mission_purpose": "Study Saturn, its magnificent ring systems, magnetic field, and extensive moon system in unprecedented detail.",
+    "historical_significance": "Discovered subsurface global saltwater ocean and geysers on Enceladus, dropped the ESA Huygens probe onto Titan's hydrocarbon surface, and revolutionized our understanding of ocean worlds.",
+    "power_source": "3 General Purpose Heat Source Radioisotope Thermoelectric Generators (GPHS-RTG)",
+    "mass_kg": 5712.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA03883/PIA03883~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Composite Infrared Spectrometer",
+        "acronym": "CIRS",
+        "purpose_student_friendly": "Measured heat temperatures and chemical compositions of Saturn's rings and moon surfaces.",
+        "technical_description": "Dual-interferometer spectrometer operating in mid- and far-infrared wavelengths."
+      },
+      {
+        "name": "Ion and Neutral Mass Spectrometer",
+        "acronym": "INMS",
+        "purpose_student_friendly": "Tasted and identified molecules sprayed out of Enceladus's icy geysers.",
+        "technical_description": "Quadrupole mass spectrometer analyzing neutral particles and positive ions."
+      },
+      {
+        "name": "Imaging Science Subsystem",
+        "acronym": "ISS",
+        "purpose_student_friendly": "High-resolution wide-angle and narrow-angle digital cameras capturing over 450,000 photos of Saturn.",
+        "technical_description": "Dual CCD camera system with multiple spectral filter wheels."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1997-10-15",
+        "title": "Launch from Cape Canaveral",
+        "description": "Began a 7-year voyage using gravity assists from Venus (twice), Earth, and Jupiter.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2004-07-01",
+        "title": "Saturn Orbit Insertion",
+        "description": "Fired main engine to slip through Saturn's rings and become Saturn's first orbital resident.",
+        "event_type": "ORBIT_INSERTION"
+      },
+      {
+        "date": "2005-01-14",
+        "title": "Huygens Probe Titan Landing",
+        "description": "ESA Huygens probe parachuted through Titan's nitrogen haze, landing on wet hydrocarbon pebbles.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "2005-07-14",
+        "title": "Enceladus Geysers Discovered",
+        "description": "Flew through giant plumes of water vapor and organic molecules erupting from Enceladus's south pole.",
+        "event_type": "DISCOVERY"
+      },
+      {
+        "date": "2017-09-15",
+        "title": "The Grand Finale Plunge",
+        "description": "Dived straight into Saturn's atmosphere, transmitting real-time composition data until vaporization.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Global Subsurface Saltwater Ocean on Enceladus",
+        "plain_english_summary": "Discovered that tiny moon Enceladus has a warm saltwater ocean beneath its ice crust with hydrothermal vents.",
+        "why_it_matters": "Enceladus has water, energy, and organic molecules, making it one of the premier locations to search for life.",
+        "scientific_domain": "ASTROBIOLOGY"
+      },
+      {
+        "title": "Liquid Methane Lakes and Rain on Titan",
+        "plain_english_summary": "Revealed that Titan has a complete hydrological cycle like Earth, but with liquid methane and ethane instead of water.",
+        "why_it_matters": "Demonstrated that planetary weather and lakes can exist under exotic cryogenic chemistry.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Cassini-Huygens Mission Archive",
+        "source_type": "JPL",
+        "url": "https://science.nasa.gov/mission/cassini/",
+        "quotation_or_reference": "Cassini Legacy Press Kit & Science Summary"
+      },
+      {
+        "title": "NASA NSSDCA Master Catalog: Cassini",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1997-061A",
+        "quotation_or_reference": "NSSDC ID: 1997-061A"
+      }
+    ]
+  },
+  {
+    "slug": "new-horizons",
+    "name": "New Horizons",
+    "category": "DEEP_SPACE_PROBE",
+    "destination_slug": "kuiper-belt",
+    "launch_date": "2006-01-19",
+    "launch_vehicle": "Atlas V 551",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Actively cruising through the distant Kuiper Belt over 59 AU from the Sun, measuring the interstellar boundary, dust environment, and observing distant Kuiper Belt objects.",
+    "mission_purpose": "Conduct the first reconnaissance of the Pluto system and explore the ancient relics of the Kuiper Belt.",
+    "historical_significance": "Fastest spacecraft ever launched from Earth at departure (16.26 km/s); transformed Pluto from an indistinct dot into an active world of nitrogen glaciers and mountain ranges.",
+    "power_source": "Radioisotope Thermoelectric Generator (GPHS-RTG)",
+    "mass_kg": 478.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA19952/PIA19952~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Long Range Reconnaissance Imager",
+        "acronym": "LORRI",
+        "purpose_student_friendly": "A giant telephoto camera telescope that captured the sharpest photos of Pluto and Arrokoth.",
+        "technical_description": "20.8 cm aperture Ritchey-Chrétien reflector with 1024x1024 back-illuminated CCD."
+      },
+      {
+        "name": "Solar Wind Around Pluto",
+        "acronym": "SWAP",
+        "purpose_student_friendly": "Measures how the Sun's particle wind interacts with Pluto's escaping atmosphere and distant space.",
+        "technical_description": "Electrostatic analyzer and retarding potential analyzer measuring ions up to 7.5 keV."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2006-01-19",
+        "title": "High-Speed Departure from Earth",
+        "description": "Blasted into space on an Atlas V with a Star-48B third stage, reaching the Moon's orbit in just 9 hours.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2007-02-28",
+        "title": "Jupiter Gravity Assist",
+        "description": "Swung past Jupiter, gaining 14,000 km/h in velocity and capturing stunning photos of Io's volcano Tvashtar.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "2015-07-14",
+        "title": "Historic Pluto Flyby",
+        "description": "Flew 12,500 km above Pluto, revealing its heart-shaped nitrogen ice glacier Tombaugh Regio.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "2019-01-01",
+        "title": "Flyby of Contact Binary Arrokoth",
+        "description": "Explored Arrokoth (4 billion km from Earth), the most primitive primordial object ever observed up close.",
+        "event_type": "FLYBY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Pluto's Beating Heart of Convecting Nitrogen Ice",
+        "plain_english_summary": "Discovered Sputnik Planitia: a 1,000-km glacier of nitrogen ice that constantly bubbles and renews itself like a lava lamp.",
+        "why_it_matters": "Demonstrated that small frozen worlds in the outer solar system can remain geologically dynamic.",
+        "scientific_domain": "GEOLOGY"
+      },
+      {
+        "title": "Planetary Genesis Revealed by Arrokoth",
+        "plain_english_summary": "Arrokoth proved that planets coalesced gently from clouds of pebbles rather than violent high-speed collisions.",
+        "why_it_matters": "Solved a multi-decade debate in planetary physics regarding planetesimal formation.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA New Horizons Mission Home",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://science.nasa.gov/mission/new-horizons/",
+        "quotation_or_reference": "NASA New Horizons Science Overview"
+      }
+    ]
+  },
+  {
+    "slug": "insight",
+    "name": "InSight Lander",
+    "category": "LANDER",
+    "destination_slug": "mars",
+    "launch_date": "2018-05-05",
+    "launch_vehicle": "Atlas V 401",
+    "operational_status": "INACTIVE_SURFACE",
+    "status_verified_date": "2022-12-21",
+    "status_summary": "Mission officially concluded on December 21, 2022, after thick Martian dust accumulated on its solar arrays, depleting electrical power. Successfully completed its primary and extended science investigations.",
+    "mission_purpose": "Study the deep interior of Mars using seismology, geodesy, and heat transport to understand how rocky planets formed.",
+    "historical_significance": "Placed the first ultra-sensitive seismometer directly on the surface of Mars, detecting over 1,300 'marsquakes' and mapping the Martian crust, mantle, and molten liquid iron core.",
+    "power_source": "Dual 2.15-meter UltraFlex solar arrays",
+    "mass_kg": 358.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA22232/PIA22232~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Seismic Experiment for Interior Structure",
+        "acronym": "SEIS",
+        "purpose_student_friendly": "A super-sensitive digital ear placed on the ground inside a vacuum dome that heard subterranean vibrations and quakes.",
+        "technical_description": "Six-sensor seismometer covering ultra-broadband (0.01 to 10 Hz) and short-period (0.1 to 50 Hz) seismic waves."
+      },
+      {
+        "name": "Heat Flow and Physical Properties Package",
+        "acronym": "HP3",
+        "purpose_student_friendly": "A mechanical mole nicknamed the 'Mole' designed to burrow into soil to measure planet heat.",
+        "technical_description": "Self-hammering penetrator with thermal conductivity sensors."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2018-05-05",
+        "title": "Launch from Vandenberg",
+        "description": "First interplanetary launch from the U.S. West Coast.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2018-11-26",
+        "title": "Smooth Landing on Elysium Planitia",
+        "description": "Landed safely on a flat, smooth lava plain chosen for safe instrument deployment.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "2019-04-06",
+        "title": "First Ever Marsquake Detected",
+        "description": "SEIS recorded the first verified seismic rumble originating from within the planet.",
+        "event_type": "DISCOVERY"
+      },
+      {
+        "date": "2022-12-15",
+        "title": "Final Signal to Earth",
+        "description": "Transmitted its poignant final photograph and telemetry before battery voltage dropped below operational threshold.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Mars Has a Large, Liquid Core",
+        "plain_english_summary": "By listening to bouncing quake echoes, InSight measured Mars' core: a molten sphere of iron and sulfur ~3,660 km across.",
+        "why_it_matters": "Helps planetary scientists understand why Mars lost its protective magnetic field billions of years ago.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA InSight Mission End Summary",
+        "source_type": "JPL",
+        "url": "https://mars.nasa.gov/insight/",
+        "quotation_or_reference": "InSight Telemetry Archive & Mission Closeout Report"
+      }
+    ]
+  },
+  {
+    "slug": "opportunity",
+    "name": "Opportunity Rover (MER-B)",
+    "category": "ROVER",
+    "destination_slug": "mars",
+    "launch_date": "2003-07-08",
+    "launch_vehicle": "Delta II 7925H",
+    "operational_status": "INACTIVE_SURFACE",
+    "status_verified_date": "2019-02-13",
+    "status_summary": "Operated for nearly 15 years (designed for 90 days), driving 45.16 km across Mars. In June 2018, a catastrophic planet-encircling dust storm blocked sunlight to its solar arrays; NASA officially concluded the mission on Feb 13, 2019.",
+    "mission_purpose": "Search for geological clues regarding past water activity on Mars.",
+    "historical_significance": "Holds the off-world driving record (over a marathon distance of 45.16 km) and discovered hematite 'blueberries', providing the first definitive ground truth that liquid water soaked ancient Mars.",
+    "power_source": "Solar cell arrays generating up to 140 W",
+    "mass_kg": 185.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA05208/PIA05208~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Panoramic Camera",
+        "acronym": "Pancam",
+        "purpose_student_friendly": "High-mounted stereo cameras that captured 3D landscapes and rock textures.",
+        "technical_description": "Multispectral stereo camera system."
+      },
+      {
+        "name": "Miniature Thermal Emission Spectrometer",
+        "acronym": "Mini-TES",
+        "purpose_student_friendly": "Infrared instrument that diagnosed rock minerals from a distance.",
+        "technical_description": "Fourier transform infrared spectrometer."
+      },
+      {
+        "name": "Rock Abrasion Tool",
+        "acronym": "RAT",
+        "purpose_student_friendly": "A mechanical diamond-grit grinder that ground through outer weathered rock crust to expose fresh minerals.",
+        "technical_description": "Precision diamond-toothed cutting wheel grinding circular pits 45 mm diameter."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2003-07-08",
+        "title": "Launch toward Mars",
+        "description": "Lifted off from Cape Canaveral atop a Boeing Delta II Heavy.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2004-01-25",
+        "title": "Interplanetary Hole-in-One Landing",
+        "description": "Bounced down encased in airbags directly inside Eagle Crater in Meridiani Planum.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "2015-03-24",
+        "title": "Completed Off-Earth Marathon",
+        "description": "Passed 42.195 km of total driving distance on Mars, completing an Olympic marathon.",
+        "event_type": "MILESTONE"
+      },
+      {
+        "date": "2018-06-10",
+        "title": "Final Transmission",
+        "description": "Transmitted its last signal as dust skies darkened over Perseverance Valley.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Hematite Blueberries (Liquid Water Proof)",
+        "plain_english_summary": "Discovered billions of tiny gray spherules dubbed 'blueberries' made of hematite mineral formed in acidic groundwater.",
+        "why_it_matters": "Proved without doubt that water soaked and flowed through ancient Martian soils.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Mars Exploration Rover: Opportunity",
+        "source_type": "JPL",
+        "url": "https://mars.nasa.gov/mer/",
+        "quotation_or_reference": "MER Mission Archive & Science Papers"
+      }
+    ]
+  },
+  {
+    "slug": "apollo-11-lm",
+    "name": "Apollo 11 Lunar Module (Eagle) — Descent Stage",
+    "category": "LANDER",
+    "destination_slug": "moon",
+    "launch_date": "1969-07-16",
+    "launch_vehicle": "Saturn V",
+    "operational_status": "INACTIVE_SURFACE",
+    "status_verified_date": "1969-07-24",
+    "status_summary": "Rests permanently at Tranquility Base (0.67408 deg N, 23.47297 deg E) on the Moon. Served as the launch pad when the Ascent Stage lifted Neil Armstrong and Buzz Aldrin back into lunar orbit.",
+    "mission_purpose": "Achieve the national goal set by President John F. Kennedy of landing humans on the Moon and returning them safely to Earth.",
+    "historical_significance": "The historic first human landing on another celestial body (July 20, 1969). The Descent Stage remains an immortal monument to human exploration and engineering.",
+    "power_source": "5 silver-zinc batteries",
+    "mass_kg": 2034.0,
+    "image_url": "https://images-assets.nasa.gov/image/AS11-40-5922/AS11-40-5922~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Early Apollo Surface Experiments Package",
+        "acronym": "EASEP",
+        "purpose_student_friendly": "First science kit placed on the Moon, containing a moonquake sensor and laser reflector.",
+        "technical_description": "Included Passive Seismic Experiment Package (PSEP) and Lunar Ranging Retroreflector (LRRR)."
+      },
+      {
+        "name": "Lunar Ranging Retroreflector",
+        "acronym": "LRRR",
+        "purpose_student_friendly": "A special prism mirror that bounces lasers fired from Earth back to measure the exact distance to the Moon.",
+        "technical_description": "Array of 100 quartz corner-cube prisms that continue to be targeted by Earth observatories today."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1969-07-16",
+        "title": "Launch of Apollo 11",
+        "description": "Saturn V rocket lifted off from Kennedy Space Center carrying Armstrong, Aldrin, and Collins.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1969-07-20",
+        "title": "'The Eagle Has Landed'",
+        "description": "Touched down in the Sea of Tranquility with less than 30 seconds of fuel remaining.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "1969-07-21",
+        "title": "First Steps on the Moon",
+        "description": "Neil Armstrong descended the ladder: 'That's one small step for man, one giant leap for mankind.'",
+        "event_type": "MILESTONE"
+      },
+      {
+        "date": "1969-07-21",
+        "title": "Lunar Liftoff",
+        "description": "The Ascent Stage fired its engine to rendezvous with Columbia, leaving the Descent Stage behind forever.",
+        "event_type": "MILESTONE"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "The Moon Is Slowly Drifting Away from Earth",
+        "plain_english_summary": "By bouncing lasers off the Apollo 11 reflector, scientists proved the Moon recedes from Earth at 3.8 cm per year.",
+        "why_it_matters": "Provides crucial data on tidal friction, Earth's rotational slowing, and orbital dynamics.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Apollo 11 Mission Overview",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://www.nasa.gov/mission/apollo-11/",
+        "quotation_or_reference": "NSSDC ID: 1969-059C (Lunar Module Descent Stage)"
+      }
+    ]
+  },
+  {
+    "slug": "juno",
+    "name": "Juno",
+    "category": "ORBITER",
+    "destination_slug": "jupiter",
+    "launch_date": "2011-08-05",
+    "launch_vehicle": "Atlas V 551",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Actively performing close elliptical polar flybys (perijoves) of Jupiter and close encounters with moons Ganymede, Europa, and volcanic Io in its extended science mission.",
+    "mission_purpose": "Understand the origin and evolution of Jupiter, map its magnetic and gravitational fields, and measure atmospheric water content.",
+    "historical_significance": "Farthest solar-powered spacecraft in history; penetrated Jupiter's radiation belts to reveal that Jupiter has a fuzzy, diluted core and deep atmospheric roots.",
+    "power_source": "Three 9-meter solar array panels generating ~500 W at Jupiter",
+    "mass_kg": 3625.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA21985/PIA21985~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Microwave Radiometer",
+        "acronym": "MWR",
+        "purpose_student_friendly": "Peers through the thick upper clouds to measure deep water and ammonia levels.",
+        "technical_description": "Six-frequency radiometer operating from 600 MHz to 22 GHz."
+      },
+      {
+        "name": "Jovian Auroral Distributions Experiment",
+        "acronym": "JADE",
+        "purpose_student_friendly": "Measures the particles creating Jupiter's colossal glowing polar auroras.",
+        "technical_description": "Set of three electron sensors and an energetic ion mass spectrometer."
+      },
+      {
+        "name": "JunoCam",
+        "acronym": "JunoCam",
+        "purpose_student_friendly": "Color visible-light camera engaging students and public scientists to process raw images of storms.",
+        "technical_description": "Push-frame four-filter visible light camera."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2011-08-05",
+        "title": "Launch from Cape Canaveral",
+        "description": "Began a 5-year journey across the inner solar system.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2016-07-04",
+        "title": "Jupiter Orbit Insertion",
+        "description": "Fired main engine on Fourth of July to enter Jupiter's punishing polar radiation orbit.",
+        "event_type": "ORBIT_INSERTION"
+      },
+      {
+        "date": "2021-06-07",
+        "title": "Closest Flyby of Moon Ganymede",
+        "description": "Passed within 1,038 km of Ganymede, the solar system's largest moon.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "2023-12-30",
+        "title": "Close Flyby of Volcanic Moon Io",
+        "description": "Flew within 1,500 km of Io, snapping spectacular photos of magma lakes and active plumes.",
+        "event_type": "FLYBY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Jupiter Has a 'Diluted' Fuzzy Core",
+        "plain_english_summary": "Gravity data proved Jupiter does not have a solid rock core, but a giant, fuzzy core mixed with metallic hydrogen.",
+        "why_it_matters": "Suggests young Jupiter suffered an enormous head-on collision with a protoplanet in its infancy.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Juno Mission",
+        "source_type": "JPL",
+        "url": "https://www.nasa.gov/mission/juno/",
+        "quotation_or_reference": "NSSDC ID: 2011-040A | Juno Polar Science"
+      }
+    ]
+  },
+  {
+    "slug": "parker-solar-probe",
+    "name": "Parker Solar Probe",
+    "category": "DEEP_SPACE_PROBE",
+    "destination_slug": "sun",
+    "launch_date": "2018-08-12",
+    "launch_vehicle": "Delta IV Heavy",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Actively 'touching the Sun' during recurring close perihelion passes. In its final planned orbits, it swoops within 6.1 million km of the solar surface at mind-boggling speeds exceeding 690,000 km/h.",
+    "mission_purpose": "Trace the flow of energy that heats the solar corona and accelerates the supersonic solar wind.",
+    "historical_significance": "The fastest human-made object in history, the closest machine to the Sun, and the first NASA spacecraft named after a living scientist (Dr. Eugene Parker). Protected by an 11.4 cm carbon-composite heat shield that endures 1,400 deg C.",
+    "power_source": "Liquid-cooled solar array system",
+    "mass_kg": 685.0,
+    "image_url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000492/GSFC_20171208_Archive_e000492~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "FIELDS",
+        "acronym": "FIELDS",
+        "purpose_student_friendly": "Measures electric and magnetic fields and waves in the sizzling solar corona.",
+        "technical_description": "Five voltage sensors, two fluxgate magnetometers, and a search-coil magnetometer."
+      },
+      {
+        "name": "Solar Wind Electrons Alphas and Protons",
+        "acronym": "SWEAP",
+        "purpose_student_friendly": "Directly scoops up particles flowing off the Sun to measure velocity and temperature.",
+        "technical_description": "Solar Probe Cup (Faraday cup) and two electrostatic analyzers."
+      },
+      {
+        "name": "Wide-Field Imager for Solar Probe",
+        "acronym": "WISPR",
+        "purpose_student_friendly": "Telescopic cameras taking 3D photos of solar wind coronal mass ejections.",
+        "technical_description": "Dual optical telescopes protected behind the heat shield."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2018-08-12",
+        "title": "Launch into Deep Space",
+        "description": "Launched aboard a Delta IV Heavy with a Star 48BV upper stage.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2021-04-28",
+        "title": "First Time 'Touching the Sun'",
+        "description": "Passed inside the Alfven critical surface, officially flying directly through the Sun's upper atmosphere.",
+        "event_type": "DISCOVERY"
+      },
+      {
+        "date": "2024-12-24",
+        "title": "Record Closest Approach (6.1 Million km)",
+        "description": "Completed historic Venus flybys to slingshot into its record-breaking closest perihelion pass.",
+        "event_type": "FLYBY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Magnetic 'Switchbacks' in Solar Wind",
+        "plain_english_summary": "Discovered that magnetic fields in the solar wind violently flip direction like S-shaped zigzags, releasing explosive energy.",
+        "why_it_matters": "Solves the mystery of why the solar corona is hundreds of times hotter than the surface of the Sun.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA Parker Solar Probe Mission Overview",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://www.nasa.gov/mission/parker-solar-probe/",
+        "quotation_or_reference": "NSSDC ID: 2018-065A | Parker Solar Probe Science Team"
+      }
+    ]
+  },
+  {
+    "slug": "pioneer-10",
+    "name": "Pioneer 10",
+    "category": "DEEP_SPACE_PROBE",
+    "destination_slug": "interstellar-space",
+    "launch_date": "1972-03-03",
+    "launch_vehicle": "Atlas-Centaur",
+    "operational_status": "DEEP_SPACE_TRAVELLING",
+    "status_verified_date": "2003-01-23",
+    "status_summary": "Drifting silently on an interstellar trajectory out of the solar system toward the red giant star Aldebaran in the constellation Taurus. The last faint signal was received on January 23, 2003, when its nuclear generator could no longer power the transmitter.",
+    "mission_purpose": "First mission to transit the dangerous asteroid belt and make direct observations of Jupiter.",
+    "historical_significance": "First spacecraft to traverse the Asteroid Belt and first to fly past Jupiter (Dec 3, 1973). Carries the iconic gold-anodized Pioneer Plaque depicting human figures and our solar system's address.",
+    "power_source": "SNAP-19 Radioisotope Thermoelectric Generators",
+    "mass_kg": 258.0,
+    "image_url": "https://images-assets.nasa.gov/image/ARC-1972-AC72-1400/ARC-1972-AC72-1400~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Helium Vector Magnetometer",
+        "acronym": "HVM",
+        "purpose_student_friendly": "Measured Jupiter's colossal magnetic field for the first time.",
+        "technical_description": "Helium gas discharge cell measuring magnetic fields up to 140,000 gamma."
+      },
+      {
+        "name": "Geiger Tube Telescope",
+        "acronym": "GTT",
+        "purpose_student_friendly": "Counted electrons and protons in Jupiter's radiation belts.",
+        "technical_description": "Seven miniature Geiger-Mueller tubes."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1972-03-03",
+        "title": "Launch from Cape Canaveral",
+        "description": "Lifted off on an Atlas-Centaur, becoming the fastest human object up to that date.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1972-07-15",
+        "title": "Entering the Asteroid Belt",
+        "description": "First spacecraft to enter the asteroid belt, proving it was safe to navigate without collisions.",
+        "event_type": "MILESTONE"
+      },
+      {
+        "date": "1973-12-03",
+        "title": "Historic Jupiter Flyby",
+        "description": "Flew within 130,000 km of Jupiter, obtaining first close-up images of the Great Red Spot.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "2003-01-23",
+        "title": "Final Signal Received on Earth",
+        "description": "NASA's Deep Space Network in Madrid detected the final whisper from 12 billion km away.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Asteroid Belt Navigation Safety",
+        "plain_english_summary": "Showed that the Asteroid Belt is mostly empty vacuum rather than a dense wall of space debris.",
+        "why_it_matters": "Cleared the way for all future robotic exploration of the outer solar system.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA: Pioneer 10",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-012A",
+        "quotation_or_reference": "NSSDC ID: 1972-012A | Pioneer 10 Mission Summary"
+      }
+    ]
+  },
+  {
+    "slug": "pioneer-11",
+    "name": "Pioneer 11",
+    "category": "DEEP_SPACE_PROBE",
+    "destination_slug": "interstellar-space",
+    "launch_date": "1973-04-06",
+    "launch_vehicle": "Atlas-Centaur",
+    "operational_status": "DEEP_SPACE_TRAVELLING",
+    "status_verified_date": "1995-09-30",
+    "status_summary": "Travelling silently into interstellar space heading generally toward the constellation Scutum. Telemetry communications ended on September 30, 1995, due to exhaustion of electrical power.",
+    "mission_purpose": "Study Jupiter and perform the first historic flyby of Saturn and its rings.",
+    "historical_significance": "First spacecraft to fly past Saturn (Sept 1, 1979), discovering Saturn's F-ring and paving the pathway for the Voyager spacecraft.",
+    "power_source": "SNAP-19 Radioisotope Thermoelectric Generators",
+    "mass_kg": 259.0,
+    "image_url": "https://images-assets.nasa.gov/image/ARC-1974-AC74-7043/ARC-1974-AC74-7043~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Fluxgate Magnetometer",
+        "acronym": "MAG",
+        "purpose_student_friendly": "Measured Saturn's magnetic field strength.",
+        "technical_description": "Single-axis fluxgate magnetometer."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1973-04-06",
+        "title": "Launch from Cape Canaveral",
+        "description": "Began journey toward Jupiter and Saturn.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1974-12-02",
+        "title": "Jupiter Gravitational Slingshot",
+        "description": "Used Jupiter's gravity to fling it toward Saturn.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "1979-09-01",
+        "title": "First Ever Saturn Flyby",
+        "description": "Flew within 21,000 km of Saturn's cloud tops, discovering its narrow F-ring.",
+        "event_type": "FLYBY"
+      },
+      {
+        "date": "1995-09-30",
+        "title": "End of Communications",
+        "description": "Final mission telemetry received by NASA DSN.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Saturn's F-Ring Discovery",
+        "plain_english_summary": "Discovered Saturn's thin outer F-ring, held together by tiny shepherd moons.",
+        "why_it_matters": "Proved that gravitational shepherd moons shape and confine ring systems.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA: Pioneer 11",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1973-019A",
+        "quotation_or_reference": "NSSDC ID: 1973-019A"
+      }
+    ]
+  },
+  {
+    "slug": "galileo",
+    "name": "Galileo",
+    "category": "ORBITER",
+    "destination_slug": "jupiter",
+    "launch_date": "1989-10-18",
+    "launch_vehicle": "Space Shuttle Atlantis (STS-34)",
+    "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED",
+    "status_verified_date": "2003-09-21",
+    "status_summary": "Concluded its 14-year mission with a deliberate dive into Jupiter's atmosphere on September 21, 2003, at 173,700 km/h to prevent any possibility of crashing into and contaminating Europa's subsurface ocean.",
+    "mission_purpose": "First dedicated orbiter of Jupiter and deployed the first atmospheric descent probe into a gas giant.",
+    "historical_significance": "Discovered evidence of a subsurface liquid ocean on Europa and volcanic activity on Io; observed Comet Shoemaker-Levy 9 smashing into Jupiter.",
+    "power_source": "Two GPHS-RTG nuclear units",
+    "mass_kg": 2564.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA00136/PIA00136~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Galileo Atmospheric Entry Probe",
+        "acronym": "PROBE",
+        "purpose_student_friendly": "A heat-shielded capsule that parachuted into Jupiter's raging clouds to measure storms directly.",
+        "technical_description": "Descent probe with neutral mass spectrometer, nephelometer, and net flux radiometer."
+      },
+      {
+        "name": "Solid State Imaging",
+        "acronym": "SSI",
+        "purpose_student_friendly": "Camera that snapped close-ups of Jupiter's ice moons.",
+        "technical_description": "800x800 pixel CCD with 8-position filter wheel."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1989-10-18",
+        "title": "Deployed from Space Shuttle Atlantis",
+        "description": "Released from Atlantis's cargo bay and propelled by an Inertial Upper Stage.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1995-12-07",
+        "title": "Jupiter Orbit & Probe Entry",
+        "description": "Atmospheric probe survived 61 minutes inside Jupiter's clouds while the orbiter began its orbital tour.",
+        "event_type": "ORBIT_INSERTION"
+      },
+      {
+        "date": "2003-09-21",
+        "title": "Final Dive into Jupiter",
+        "description": "Deliberately guided into Jupiter's crushing atmosphere to safeguard Europa.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Subsurface Saltwater Ocean on Europa",
+        "plain_english_summary": "Induced magnetic field measurements revealed a salty global ocean hidden beneath Europa's icy shell.",
+        "why_it_matters": "Transformed Europa into one of the top targets in the search for extraterrestrial life.",
+        "scientific_domain": "ASTROBIOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA: Galileo Mission",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1989-084B",
+        "quotation_or_reference": "NSSDC ID: 1989-084B"
+      }
+    ]
+  },
+  {
+    "slug": "viking-1",
+    "name": "Viking 1 (Lander)",
+    "category": "LANDER",
+    "destination_slug": "mars",
+    "launch_date": "1975-08-20",
+    "launch_vehicle": "Titan IIIE-Centaur",
+    "operational_status": "INACTIVE_SURFACE",
+    "status_verified_date": "1982-11-13",
+    "status_summary": "Rests permanently on Chryse Planitia. Operated for over 6 years (2,245 sols) until communication accidentally ceased on November 13, 1982, when a software command from Earth inadvertently overwrote antenna pointing instructions.",
+    "mission_purpose": "Obtain high-resolution imagery of Mars, characterize surface composition, and conduct first automated biology experiments.",
+    "historical_significance": "First American spacecraft to safely touch down on Mars and complete its mission, transmitting the historic first clear photographs from the Martian surface.",
+    "power_source": "Two SNAP-19 Radioisotope Thermoelectric Generators",
+    "mass_kg": 572.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA00563/PIA00563~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Biology Instrument Suite",
+        "acronym": "BIOS",
+        "purpose_student_friendly": "Miniature automated biology test lab searching for microbial respiration.",
+        "technical_description": "Gas Exchange, Labeled Release, and Pyrolytic Release experiments."
+      },
+      {
+        "name": "Facsimile Cameras",
+        "acronym": "CAM",
+        "purpose_student_friendly": "Scanning mirror cameras that revealed red rocks and a salmon-colored sky.",
+        "technical_description": "Dual scanning facsimile cameras."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1975-08-20",
+        "title": "Launch toward Mars",
+        "description": "Lifted off from Launch Complex 41 on a Titan IIIE.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1976-07-20",
+        "title": "Historic Landing on Mars",
+        "description": "Landed safely on Chryse Planitia on the 7th anniversary of Apollo 11.",
+        "event_type": "LANDING"
+      },
+      {
+        "date": "1982-11-13",
+        "title": "Last Telemetry Received",
+        "description": "Final transmission received before communication link was lost.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "First High-Resolution Color Photos of Martian Soil",
+        "plain_english_summary": "Revealed a dry, cratered desert of rusty iron-oxide dust under a pinkish atmosphere.",
+        "why_it_matters": "Dispelled centuries of science fiction speculation about Martian vegetation and canals.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA: Viking 1 Lander",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1975-075C",
+        "quotation_or_reference": "NSSDC ID: 1975-075C"
+      }
+    ]
+  },
+  {
+    "slug": "messenger",
+    "name": "MESSENGER",
+    "category": "ORBITER",
+    "destination_slug": "mercury",
+    "launch_date": "2004-08-03",
+    "launch_vehicle": "Delta II 7925H",
+    "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED",
+    "status_verified_date": "2015-04-30",
+    "status_summary": "Concluded its four-year orbital mission on April 30, 2015, with an intentional high-speed impact into Mercury's surface at 14,000 km/h after completely expelling its hydrazine propellant.",
+    "mission_purpose": "Map the entire surface of Mercury, analyze its magnetic field, and investigate polar craters.",
+    "historical_significance": "First spacecraft to ever orbit Mercury; revolutionized our understanding of the innermost planet.",
+    "power_source": "Gallium Arsenide solar array panels with ceramic cloth sunshade",
+    "mass_kg": 507.0,
+    "image_url": "https://images-assets.nasa.gov/image/PIA11364/PIA11364~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Mercury Dual Imaging System",
+        "acronym": "MDIS",
+        "purpose_student_friendly": "High-definition wide-angle and narrow-angle cameras that mapped 100% of Mercury.",
+        "technical_description": "Multispectral CCD camera system on a pivoting platform."
+      },
+      {
+        "name": "Neutron Spectrometer",
+        "acronym": "NS",
+        "purpose_student_friendly": "Measured hydrogen atoms in polar craters to detect water ice.",
+        "technical_description": "Scintillation detector measuring thermal, epithermal, and fast neutrons."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "2004-08-03",
+        "title": "Launch from Cape Canaveral",
+        "description": "Began complex 6.6-year cruise through inner solar system.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "2011-03-18",
+        "title": "First Orbit Insertion at Mercury",
+        "description": "First spacecraft to successfully enter orbit around Mercury.",
+        "event_type": "ORBIT_INSERTION"
+      },
+      {
+        "date": "2015-04-30",
+        "title": "Surface Impact",
+        "description": "Impacted Mercury's northern polar region, creating a new crater estimated at 16 meters across.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Abundant Water Ice in Polar Craters",
+        "plain_english_summary": "Confirmed billions of tons of water ice hidden inside permanently shadowed craters at Mercury's scorching poles.",
+        "why_it_matters": "Proved that water ice can survive even on the closest planet to the Sun.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA MESSENGER Mission Archive",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2004-030A",
+        "quotation_or_reference": "NSSDC ID: 2004-030A"
+      }
+    ]
+  }
+]
