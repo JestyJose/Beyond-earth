@@ -366,6 +366,18 @@ export default function SolarSystemPage() {
                         ))}
                       </div>
                     )}
+
+                    {activeHardwareList.length > 0 && (
+                      <div className="mt-3 pt-3 border-t border-white/5 text-right">
+                        <Link
+                          to={`/hardware?destination=${selectedDest.slug}`}
+                          className="inline-flex items-center gap-1 text-[11px] font-mono text-space-cyan hover:underline"
+                        >
+                          <span>Explore all in Hardware Catalog</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : (

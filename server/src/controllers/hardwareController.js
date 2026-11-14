@@ -96,12 +96,28 @@ export const getHardwareBySlug = (req, res, next) => {
     }
 
     const destination = destinations.find(d => d.slug === item.destination_slug);
+    const destMap = Object.fromEntries(destinations.map(d => [d.slug, d.name]));
+
+    // Resolve sibling missions
+    const relatedMissions = (item.related_mission_slugs || [])
+      .map(s => hardware.find(h => h.slug === s))
+      .filter(Boolean)
+      .map(h => ({
+        slug: h.slug,
+        name: h.name,
+        category: h.category,
+        image_url: h.image_url,
+        operational_status: h.operational_status,
+        destination_slug: h.destination_slug,
+        destination_name: destMap[h.destination_slug] || h.destination_slug
+      }));
 
     res.json({
       success: true,
       data: {
         ...item,
-        destination_details: destination || null
+        destination_details: destination || null,
+        related_missions: relatedMissions
       }
     });
   } catch (error) {

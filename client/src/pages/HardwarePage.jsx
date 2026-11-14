@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Filter, Cpu, ArrowUpDown, RefreshCw, Radio } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Search, Filter, Cpu, ArrowUpDown, RefreshCw, Radio, Camera, Compass } from 'lucide-react';
 import { api } from '../services/api';
 import StatusBadge from '../components/common/StatusBadge';
 import LoadingSpinner from '../components/common/LoadingSpinner';
+import FlagshipCarousel from '../components/hardware/FlagshipCarousel';
 
 export default function HardwarePage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlDestination = searchParams.get('destination') || '';
+
   const [hardware, setHardware] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,9 +17,16 @@ export default function HardwarePage() {
   // Filters
   const [search, setSearch] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
-  const [selectedDestination, setSelectedDestination] = useState('');
+  const [selectedDestination, setSelectedDestination] = useState(urlDestination);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('launch_date:asc');
+
+  // Synchronize state with URL search params if user navigates with query
+  useEffect(() => {
+    if (urlDestination) {
+      setSelectedDestination(urlDestination);
+    }
+  }, [urlDestination]);
 
   useEffect(() => {
     async function loadData() {
@@ -42,12 +53,22 @@ export default function HardwarePage() {
     loadData();
   }, [search, selectedStatus, selectedDestination, selectedCategory, sortBy]);
 
+  const handleDestinationChange = (slug) => {
+    setSelectedDestination(slug);
+    if (slug) {
+      setSearchParams({ destination: slug });
+    } else {
+      setSearchParams({});
+    }
+  };
+
   const resetFilters = () => {
     setSearch('');
     setSelectedStatus('');
     setSelectedDestination('');
     setSelectedCategory('');
     setSortBy('launch_date:asc');
+    setSearchParams({});
   };
 
   return (
@@ -65,6 +86,11 @@ export default function HardwarePage() {
             Discover the scientific instruments, engineering specifications, and historical journeys of humanity’s robotic emissaries.
           </p>
         </div>
+
+        {/* Flagship Spotlight Carousel */}
+        {!selectedDestination && !search && (
+          <FlagshipCarousel hardware={hardware} />
+        )}
 
         {/* Filter & Search Bar */}
         <div className="glass-panel p-5 rounded-2xl mb-8 space-y-4">
@@ -101,7 +127,7 @@ export default function HardwarePage() {
             <div className="md:col-span-3">
               <select
                 value={selectedDestination}
-                onChange={(e) => setSelectedDestination(e.target.value)}
+                onChange={(e) => handleDestinationChange(e.target.value)}
                 className="w-full px-3 py-2 bg-space-navy/80 border border-space-border rounded-xl text-sm text-slate-200 focus:outline-none focus:border-space-cyan/60"
               >
                 <option value="">All Destinations</option>
@@ -161,6 +187,11 @@ export default function HardwarePage() {
         {/* Results Counter */}
         <div className="flex items-center justify-between mb-4 text-xs font-mono text-slate-400">
           <span>Showing {hardware.length} verified NASA hardware profiles</span>
+          {selectedDestination && (
+            <span className="text-space-cyan">
+              Filtered by: {destinations.find(d => d.slug === selectedDestination)?.name || selectedDestination}
+            </span>
+          )}
         </div>
 
         {/* Catalog Grid */}
@@ -187,7 +218,7 @@ export default function HardwarePage() {
                 className="group glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col justify-between"
               >
                 <div>
-                  {/* Image & Status Badge */}
+                  {/* Image & Badges */}
                   <div className="relative h-48 w-full overflow-hidden bg-space-navy">
                     <img
                       src={item.image_url}
@@ -196,12 +227,25 @@ export default function HardwarePage() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-space-card via-transparent to-black/30" />
+                    
+                    {/* Status Badge */}
                     <div className="absolute top-3 right-3">
                       <StatusBadge status={item.operational_status} size="sm" />
                     </div>
+
+                    {/* Attribution Tag */}
+                    <div className="absolute top-3 left-3">
+                      <span className="inline-flex items-center gap-1 text-[9.5px] font-mono px-2 py-0.5 rounded-full bg-space-black/75 backdrop-blur-sm text-slate-300 border border-white/10">
+                        <Camera className="w-2.5 h-2.5 text-space-cyan" />
+                        <span>{item.image_attribution?.split('/')[0]?.trim() || 'NASA'}</span>
+                      </span>
+                    </div>
+
+                    {/* Destination Pill */}
                     <div className="absolute bottom-3 left-3">
-                      <span className="text-xs font-mono font-medium px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-space-cyan border border-white/10">
-                        {item.destination_name}
+                      <span className="inline-flex items-center gap-1 text-xs font-mono font-medium px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-space-cyan border border-white/10">
+                        <Compass className="w-3 h-3 text-space-cyan" />
+                        <span>{item.destination_name}</span>
                       </span>
                     </div>
                   </div>
