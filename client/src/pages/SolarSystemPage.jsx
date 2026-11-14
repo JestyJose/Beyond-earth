@@ -8,11 +8,16 @@ import {
   X, 
   ChevronRight, 
   Info,
-  Radio
+  Radio,
+  RotateCcw,
+  Sparkles,
+  ShieldCheck,
+  Eye
 } from 'lucide-react';
 import { api } from '../services/api';
 import StatusBadge from '../components/common/StatusBadge';
 import LoadingSpinner from '../components/common/LoadingSpinner';
+import SolarSystemCanvas from '../components/3d/SolarSystemCanvas';
 
 export default function SolarSystemPage() {
   const [destinations, setDestinations] = useState([]);
@@ -20,7 +25,8 @@ export default function SolarSystemPage() {
   const [loading, setLoading] = useState(true);
   const [activeHardwareList, setActiveHardwareList] = useState([]);
   const [loadingHardware, setLoadingHardware] = useState(false);
-  const [viewMode, setViewMode] = useState('schematic'); // 'schematic' or 'grid'
+  const [viewMode, setViewMode] = useState('3d'); // '3d', 'schematic', 'grid'
+  const [isResetView, setIsResetView] = useState(false);
 
   useEffect(() => {
     async function loadDestinations() {
@@ -55,45 +61,105 @@ export default function SolarSystemPage() {
     }
   };
 
+  const handleResetCamera = () => {
+    setIsResetView(true);
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-16 bg-deep-space relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        {/* Header & Controls Toolbar */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
-            <div className="text-xs font-mono uppercase tracking-wider text-space-cyan mb-1">
-              Interactive Solar System Navigator
+            <div className="text-xs font-mono uppercase tracking-wider text-space-cyan mb-1 flex items-center gap-1.5">
+              <Compass className="w-4 h-4 text-space-cyan" />
+              <span>Interactive 3D Planetary Navigator</span>
             </div>
             <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
               Solar System Explorer
             </h1>
-            <p className="mt-2 text-slate-300 max-w-xl text-sm leading-relaxed">
-              Explore destinations from the Sun to interstellar space. Select any celestial body to inspect its robotic residents and orbiting observatories.
+            <p className="mt-1 text-slate-300 max-w-xl text-sm leading-relaxed">
+              Explore 3D celestial bodies from the Sun to interstellar space. Click any planet to orbit and inspect its NASA rovers, orbiters, and landers.
             </p>
           </div>
 
-          {/* View Toggle */}
-          <div className="flex items-center gap-2 p-1 rounded-xl bg-space-navy border border-space-border self-start md:self-auto">
-            <button
-              onClick={() => setViewMode('schematic')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
-                viewMode === 'schematic'
-                  ? 'bg-space-cyan/20 text-space-cyan border border-space-cyan/30'
-                  : 'text-slate-400 hover:text-white'
-              }`}
+          {/* Mode Switcher & Quick Tools */}
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            {/* View Mode Toggle */}
+            <div className="flex items-center gap-1 p-1 rounded-xl bg-space-navy border border-space-border">
+              <button
+                onClick={() => setViewMode('3d')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 ${
+                  viewMode === '3d'
+                    ? 'bg-space-cyan text-space-black font-bold shadow-cyan-glow'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Eye className="w-3.5 h-3.5" />
+                <span>3D Solar System</span>
+              </button>
+              <button
+                onClick={() => setViewMode('schematic')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                  viewMode === 'schematic'
+                    ? 'bg-space-cyan/20 text-space-cyan border border-space-cyan/30'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                Orbital Map (2D)
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                  viewMode === 'grid'
+                    ? 'bg-space-cyan/20 text-space-cyan border border-space-cyan/30'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                Destination Grid
+              </button>
+            </div>
+
+            {/* Reset Camera Button for 3D View */}
+            {viewMode === '3d' && (
+              <button
+                onClick={handleResetCamera}
+                className="px-3 py-2 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-space-border text-slate-300 hover:text-space-cyan text-xs font-mono transition-colors flex items-center gap-1.5"
+                title="Reset camera to overarching solar perspective"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Reset Solar View</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Educational Disclaimer Banner */}
+        <div className="mb-6 p-3 rounded-2xl bg-space-navy/70 border border-white/5 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-300">
+            <Info className="w-4 h-4 text-space-cyan shrink-0" />
+            <span>
+              <strong>Educational Model:</strong> Planetary sizes and orbital distances are scaled for visibility and discovery. Telemetry and hardware records are strictly corroborated with NASA archives.
+            </span>
+          </div>
+
+          {/* Quick Planet Jumper */}
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-[11px] font-mono text-slate-400">Quick Jump:</span>
+            <select
+              value={selectedDest?.slug || ''}
+              onChange={(e) => {
+                const target = destinations.find(d => d.slug === e.target.value);
+                if (target) handleSelectDestination(target);
+              }}
+              className="bg-space-black border border-space-border text-xs font-mono text-space-cyan px-2.5 py-1 rounded-lg focus:outline-none"
             >
-              Orbital Map
-            </button>
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
-                viewMode === 'grid'
-                  ? 'bg-space-cyan/20 text-space-cyan border border-space-cyan/30'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              Destination Grid
-            </button>
+              {destinations.map((d) => (
+                <option key={d.slug} value={d.slug}>
+                  {d.name} ({d.hardware_count} craft)
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -101,10 +167,20 @@ export default function SolarSystemPage() {
           <LoadingSpinner message="Calculating planetary ephemeris and orbital vectors..." />
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left Column: Visual Explorer */}
+            {/* Left Column: Visual Explorer (3D, 2D Schematic, or Grid) */}
             <div className="lg:col-span-7 xl:col-span-8 space-y-6">
-              {viewMode === 'schematic' ? (
-                /* Orbital Map / Visualizer */
+              {viewMode === '3d' ? (
+                /* Interactive 3D Solar System Viewport */
+                <SolarSystemCanvas
+                  destinations={destinations}
+                  selectedDest={selectedDest}
+                  onSelectDestination={handleSelectDestination}
+                  isResetView={isResetView}
+                  onResetComplete={() => setIsResetView(false)}
+                  onFallback={() => setViewMode('schematic')}
+                />
+              ) : viewMode === 'schematic' ? (
+                /* 2D Orbital Map Fallback */
                 <div className="glass-panel p-6 rounded-3xl border border-space-border relative overflow-hidden">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono text-slate-400">
@@ -220,7 +296,7 @@ export default function SolarSystemPage() {
                   <div className="flex items-center justify-between pb-4 border-b border-space-border">
                     <div className="flex items-center gap-2">
                       <div
-                        className="w-4 h-4 rounded-full"
+                        className="w-4 h-4 rounded-full shadow-sm"
                         style={{ backgroundColor: selectedDest.color || '#38BDF8' }}
                       />
                       <span className="text-xs font-mono uppercase tracking-wider text-space-cyan font-bold">
@@ -233,9 +309,14 @@ export default function SolarSystemPage() {
                   </div>
 
                   <div className="mt-4">
-                    <h2 className="font-heading font-extrabold text-2xl text-white">
-                      {selectedDest.name}
-                    </h2>
+                    <div className="flex items-center justify-between">
+                      <h2 className="font-heading font-extrabold text-2xl text-white">
+                        {selectedDest.name}
+                      </h2>
+                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/10 text-slate-300">
+                        {selectedDest.type}
+                      </span>
+                    </div>
                     <p className="mt-2 text-xs text-slate-300 leading-relaxed">
                       {selectedDest.description}
                     </p>
@@ -248,11 +329,16 @@ export default function SolarSystemPage() {
                         <Cpu className="w-4 h-4 text-space-cyan" />
                         <span>NASA Hardware Here ({activeHardwareList.length})</span>
                       </h4>
+                      {activeHardwareList.length > 0 && (
+                        <span className="text-[10px] font-mono text-slate-400">
+                          Click to inspect
+                        </span>
+                      )}
                     </div>
 
                     {loadingHardware ? (
-                      <div className="text-xs text-slate-400 font-mono py-4 text-center">
-                        Querying orbiters and landers...
+                      <div className="text-xs text-slate-400 font-mono py-6 text-center">
+                        Acquiring spacecraft telemetry...
                       </div>
                     ) : activeHardwareList.length === 0 ? (
                       <p className="text-xs text-slate-400 py-3">
