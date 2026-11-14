@@ -115,9 +115,9 @@ export default function DailyChallengeCard({
               const isSelected = selectedIdx === idx;
               const isCorrect = idx === question.correct_option_index;
 
-              let style = 'bg-space-navy/70 border-space-border hover:border-slate-400 text-slate-200';
+              let style = 'bg-space-navy/70 border-space-border hover:border-purple-400/50 text-slate-200';
               if (isSelected && !isSubmitted) {
-                style = 'bg-space-cyan/20 border-space-cyan text-white shadow-cyan-glow';
+                style = 'bg-purple-900/40 border-purple-400 text-white shadow-violet-glow';
               }
               if (isSubmitted) {
                 if (isCorrect) {

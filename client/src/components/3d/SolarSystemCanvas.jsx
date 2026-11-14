@@ -85,7 +85,7 @@ function MoonInEarthOrbit({ moonDest, isSelected, onSelect }) {
       {/* Local Lunar Orbit Ring around Earth */}
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[cfg.localDistance - 0.02, cfg.localDistance + 0.02, 64]} />
-        <lineBasicMaterial color={isSelected ? '#00F0FF' : '#FFFFFF'} transparent opacity={isSelected ? 0.6 : 0.15} />
+        <lineBasicMaterial color={isSelected ? '#C4B5FD' : '#E9D5FF'} transparent opacity={isSelected ? 0.7 : 0.16} />
       </mesh>
 
       {/* Moon Mesh */}
@@ -113,7 +113,7 @@ function MoonInEarthOrbit({ moonDest, isSelected, onSelect }) {
         {(isSelected || hovered) && (
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
             <ringGeometry args={[cfg.radius * 1.3, cfg.radius * 1.45, 32]} />
-            <meshBasicMaterial color="#00F0FF" side={THREE.DoubleSide} transparent opacity={0.8} />
+            <meshBasicMaterial color="#A855F7" side={THREE.DoubleSide} transparent opacity={0.85} />
           </mesh>
         )}
 
@@ -129,11 +129,11 @@ function MoonInEarthOrbit({ moonDest, isSelected, onSelect }) {
         <Html position={[0, cfg.radius + 0.8, 0]} center distanceFactor={50} className="pointer-events-none select-none">
           <div className={`px-2 py-0.5 rounded-lg backdrop-blur-md border text-center transition-all ${
             isSelected
-              ? 'bg-space-cyan/20 border-space-cyan text-space-cyan scale-105'
-              : 'bg-space-navy/70 border-white/10 text-slate-300'
+              ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200 shadow-violet-glow scale-105'
+              : 'bg-[#110B20]/80 border-purple-500/20 text-[#F5F0FF]'
           }`}>
             <div className="font-heading font-bold text-[11px] whitespace-nowrap">The Moon</div>
-            <div className="text-[8px] font-mono text-emerald-400 font-semibold">Tranquility Base (Apollo 11)</div>
+            <div className="text-[8px] font-mono text-purple-300 font-semibold">Tranquility Base (Apollo 11)</div>
           </div>
         </Html>
       </group>
@@ -229,21 +229,21 @@ export default function SolarSystemCanvas({
           camera={{ position: [0, 65, 120], fov: 45, near: 0.1, far: 2000 }}
           gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
         >
-          {/* Deep space background */}
-          <color attach="background" args={['#05070D']} />
+          {/* Deep midnight violet cosmic background */}
+          <color attach="background" args={['#080512']} />
 
-          {/* Ambient Starlight */}
-          <ambientLight intensity={0.25} />
+          {/* Ambient Lavender Starlight */}
+          <ambientLight intensity={0.32} color="#E9D5FF" />
 
           {/* Procedural Stars */}
           <Stars
             radius={280}
             depth={80}
-            count={3200}
+            count={3600}
             factor={4}
-            saturation={0}
+            saturation={0.25}
             fade={true}
-            speed={0.8}
+            speed={0.6}
           />
 
           {/* Camera Smooth Controller with adaptive zoom */}

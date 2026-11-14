@@ -41,18 +41,18 @@ export default function LearningPathSelector({
               onClick={() => onSelectTab(t.id)}
               className={`shrink-0 px-4 py-3 rounded-2xl border text-left transition-all flex items-center gap-3 ${
                 isSelected
-                  ? 'bg-space-cyan text-space-black border-space-cyan shadow-cyan-glow'
-                  : 'bg-space-navy/80 hover:bg-space-navy text-slate-300 border-space-border hover:border-space-cyan/40'
+                  ? 'bg-gradient-to-r from-purple-600 to-violet-600 text-white border-purple-400 shadow-violet-glow'
+                  : 'bg-space-navy/80 hover:bg-[#1A1230] text-slate-300 border-space-border hover:border-purple-400/50'
               }`}
             >
-              <div className={`p-2 rounded-xl ${isSelected ? 'bg-space-black/15 text-space-black' : 'bg-white/5 text-space-cyan'}`}>
+              <div className={`p-2 rounded-xl ${isSelected ? 'bg-white/20 text-white' : 'bg-purple-900/40 text-purple-300 border border-purple-500/20'}`}>
                 <Icon className="w-4 h-4" />
               </div>
               <div>
-                <span className={`text-xs font-mono font-bold block ${isSelected ? 'text-space-black' : 'text-white'}`}>
+                <span className={`text-xs font-mono font-bold block ${isSelected ? 'text-white' : 'text-white'}`}>
                   {t.label}
                 </span>
-                <span className={`text-[10px] font-mono ${isSelected ? 'text-space-black/80' : 'text-slate-400'}`}>
+                <span className={`text-[10px] font-mono ${isSelected ? 'text-purple-100' : 'text-slate-400'}`}>
                   {t.tag}
                 </span>
               </div>
@@ -65,7 +65,7 @@ export default function LearningPathSelector({
       {activeTab === 'quizzes' && (
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-space-border text-xs font-mono">
           <span className="text-slate-400 mr-2 flex items-center gap-1">
-            <Layers className="w-3.5 h-3.5 text-space-cyan" />
+            <Layers className="w-3.5 h-3.5 text-purple-300" />
             <span>Difficulty Tier:</span>
           </span>
           {TIERS.map((tier) => (
@@ -74,8 +74,8 @@ export default function LearningPathSelector({
               onClick={() => onSelectTier(tier.id)}
               className={`px-3 py-1.5 rounded-xl transition-colors ${
                 activeTier === tier.id
-                  ? 'bg-space-violet text-white font-bold border border-space-violet'
-                  : 'text-slate-400 hover:text-white bg-white/5 hover:bg-white/10'
+                  ? 'bg-gradient-to-r from-purple-600 to-violet-600 text-white font-bold border border-purple-400/60 shadow-violet-glow'
+                  : 'text-slate-400 hover:text-white bg-white/5 hover:bg-purple-950/30'
               }`}
             >
               {tier.label}

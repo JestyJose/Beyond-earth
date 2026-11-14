@@ -105,7 +105,7 @@ export default function AchievementTrophyRoom({
         {unlockedCount > 0 && (
           <button
             onClick={onOpenCertificate}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-space-cyan text-space-black font-mono font-bold text-xs hover:bg-space-cyan/90 transition-all shadow-cyan-glow shrink-0"
+            className="btn-violet inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow shrink-0"
           >
             <Printer className="w-4 h-4" />
             <span>Generate Academy Certificate</span>
@@ -117,11 +117,11 @@ export default function AchievementTrophyRoom({
       <div className="glass-panel p-4 rounded-2xl border border-space-border">
         <div className="flex items-center justify-between text-xs font-mono mb-2">
           <span className="text-slate-300">Academy Badge Completion</span>
-          <span className="text-space-cyan font-bold">{unlockedCount} / {totalCount} ({progressPercent}%)</span>
+          <span className="text-purple-300 font-bold">{unlockedCount} / {totalCount} ({progressPercent}%)</span>
         </div>
         <div className="w-full h-2 bg-space-black/60 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-space-cyan to-space-violet transition-all duration-500"
+            className="h-full bg-gradient-to-r from-purple-500 to-violet-500 transition-all duration-500"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -137,7 +137,7 @@ export default function AchievementTrophyRoom({
               key={badge.name}
               className={`p-5 rounded-2xl border flex flex-col justify-between transition-all ${
                 isUnlocked
-                  ? 'glass-panel bg-space-navy/90 border-space-cyan/50 shadow-cyan-glow'
+                  ? 'glass-panel bg-space-navy/90 border-purple-400/60 shadow-violet-glow'
                   : 'bg-space-navy/40 border-space-border/60 opacity-60'
               }`}
             >
@@ -146,7 +146,7 @@ export default function AchievementTrophyRoom({
                 <div className="flex items-center justify-between mb-3">
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl border ${
                     isUnlocked 
-                      ? 'bg-space-cyan/20 border-space-cyan/40' 
+                      ? 'bg-purple-900/40 border-purple-400/50 shadow-sm' 
                       : 'bg-space-black/40 border-white/5 grayscale'
                   }`}>
                     {badge.icon}
@@ -168,7 +168,7 @@ export default function AchievementTrophyRoom({
                   {badge.name}
                 </h3>
 
-                <span className="text-[10.5px] font-mono uppercase text-space-cyan block mb-2 font-bold">
+                <span className="text-[10.5px] font-mono uppercase text-purple-300 block mb-2 font-bold">
                   +{badge.points} PTS
                 </span>
 

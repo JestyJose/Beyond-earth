@@ -83,8 +83,8 @@ export default function Sun({ onSelect, isSelected, hardwareCount }) {
           isSelected
             ? 'bg-amber-500/30 border-amber-400 text-amber-300 shadow-md'
             : hovered
-            ? 'bg-space-navy/90 border-space-cyan text-space-cyan'
-            : 'bg-space-navy/70 border-white/10 text-slate-200'
+            ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200'
+            : 'bg-[#110B20]/80 border-purple-500/20 text-[#F5F0FF]'
         }`}>
           <div className="font-heading font-bold text-xs">The Sun</div>
           <div className="text-[9px] font-mono text-amber-300">

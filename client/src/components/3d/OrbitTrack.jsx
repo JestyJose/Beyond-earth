@@ -18,8 +18,8 @@ export default function OrbitTrack({ radius, isSelected, segments = 128 }) {
   return (
     <line geometry={lineGeometry}>
       <lineBasicMaterial
-        color={isSelected ? '#00F0FF' : '#FFFFFF'}
-        opacity={isSelected ? 0.65 : 0.12}
+        color={isSelected ? '#C4B5FD' : '#E9D5FF'}
+        opacity={isSelected ? 0.75 : 0.13}
         transparent={true}
         linewidth={1}
       />

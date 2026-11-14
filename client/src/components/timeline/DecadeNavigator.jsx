@@ -86,27 +86,27 @@ export default function DecadeNavigator({ activeEra = '', onSelectEra, countsByE
               onClick={() => onSelectEra(d.id)}
               className={`shrink-0 px-4 py-2.5 rounded-2xl text-left border transition-all ${
                 isSelected
-                  ? 'bg-space-cyan text-space-black border-space-cyan shadow-cyan-glow'
-                  : 'bg-space-navy/80 hover:bg-space-navy text-slate-200 border-space-border hover:border-space-cyan/40'
+                  ? 'bg-gradient-to-r from-purple-600 to-violet-600 text-white border-purple-400 shadow-violet-glow'
+                  : 'bg-space-navy/80 hover:bg-[#1A1230] text-slate-200 border-space-border hover:border-purple-400/50'
               }`}
             >
               <div className="flex items-center justify-between gap-3">
-                <span className={`text-xs font-mono font-bold ${isSelected ? 'text-space-black' : 'text-white'}`}>
+                <span className="text-xs font-mono font-bold text-white">
                   {d.decade}
                 </span>
                 {count > 0 && (
                   <span
                     className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
                       isSelected
-                        ? 'bg-space-black/20 text-space-black font-semibold'
-                        : 'bg-white/10 text-slate-300'
+                        ? 'bg-white/20 text-white font-semibold'
+                        : 'bg-purple-900/40 text-purple-200 border border-purple-500/20'
                     }`}
                   >
                     {count}
                   </span>
                 )}
               </div>
-              <div className={`text-[11px] font-sans truncate max-w-[130px] font-medium mt-0.5 ${isSelected ? 'text-space-black/80 font-semibold' : 'text-slate-400'}`}>
+              <div className={`text-[11px] font-sans truncate max-w-[130px] font-medium mt-0.5 ${isSelected ? 'text-purple-100 font-semibold' : 'text-slate-400'}`}>
                 {d.label}
               </div>
             </button>

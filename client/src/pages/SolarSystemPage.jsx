@@ -90,12 +90,12 @@ export default function SolarSystemPage() {
           {/* Mode Switcher & Quick Tools */}
           <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
             {/* View Mode Toggle */}
-            <div className="flex items-center gap-1 p-1 rounded-xl bg-space-navy border border-space-border">
+            <div className="flex items-center gap-1 p-1 rounded-xl bg-space-navy border border-purple-500/25">
               <button
                 onClick={() => setViewMode('3d')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 ${
                   viewMode === '3d'
-                    ? 'bg-space-cyan text-space-black font-bold shadow-cyan-glow'
+                    ? 'btn-violet text-white font-bold shadow-violet-glow'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -106,7 +106,7 @@ export default function SolarSystemPage() {
                 onClick={() => setViewMode('schematic')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
                   viewMode === 'schematic'
-                    ? 'bg-space-cyan/20 text-space-cyan border border-space-cyan/30'
+                    ? 'bg-purple-900/40 text-purple-200 border border-purple-500/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -116,7 +116,7 @@ export default function SolarSystemPage() {
                 onClick={() => setViewMode('grid')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
                   viewMode === 'grid'
-                    ? 'bg-space-cyan/20 text-space-cyan border border-space-cyan/30'
+                    ? 'bg-purple-900/40 text-purple-200 border border-purple-500/40'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -128,7 +128,7 @@ export default function SolarSystemPage() {
             {viewMode === '3d' && (
               <button
                 onClick={handleResetCamera}
-                className="px-3 py-2 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-space-border text-slate-300 hover:text-space-cyan text-xs font-mono transition-colors flex items-center gap-1.5"
+                className="px-3 py-2 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-purple-500/25 text-slate-300 hover:text-purple-300 text-xs font-mono transition-colors flex items-center gap-1.5"
                 title="Reset camera to overarching solar perspective"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -139,9 +139,9 @@ export default function SolarSystemPage() {
         </div>
 
         {/* Educational Disclaimer Banner */}
-        <div className="mb-6 p-3 rounded-2xl bg-space-navy/70 border border-white/5 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="mb-6 p-3 rounded-2xl bg-space-navy/70 border border-purple-500/20 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-slate-300">
-            <Info className="w-4 h-4 text-space-cyan shrink-0" />
+            <Info className="w-4 h-4 text-purple-300 shrink-0" />
             <span>
               <strong>Educational Model:</strong> Planetary sizes and orbital distances are scaled for visibility and discovery. Telemetry and hardware records are strictly corroborated with NASA archives.
             </span>
@@ -156,7 +156,7 @@ export default function SolarSystemPage() {
                 const target = destinations.find(d => d.slug === e.target.value);
                 if (target) handleSelectDestination(target);
               }}
-              className="bg-space-black border border-space-border text-xs font-mono text-space-cyan px-2.5 py-1 rounded-lg focus:outline-none"
+              className="bg-space-black border border-purple-500/30 text-xs font-mono text-purple-200 px-2.5 py-1 rounded-lg focus:outline-none focus:border-purple-400"
             >
               {destinations.map((d) => (
                 <option key={d.slug} value={d.slug}>
@@ -205,15 +205,15 @@ export default function SolarSystemPage() {
                           onClick={() => handleSelectDestination(dest)}
                           className={`p-3.5 rounded-2xl cursor-pointer transition-all duration-300 flex items-center justify-between border ${
                             isSelected
-                              ? 'bg-space-cyan/15 border-space-cyan shadow-cyan-glow'
-                              : 'bg-space-navy/60 border-space-border hover:border-slate-500 hover:bg-space-navy/90'
+                              ? 'bg-purple-900/40 border-purple-400 shadow-violet-glow'
+                              : 'bg-space-navy/60 border-space-border hover:border-purple-400/50 hover:bg-space-navy/90'
                           }`}
                         >
                           <div className="flex items-center gap-3.5">
                             {/* Color Planet Indicator */}
                             <div
                               className="w-8 h-8 rounded-full flex items-center justify-center shadow-md relative"
-                              style={{ backgroundColor: dest.color || '#38BDF8' }}
+                              style={{ backgroundColor: dest.color || '#8B5CF6' }}
                             >
                               {dest.slug === 'asteroid-belt' ? (
                                 <div className="flex items-center gap-0.5">
@@ -228,7 +228,7 @@ export default function SolarSystemPage() {
 
                             <div>
                               <div className="flex items-center gap-2">
-                                <h3 className={`font-heading font-bold text-sm ${isSelected ? 'text-space-cyan' : 'text-white'}`}>
+                                <h3 className={`font-heading font-bold text-sm ${isSelected ? 'text-purple-300' : 'text-white'}`}>
                                   {dest.name}
                                 </h3>
                                 <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-white/10 text-slate-300">
@@ -252,7 +252,7 @@ export default function SolarSystemPage() {
                                 </span>
                               )}
                             </div>
-                            <ChevronRight className={`w-4 h-4 ${isSelected ? 'text-space-cyan' : 'text-slate-500'}`} />
+                            <ChevronRight className={`w-4 h-4 ${isSelected ? 'text-purple-300' : 'text-slate-500'}`} />
                           </div>
                         </div>
                       );
@@ -270,14 +270,14 @@ export default function SolarSystemPage() {
                         onClick={() => handleSelectDestination(dest)}
                         className={`p-5 rounded-2xl glass-panel cursor-pointer transition-all border ${
                           isSelected
-                            ? 'border-space-cyan bg-space-cyan/15 shadow-cyan-glow'
-                            : 'border-space-border hover:border-slate-500'
+                            ? 'border-purple-400 bg-purple-900/30 shadow-violet-glow'
+                            : 'border-space-border hover:border-purple-400/50'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-3">
                           <div
                             className="w-10 h-10 rounded-full flex items-center justify-center"
-                            style={{ backgroundColor: dest.color || '#38BDF8' }}
+                            style={{ backgroundColor: dest.color || '#8B5CF6' }}
                           >
                             <div className="w-3 h-3 rounded-full bg-white/40" />
                           </div>
@@ -291,7 +291,7 @@ export default function SolarSystemPage() {
                         <p className="text-xs text-slate-400 mt-1 line-clamp-2">
                           {dest.description}
                         </p>
-                        <div className="mt-3 text-[11px] font-mono text-space-cyan">
+                        <div className="mt-3 text-[11px] font-mono text-purple-300">
                           {dest.distance_from_sun_au} AU from Sun
                         </div>
                       </div>
@@ -309,9 +309,9 @@ export default function SolarSystemPage() {
                     <div className="flex items-center gap-2">
                       <div
                         className="w-4 h-4 rounded-full shadow-sm"
-                        style={{ backgroundColor: selectedDest.color || '#38BDF8' }}
+                        style={{ backgroundColor: selectedDest.color || '#8B5CF6' }}
                       />
-                      <span className="text-xs font-mono uppercase tracking-wider text-space-cyan font-bold">
+                      <span className="text-xs font-mono uppercase tracking-wider text-purple-300 font-bold">
                         Destination Telemetry
                       </span>
                     </div>
@@ -393,7 +393,7 @@ export default function SolarSystemPage() {
                   <div className="mt-6 pt-4 border-t border-space-border">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="font-heading font-bold text-sm text-white flex items-center gap-1.5">
-                        <Cpu className="w-4 h-4 text-space-cyan" />
+                        <Cpu className="w-4 h-4 text-purple-300" />
                         <span>NASA Hardware Here ({activeHardwareList.length})</span>
                       </h4>
                       {activeHardwareList.length > 0 && (
@@ -417,10 +417,10 @@ export default function SolarSystemPage() {
                           <Link
                             key={hw.slug}
                             to={`/hardware/${hw.slug}`}
-                            className="group block p-3.5 rounded-xl bg-space-navy/80 hover:bg-space-navy border border-space-border hover:border-space-cyan/40 transition-all"
+                            className="group block p-3.5 rounded-xl bg-space-navy/80 hover:bg-[#1A1230] border border-space-border hover:border-purple-400/50 transition-all"
                           >
                             <div className="flex items-center justify-between mb-1.5">
-                              <span className="font-heading font-bold text-sm text-white group-hover:text-space-cyan transition-colors">
+                              <span className="font-heading font-bold text-sm text-white group-hover:text-purple-300 transition-colors">
                                 {hw.name}
                               </span>
                               <StatusBadge status={hw.operational_status} size="sm" />

@@ -155,16 +155,16 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
         <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
           <button
             onClick={() => setShowReview(!showReview)}
-            className="px-4 py-2.5 rounded-xl bg-space-navy border border-space-border hover:border-space-cyan/40 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+            className="px-4 py-2.5 rounded-xl bg-space-navy border border-space-border hover:border-purple-400/50 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
           >
-            <BookOpen className="w-4 h-4 text-space-cyan" />
+            <BookOpen className="w-4 h-4 text-purple-300" />
             <span>{showReview ? 'Hide Question Review' : 'Review All Questions & Explanations'}</span>
             {showReview ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </button>
 
           <button
             onClick={handleRestart}
-            className="px-4 py-2.5 rounded-xl bg-space-cyan/20 text-space-cyan hover:bg-space-cyan/30 border border-space-cyan/40 text-xs font-mono font-bold flex items-center gap-1.5 transition-colors"
+            className="btn-violet px-4 py-2.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 transition-colors shadow-violet-glow"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Retake Exam</span>
@@ -269,7 +269,7 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
       {/* Progress Bar Track */}
       <div className="w-full h-1.5 bg-space-black/60 rounded-full mb-6 overflow-hidden">
         <div
-          className="h-full bg-space-cyan transition-all duration-300 ease-out"
+          className="h-full bg-gradient-to-r from-purple-500 to-violet-500 transition-all duration-300 ease-out"
           style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
         />
       </div>
@@ -285,9 +285,9 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
           const isSelected = selectedOption === idx;
           const isCorrect = idx === currentQ.correct_option_index;
 
-          let optionStyle = 'bg-space-navy/80 border-space-border hover:border-slate-500 text-slate-200';
+          let optionStyle = 'bg-space-navy/80 border-space-border hover:border-purple-400/50 text-slate-200';
           if (isSelected && !isSubmitted) {
-            optionStyle = 'bg-space-cyan/20 border-space-cyan text-white shadow-cyan-glow';
+            optionStyle = 'bg-purple-900/40 border-purple-400 text-white shadow-violet-glow';
           }
           if (isSubmitted) {
             if (isCorrect) {
@@ -322,7 +322,7 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
       {isSubmitted && (
         <div className="space-y-3 mb-6 animate-fadeIn">
           <div className="p-4 rounded-2xl bg-space-navy border border-space-border text-xs leading-relaxed">
-            <strong className="text-space-cyan font-mono block mb-1">
+            <strong className="text-purple-300 font-mono block mb-1">
               Scientific Explanation:
             </strong>
             <p className="text-slate-200">
@@ -347,14 +347,14 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
         <button
           disabled={selectedOption === null}
           onClick={handleSubmitAnswer}
-          className="w-full py-3.5 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-cyan-glow"
+          className="btn-violet w-full py-3.5 rounded-xl font-semibold text-xs font-mono uppercase tracking-wider disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-violet-glow"
         >
           Submit Answer
         </button>
       ) : (
         <button
           onClick={handleNext}
-          className="w-full py-3.5 rounded-xl bg-space-violet text-white font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-violet/90 transition-all flex items-center justify-center gap-2"
+          className="btn-violet w-full py-3.5 rounded-xl font-semibold text-xs font-mono uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-violet-glow"
         >
           <span>
             {currentIndex + 1 < totalQuestions ? 'Next Flight Question' : 'View Flight Evaluation'}

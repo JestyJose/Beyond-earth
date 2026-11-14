@@ -100,10 +100,10 @@ export default function Planet({
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
             <ringGeometry args={[radius * 1.25, radius * 1.35, 32]} />
             <meshBasicMaterial
-              color={isSelected ? '#00F0FF' : '#38BDF8'}
+              color={isSelected ? '#A855F7' : '#C4B5FD'}
               side={THREE.DoubleSide}
               transparent={true}
-              opacity={0.8}
+              opacity={0.85}
             />
           </mesh>
         )}
@@ -133,10 +133,10 @@ export default function Planet({
           <div
             className={`px-2.5 py-1 rounded-lg backdrop-blur-md border text-center transition-all ${
               isSelected
-                ? 'bg-space-cyan/20 border-space-cyan text-space-cyan shadow-cyan-glow scale-110'
+                ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200 shadow-violet-glow scale-110'
                 : hovered
-                ? 'bg-space-navy/90 border-space-cyan/60 text-white'
-                : 'bg-space-navy/70 border-white/10 text-slate-300'
+                ? 'bg-[#110B20]/90 border-purple-400/60 text-white'
+                : 'bg-[#110B20]/80 border-purple-500/20 text-[#F5F0FF]'
             }`}
           >
             <div className="font-heading font-bold text-xs whitespace-nowrap">

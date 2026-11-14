@@ -21,7 +21,7 @@ export default function CinematicHero({ hardware, onScrollToSection }) {
       {/* Floating Photo Attribution Badge */}
       <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-space-black/80 backdrop-blur-md border border-white/10 text-[10.5px] font-mono text-slate-300">
-          <Camera className="w-3.5 h-3.5 text-space-cyan" />
+          <Camera className="w-3.5 h-3.5 text-purple-300" />
           <span>{hardware.image_attribution || 'NASA / JPL-Caltech'}</span>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function CinematicHero({ hardware, onScrollToSection }) {
       <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
         <Link
           to="/hardware"
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-space-black/80 backdrop-blur-md border border-white/10 text-xs font-mono text-slate-300 hover:text-space-cyan hover:border-space-cyan/40 transition-all"
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-space-black/80 backdrop-blur-md border border-white/10 text-xs font-mono text-slate-300 hover:text-purple-300 hover:border-purple-400/50 transition-all"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Hardware Catalog</span>
@@ -42,7 +42,7 @@ export default function CinematicHero({ hardware, onScrollToSection }) {
         <div className="max-w-4xl">
           {/* Category & Status Pill Stack */}
           <div className="flex flex-wrap items-center gap-2.5 mb-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-space-cyan px-2.5 py-0.5 rounded-full bg-space-cyan/15 border border-space-cyan/30">
+            <span className="text-xs font-mono uppercase tracking-widest text-purple-200 px-2.5 py-0.5 rounded-full bg-purple-900/40 border border-purple-500/30">
               {hardware.category.replace(/_/g, ' ')}
             </span>
             <StatusBadge
@@ -66,7 +66,7 @@ export default function CinematicHero({ hardware, onScrollToSection }) {
             {/* 3D Solar System Gateway Button */}
             <Link
               to="/solar-system"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-space-cyan text-space-black font-bold hover:bg-space-cyan/90 transition-all shadow-cyan-glow"
+              className="btn-violet inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold hover:scale-105 transition-all shadow-violet-glow"
             >
               <Compass className="w-4 h-4" />
               <span>Explore in 3D Solar System</span>
@@ -75,23 +75,23 @@ export default function CinematicHero({ hardware, onScrollToSection }) {
             {/* Quick Section Jumpers */}
             <button
               onClick={() => onScrollToSection('instruments')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-space-border text-slate-200 hover:text-space-cyan transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-space-navy/90 hover:bg-[#1A1230] border border-space-border hover:border-purple-400/50 text-slate-200 hover:text-purple-300 transition-colors"
             >
-              <Cpu className="w-3.5 h-3.5 text-space-cyan" />
+              <Cpu className="w-3.5 h-3.5 text-purple-300" />
               <span>Scientific Instruments ({hardware.instruments?.length || 0})</span>
             </button>
 
             <button
               onClick={() => onScrollToSection('fate')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-space-border text-slate-200 hover:text-space-violet transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-space-navy/90 hover:bg-[#1A1230] border border-space-border hover:border-purple-400/50 text-slate-200 hover:text-purple-300 transition-colors"
             >
-              <Sparkles className="w-3.5 h-3.5 text-space-violet" />
+              <Sparkles className="w-3.5 h-3.5 text-purple-300" />
               <span>Physical Fate</span>
             </button>
 
             <button
               onClick={() => onScrollToSection('timeline')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-space-border text-slate-200 hover:text-amber-400 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-space-navy/90 hover:bg-[#1A1230] border border-space-border text-slate-200 hover:text-amber-400 transition-colors"
             >
               <History className="w-3.5 h-3.5 text-amber-400" />
               <span>Flight Log</span>

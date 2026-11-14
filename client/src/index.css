@@ -4,22 +4,23 @@
 
 @layer base {
   * {
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(168, 85, 247, 0.18);
   }
   
   body {
-    background-color: #05070D;
-    color: #F8FAFC;
+    background-color: #080512;
+    color: #F5F0FF;
     overflow-x: hidden;
   }
 }
 
-/* Custom Glassmorphism Primitives */
+/* Starry Violet Glassmorphism Primitives */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 11, 32, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(8, 5, 18, 0.55);
 }
 
 .glass-panel-hover {
@@ -27,40 +28,100 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(23, 15, 44, 0.88);
+  border-color: rgba(168, 85, 247, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 12px 35px -8px rgba(168, 85, 247, 0.28);
 }
 
-/* Starfield Background Effect */
+/* Premium Starry Violet Background with Multi-Layered Stars & Nebula */
 .bg-deep-space {
-  background-color: #05070D;
+  background-color: #080512;
   background-image: 
-    radial-gradient(1px 1px at 25px 35px, rgba(255, 255, 255, 0.3), transparent),
-    radial-gradient(1.5px 1.5px at 150px 80px, rgba(255, 255, 255, 0.5), transparent),
-    radial-gradient(1px 1px at 270px 220px, rgba(0, 240, 255, 0.4), transparent),
-    radial-gradient(1.5px 1.5px at 390px 140px, rgba(139, 92, 246, 0.4), transparent),
-    radial-gradient(1px 1px at 510px 300px, rgba(255, 255, 255, 0.3), transparent);
+    /* Layer 1: Sharp White Micro Stars */
+    radial-gradient(1px 1px at 35px 45px, rgba(245, 240, 255, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 170px 95px, rgba(245, 240, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 310px 260px, rgba(245, 240, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 450px 180px, rgba(245, 240, 255, 0.95), transparent),
+    /* Layer 2: Lavender & Violet Cosmic Starlight */
+    radial-gradient(1.2px 1.2px at 210px 380px, rgba(196, 181, 253, 0.75), transparent),
+    radial-gradient(1.8px 1.8px at 530px 320px, rgba(168, 85, 247, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 420px, rgba(196, 181, 253, 0.65), transparent),
+    radial-gradient(2.2px 2.2px at 370px 490px, rgba(168, 85, 247, 0.75), transparent),
+    /* Layer 3: Soft Deep Nebula Gradients */
+    radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.14), transparent 45%),
+    radial-gradient(circle at 85% 35%, rgba(168, 85, 247, 0.12), transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(196, 181, 253, 0.08), transparent 55%);
   background-repeat: repeat;
-  background-size: 550px 550px;
+  background-size: 580px 580px, 580px 580px, 580px 580px, 580px 580px, 580px 580px, 580px 580px, 580px 580px, 580px 580px, 100% 100%, 100% 100%, 100% 100%;
 }
 
-/* Custom Scrollbar for space aesthetic */
+/* Subtle Ambient Nebula Animation */
+@keyframes nebulaDrift {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.animate-nebula {
+  animation: nebulaDrift 20s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: starTwinkle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-nebula,
+  .animate-twinkle {
+    animation: none;
+  }
+}
+
+/* Interactive Violet Gradient Buttons */
+.btn-violet {
+  background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 0 22px -3px rgba(168, 85, 247, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-violet:hover {
+  background: linear-gradient(135deg, #9D74F8 0%, #B76DFB 100%);
+  box-shadow: 0 0 30px -2px rgba(196, 181, 253, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Custom Scrollbar for Violet Space Aesthetic */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #05070D;
+  background: #080512;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(168, 85, 247, 0.25);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 240, 255, 0.4);
+  background: rgba(168, 85, 247, 0.6);
 }

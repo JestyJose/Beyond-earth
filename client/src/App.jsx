@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import LoadingSpinner from './components/common/LoadingSpinner';
+import CosmicBackground from './components/common/CosmicBackground';
 
 import HomePage from './pages/HomePage';
 import HardwarePage from './pages/HardwarePage';
@@ -27,9 +28,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-space-black text-slate-100">
-        <Navbar />
-        <main className="flex-1">
+      <div className="flex flex-col min-h-screen bg-space-black text-space-text relative selection:bg-purple-600/35 selection:text-purple-200">
+        <CosmicBackground />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
@@ -56,6 +59,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        </div>
       </div>
     </BrowserRouter>
   );

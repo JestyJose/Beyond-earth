@@ -28,16 +28,16 @@ export default function SpacecraftBeacon({ planetRadius, beaconType = 'orbit', c
         {/* Surface Landing Pin Point */}
         <mesh position={[0, 0.1, 0]}>
           <coneGeometry args={[0.12, 0.28, 16]} />
-          <meshBasicMaterial color={isSelected ? '#00F0FF' : '#10B981'} />
+          <meshBasicMaterial color={isSelected ? '#C4B5FD' : '#10B981'} />
         </mesh>
 
         {/* Pulsing Ground Beacon Ring */}
         <mesh ref={surfacePulseRef} rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[0.18, 0.28, 16]} />
           <meshBasicMaterial
-            color={isSelected ? '#00F0FF' : '#10B981'}
+            color={isSelected ? '#C4B5FD' : '#10B981'}
             transparent={true}
-            opacity={0.7}
+            opacity={0.75}
             side={THREE.DoubleSide}
           />
         </mesh>
@@ -53,16 +53,16 @@ export default function SpacecraftBeacon({ planetRadius, beaconType = 'orbit', c
         {/* Orbiting Satellite Point */}
         <mesh position={[beaconDistance, 0.2, 0]}>
           <sphereGeometry args={[0.16, 16, 16]} />
-          <meshBasicMaterial color={isSelected ? '#00F0FF' : '#38BDF8'} />
+          <meshBasicMaterial color={isSelected ? '#C4B5FD' : '#A855F7'} />
         </mesh>
 
         {/* Orbital Trajectory Line */}
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[beaconDistance - 0.02, beaconDistance + 0.02, 32]} />
           <meshBasicMaterial
-            color={isSelected ? '#00F0FF' : '#38BDF8'}
+            color={isSelected ? '#C4B5FD' : '#8B5CF6'}
             transparent={true}
-            opacity={0.35}
+            opacity={0.4}
             side={THREE.DoubleSide}
           />
         </mesh>

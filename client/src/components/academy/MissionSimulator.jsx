@@ -123,7 +123,7 @@ export default function MissionSimulator({
 
                 <button
                   onClick={() => handleSelectSim(sim.slug)}
-                  className="w-full py-3 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 transition-all flex items-center justify-center gap-2 shadow-cyan-glow"
+                  className="btn-violet w-full py-3 rounded-xl font-semibold text-xs font-mono uppercase tracking-wider hover:scale-102 transition-all flex items-center justify-center gap-2 shadow-violet-glow"
                 >
                   <span>Assume Flight Control</span>
                   <ArrowRight className="w-4 h-4" />
@@ -193,8 +193,8 @@ export default function MissionSimulator({
                 onClick={() => setChosenOptionId(option.id)}
                 className={`w-full p-4 rounded-2xl border text-left transition-all ${
                   isSelected
-                    ? 'bg-space-cyan/20 border-space-cyan text-white shadow-cyan-glow'
-                    : 'bg-space-navy/60 border-space-border hover:border-slate-400 text-slate-200'
+                    ? 'bg-purple-900/40 border-purple-400 text-white shadow-violet-glow'
+                    : 'bg-space-navy/60 border-space-border hover:border-purple-400/50 text-slate-200'
                 }`}
               >
                 <div className="font-heading font-bold text-sm sm:text-base text-white mb-1">
@@ -210,7 +210,7 @@ export default function MissionSimulator({
           <button
             disabled={!chosenOptionId}
             onClick={handleConfirmDecision}
-            className="w-full mt-4 py-3.5 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-cyan-glow"
+            className="btn-violet w-full mt-4 py-3.5 rounded-xl font-semibold text-xs font-mono uppercase tracking-wider disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-violet-glow"
           >
             Execute Flight Command Decision
           </button>
@@ -253,7 +253,7 @@ export default function MissionSimulator({
 
           {/* Educational Takeaway */}
           <div className="p-4 rounded-2xl bg-space-navy border border-space-border text-xs text-slate-300">
-            <span className="text-space-cyan font-mono font-bold block mb-1 uppercase tracking-wide">
+            <span className="text-purple-300 font-mono font-bold block mb-1 uppercase tracking-wide">
               Engineering & Physics Takeaway:
             </span>
             <p className="leading-relaxed">{activeSim.educational_takeaway}</p>
@@ -265,13 +265,13 @@ export default function MissionSimulator({
               onClick={handleResetSim}
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-space-navy border border-space-border text-xs font-mono text-slate-300 hover:text-white transition-colors"
             >
-              <RotateCcw className="w-3.5 h-3.5 text-space-cyan" />
+              <RotateCcw className="w-3.5 h-3.5 text-purple-300" />
               <span>Try Alternate Command</span>
             </button>
 
             <button
               onClick={() => setSelectedSimSlug(null)}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-space-cyan text-space-black font-mono font-bold text-xs hover:bg-space-cyan/90 transition-all shadow-cyan-glow"
+              className="btn-violet inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow"
             >
               <span>Return to Simulator Console</span>
               <ArrowRight className="w-3.5 h-3.5" />

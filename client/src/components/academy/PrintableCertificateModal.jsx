@@ -45,7 +45,7 @@ export default function PrintableCertificateModal({
         {/* Modal Toolbar (Hidden during print) */}
         <div className="flex flex-wrap items-center justify-between p-5 border-b border-space-border gap-4 print:hidden">
           <div className="flex items-center gap-2">
-            <Award className="w-5 h-5 text-space-cyan" />
+            <Award className="w-5 h-5 text-purple-300" />
             <h3 className="font-heading font-bold text-lg text-white">
               Academy Completion Certificate
             </h3>
@@ -54,7 +54,7 @@ export default function PrintableCertificateModal({
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-space-cyan text-space-black font-mono font-bold text-xs hover:bg-space-cyan/90 transition-all shadow-cyan-glow"
+              className="btn-violet inline-flex items-center gap-2 px-4 py-2 rounded-xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow"
             >
               <Printer className="w-4 h-4" />
               <span>Print Certificate (PDF)</span>
@@ -79,7 +79,7 @@ export default function PrintableCertificateModal({
               value={studentName}
               onChange={(e) => handleNameChange(e.target.value)}
               placeholder="Enter your name..."
-              className="w-full px-3 py-1.5 bg-space-navy border border-space-border rounded-lg text-white focus:outline-none focus:border-space-cyan"
+              className="w-full px-3 py-1.5 bg-space-navy border border-space-border rounded-lg text-white focus:outline-none focus:border-purple-400"
             />
           </div>
 
@@ -88,7 +88,7 @@ export default function PrintableCertificateModal({
             <select
               value={selectedPath}
               onChange={(e) => setSelectedPath(e.target.value)}
-              className="w-full px-3 py-1.5 bg-space-navy border border-space-border rounded-lg text-white focus:outline-none focus:border-space-cyan"
+              className="w-full px-3 py-1.5 bg-space-navy border border-space-border rounded-lg text-white focus:outline-none focus:border-purple-400"
             >
               <option value="Comprehensive Planetary Exploration">Comprehensive Planetary Exploration</option>
               <option value="Cadet Flight & Lunar Pioneers">Cadet Flight & Lunar Pioneers</option>
