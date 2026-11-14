@@ -16,7 +16,9 @@ export default function Planet({
   hasRings = false,
   isSelected = false,
   onSelect,
-  hardwareCount = 0
+  hardwareCount = 0,
+  beaconType = 'orbit',
+  children
 }) {
   const meshRef = useRef();
   const [hovered, setHovered] = useState(false);
@@ -37,9 +39,30 @@ export default function Planet({
     }
   });
 
+  // Telemetry badge text based on authentic mission state
+  const badgeInfo = useMemo(() => {
+    if (!hardwareCount || hardwareCount === 0) return null;
+    if (beaconType === 'surface') {
+      return { text: `${hardwareCount} on Surface (Rovers/Landers)`, color: 'text-emerald-400' };
+    }
+    if (beaconType === 'orbit') {
+      return { text: `${hardwareCount} in Active Orbit`, color: 'text-space-cyan' };
+    }
+    if (beaconType === 'flyby') {
+      return { text: `Historic Flyby (Deep Space)`, color: 'text-purple-300' };
+    }
+    if (beaconType === 'impact') {
+      return { text: `Surface Impact Site`, color: 'text-amber-400' };
+    }
+    if (beaconType === 'atmospheric_entry') {
+      return { text: `Atmospheric Entry Site`, color: 'text-amber-400' };
+    }
+    return { text: `${hardwareCount} craft`, color: 'text-space-cyan' };
+  }, [hardwareCount, beaconType]);
+
   return (
     <>
-      {/* Planetary Orbit Track */}
+      {/* Planetary Orbit Track around the Sun */}
       {orbitRadius > 0 && (
         <OrbitTrack radius={orbitRadius} isSelected={isSelected} />
       )}
@@ -51,7 +74,7 @@ export default function Planet({
           ref={meshRef}
           onClick={(e) => {
             e.stopPropagation();
-            onSelect(position, destination);
+            onSelect(position, destination, radius);
           }}
           onPointerOver={(e) => {
             e.stopPropagation();
@@ -90,10 +113,11 @@ export default function Planet({
           <SaturnRings innerRadius={radius * 1.3} outerRadius={radius * 2.4} />
         )}
 
-        {/* Spacecraft Beacon */}
+        {/* Spacecraft Beacon (Differentiates Surface vs Active Orbit vs Flyby) */}
         {hardwareCount > 0 && (
           <SpacecraftBeacon
             planetRadius={radius}
+            beaconType={beaconType}
             count={hardwareCount}
             isSelected={isSelected}
           />
@@ -107,7 +131,7 @@ export default function Planet({
           className="pointer-events-none select-none"
         >
           <div
-            className={`px-2 py-0.5 rounded-lg backdrop-blur-md border text-center transition-all ${
+            className={`px-2.5 py-1 rounded-lg backdrop-blur-md border text-center transition-all ${
               isSelected
                 ? 'bg-space-cyan/20 border-space-cyan text-space-cyan shadow-cyan-glow scale-110'
                 : hovered
@@ -120,14 +144,17 @@ export default function Planet({
             </div>
             <div className="text-[9px] font-mono text-slate-400">
               {destination.distance_from_sun_au} AU
-              {hardwareCount > 0 && (
-                <span className="ml-1 text-space-cyan font-bold">
-                  ({hardwareCount} {hardwareCount === 1 ? 'craft' : 'crafts'})
-                </span>
-              )}
             </div>
+            {badgeInfo && (
+              <div className={`text-[8.5px] font-mono font-semibold ${badgeInfo.color} whitespace-nowrap`}>
+                {badgeInfo.text}
+              </div>
+            )}
           </div>
         </Html>
+
+        {/* Nested local children (e.g. Earth's Moon) */}
+        {children}
       </group>
     </>
   );

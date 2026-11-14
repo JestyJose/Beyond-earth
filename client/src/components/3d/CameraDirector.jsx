@@ -3,7 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
-export default function CameraDirector({ targetPosition, isResetView, onResetComplete }) {
+export default function CameraDirector({ targetPosition, targetRadius = 1.0, isResetView, onResetComplete }) {
   const controlsRef = useRef();
   const { camera } = useThree();
 
@@ -18,15 +18,16 @@ export default function CameraDirector({ targetPosition, isResetView, onResetCom
   useEffect(() => {
     if (targetPosition) {
       desiredTarget.current.copy(targetPosition);
-      // Position camera at an inspection offset relative to the target
+      // Adaptive inspection distance based on the celestial body's radius
+      const camDist = Math.max(targetRadius * 3.4 + 3.2, 5.5);
       desiredCamPos.current.set(
-        targetPosition.x + 8,
-        targetPosition.y + 6,
-        targetPosition.z + 12
+        targetPosition.x + camDist * 0.55,
+        targetPosition.y + camDist * 0.42,
+        targetPosition.z + camDist * 0.85
       );
       isTransitioning.current = true;
     }
-  }, [targetPosition]);
+  }, [targetPosition, targetRadius]);
 
   // When reset view is requested
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function CameraDirector({ targetPosition, isResetView, onResetCom
       dampingFactor={0.05}
       minDistance={5}
       maxDistance={380}
-      maxPolarAngle={Math.PI / 2 + 0.1} // Prevent looking directly from below orbit plane
+      maxPolarAngle={Math.PI / 2 + 0.1} // Prevent looking from below orbit plane
     />
   );
 }
