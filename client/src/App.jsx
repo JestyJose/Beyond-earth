@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+import LoadingSpinner from './components/common/LoadingSpinner';
+
 import HomePage from './pages/HomePage';
-import SolarSystemPage from './pages/SolarSystemPage';
 import HardwarePage from './pages/HardwarePage';
 import HardwareDetailPage from './pages/HardwareDetailPage';
 import TimelinePage from './pages/TimelinePage';
 import SciencePage from './pages/SciencePage';
 import StatusTrackerPage from './pages/StatusTrackerPage';
 import AcademyPage from './pages/AcademyPage';
+
+// Lazy load the heavy 3D Three.js Solar System Explorer on demand
+const SolarSystemPage = lazy(() => import('./pages/SolarSystemPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -28,7 +32,20 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/solar-system" element={<SolarSystemPage />} />
+            <Route
+              path="/solar-system"
+              element={
+                <Suspense
+                  fallback={
+                    <div className="min-h-screen pt-28 bg-deep-space flex items-center justify-center">
+                      <LoadingSpinner message="Calibrating 3D planetary physics engine & textures..." />
+                    </div>
+                  }
+                >
+                  <SolarSystemPage />
+                </Suspense>
+              }
+            />
             <Route path="/hardware" element={<HardwarePage />} />
             <Route path="/hardware/:slug" element={<HardwareDetailPage />} />
             <Route path="/timeline" element={<TimelinePage />} />

@@ -112,7 +112,8 @@
       "voyager-2",
       "pioneer-10",
       "new-horizons"
-    ]
+    ],
+    "nssdca_id": "1977-084A"
   },
   {
     "slug": "voyager-2",
@@ -217,7 +218,8 @@
       "voyager-1",
       "pioneer-11",
       "new-horizons"
-    ]
+    ],
+    "nssdca_id": "1977-076A"
   },
   {
     "slug": "perseverance",
@@ -327,7 +329,8 @@
       "curiosity",
       "opportunity",
       "insight"
-    ]
+    ],
+    "nssdca_id": "2020-052A"
   },
   {
     "slug": "curiosity",
@@ -431,7 +434,8 @@
       "perseverance",
       "opportunity",
       "viking-1"
-    ]
+    ],
+    "nssdca_id": "2011-070A"
   },
   {
     "slug": "cassini-huygens",
@@ -541,7 +545,8 @@
       "galileo",
       "juno",
       "voyager-1"
-    ]
+    ],
+    "nssdca_id": "1997-061A"
   },
   {
     "slug": "new-horizons",
@@ -643,7 +648,8 @@
       "voyager-1",
       "voyager-2",
       "pioneer-10"
-    ]
+    ],
+    "nssdca_id": "2006-001A"
   },
   {
     "slug": "insight",
@@ -735,7 +741,8 @@
       "perseverance",
       "curiosity",
       "viking-1"
-    ]
+    ],
+    "nssdca_id": "2018-042A"
   },
   {
     "slug": "opportunity",
@@ -833,7 +840,8 @@
       "curiosity",
       "perseverance",
       "viking-1"
-    ]
+    ],
+    "nssdca_id": "2003-032A"
   },
   {
     "slug": "apollo-11-lm",
@@ -925,7 +933,8 @@
       "viking-1",
       "insight",
       "perseverance"
-    ]
+    ],
+    "nssdca_id": "1969-059C"
   },
   {
     "slug": "juno",
@@ -1023,7 +1032,8 @@
       "galileo",
       "cassini-huygens",
       "voyager-1"
-    ]
+    ],
+    "nssdca_id": "2011-040A"
   },
   {
     "slug": "parker-solar-probe",
@@ -1115,7 +1125,8 @@
       "messenger",
       "new-horizons",
       "voyager-1"
-    ]
+    ],
+    "nssdca_id": "2018-065A"
   },
   {
     "slug": "pioneer-10",
@@ -1211,7 +1222,8 @@
       "pioneer-11",
       "voyager-1",
       "new-horizons"
-    ]
+    ],
+    "nssdca_id": "1972-012A"
   },
   {
     "slug": "pioneer-11",
@@ -1302,7 +1314,8 @@
       "pioneer-10",
       "cassini-huygens",
       "voyager-2"
-    ]
+    ],
+    "nssdca_id": "1973-019A"
   },
   {
     "slug": "galileo",
@@ -1388,7 +1401,8 @@
       "juno",
       "cassini-huygens",
       "voyager-1"
-    ]
+    ],
+    "nssdca_id": "1989-084B"
   },
   {
     "slug": "viking-1",
@@ -1474,7 +1488,8 @@
       "curiosity",
       "perseverance",
       "opportunity"
-    ]
+    ],
+    "nssdca_id": "1975-075C"
   },
   {
     "slug": "messenger",
@@ -1554,7 +1569,8 @@
       "parker-solar-probe",
       "magellan",
       "voyager-1"
-    ]
+    ],
+    "nssdca_id": "2004-030A"
   },
   {
     "slug": "magellan",
@@ -1640,7 +1656,8 @@
       "messenger",
       "cassini-huygens",
       "viking-1"
-    ]
+    ],
+    "nssdca_id": "1989-033B"
   },
   {
     "slug": "hubble",
@@ -1726,6 +1743,7 @@
       "voyager-1",
       "juno",
       "new-horizons"
-    ]
+    ],
+    "nssdca_id": "1990-037B"
   }
 ]

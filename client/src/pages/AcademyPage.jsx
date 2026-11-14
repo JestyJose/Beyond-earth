@@ -20,6 +20,13 @@ import DailyChallengeCard from '../components/academy/DailyChallengeCard';
 import AchievementTrophyRoom, { ALL_BADGES } from '../components/academy/AchievementTrophyRoom';
 import PrintableCertificateModal from '../components/academy/PrintableCertificateModal';
 
+function getLocalDateString(d = new Date()) {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 export default function AcademyPage() {
   // Persistent Cadet State
   const [userPoints, setUserPoints] = useState(() => {
@@ -106,11 +113,13 @@ export default function AcademyPage() {
     }
   };
 
-  // Handle completed quiz submission
+  // Handle completed quiz submission (capped points on retakes to prevent inflation)
   const handleQuizComplete = ({ quiz, score, totalQuestions, passed }) => {
     if (passed) {
-      // Award points
-      const newPoints = userPoints + (quiz.badge_points || 100);
+      const alreadyCompleted = completedQuizzes.includes(quiz.slug);
+      // Award full badge points on first pass; +25 PTS practice bonus on subsequent retakes
+      const earnedPoints = alreadyCompleted ? 25 : (quiz.badge_points || 100);
+      const newPoints = userPoints + earnedPoints;
       setUserPoints(newPoints);
       localStorage.setItem('beyond_earth_points', newPoints.toString());
 
@@ -122,7 +131,7 @@ export default function AcademyPage() {
       }
 
       // Record completed quiz
-      if (!completedQuizzes.includes(quiz.slug)) {
+      if (!alreadyCompleted) {
         const updatedCompleted = [...completedQuizzes, quiz.slug];
         setCompletedQuizzes(updatedCompleted);
         localStorage.setItem('beyond_earth_completed_quizzes', JSON.stringify(updatedCompleted));
@@ -132,7 +141,9 @@ export default function AcademyPage() {
 
   // Handle completed mission simulation
   const handleSimulationComplete = ({ sim, points, badge }) => {
-    const newPoints = userPoints + points;
+    const alreadyCompleted = completedSims.includes(sim.slug);
+    const earnedPoints = alreadyCompleted ? 50 : points;
+    const newPoints = userPoints + earnedPoints;
     setUserPoints(newPoints);
     localStorage.setItem('beyond_earth_points', newPoints.toString());
 
@@ -142,22 +153,24 @@ export default function AcademyPage() {
       localStorage.setItem('beyond_earth_badges', JSON.stringify(updatedBadges));
     }
 
-    if (!completedSims.includes(sim.slug)) {
+    if (!alreadyCompleted) {
       const updatedSims = [...completedSims, sim.slug];
       setCompletedSims(updatedSims);
       localStorage.setItem('beyond_earth_completed_sims', JSON.stringify(updatedSims));
     }
   };
 
-  // Handle daily space challenge completion
+  // Handle daily space challenge completion with local calendar timezone continuity
   const handleDailyComplete = ({ date, isCorrect, points }) => {
     const newPoints = userPoints + points;
     setUserPoints(newPoints);
     localStorage.setItem('beyond_earth_points', newPoints.toString());
 
-    // Update streak
-    const today = new Date().toISOString().slice(0, 10);
-    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    // Update streak using local calendar day
+    const now = new Date();
+    const today = getLocalDateString(now);
+    const yesterdayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    const yesterday = getLocalDateString(yesterdayDate);
 
     let newStreak = dailyStreak;
     if (lastDailyDate === yesterday) {
@@ -172,7 +185,7 @@ export default function AcademyPage() {
     localStorage.setItem('beyond_earth_last_daily', today);
   };
 
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const todayStr = getLocalDateString();
   const hasCompletedDailyToday = lastDailyDate === todayStr;
 
   return (

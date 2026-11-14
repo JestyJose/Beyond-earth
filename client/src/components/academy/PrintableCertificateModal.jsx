@@ -62,6 +62,7 @@ export default function PrintableCertificateModal({
 
             <button
               onClick={onClose}
+              aria-label="Close certificate dialog"
               className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
             >
               <X className="w-5 h-5" />
