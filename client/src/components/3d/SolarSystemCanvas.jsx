@@ -7,6 +7,7 @@ import Planet from './Planet';
 import CameraDirector from './CameraDirector';
 import SpacecraftBeacon from './SpacecraftBeacon';
 import { getPlanetTexture } from './planetTextures';
+import { DEFAULT_DESTINATIONS } from '../../data/defaultDestinations';
 
 // WebGL Error Boundary to catch hardware acceleration issues
 class CanvasErrorBoundary extends Component {
@@ -149,18 +150,25 @@ export default function SolarSystemCanvas({
   const [targetPosition, setTargetPosition] = useState(null);
   const [targetRadius, setTargetRadius] = useState(1.0);
 
+  // Ensure we always have full planetary ephemeris even if API response is empty/delayed
+  const activeDestinations = useMemo(() => {
+    return Array.isArray(destinations) && destinations.length > 0
+      ? destinations
+      : DEFAULT_DESTINATIONS;
+  }, [destinations]);
+
   // Separate the Sun and Moon from heliocentric planets
   const sunDest = useMemo(() => {
-    return destinations.find((d) => d.slug === 'sun') || { slug: 'sun', name: 'The Sun', hardware_count: 1 };
-  }, [destinations]);
+    return activeDestinations.find((d) => d.slug === 'sun') || { slug: 'sun', name: 'The Sun', hardware_count: 1 };
+  }, [activeDestinations]);
 
   const moonDest = useMemo(() => {
-    return destinations.find((d) => d.slug === 'moon') || { slug: 'moon', name: 'The Moon', hardware_count: 1 };
-  }, [destinations]);
+    return activeDestinations.find((d) => d.slug === 'moon') || { slug: 'moon', name: 'The Moon', hardware_count: 1 };
+  }, [activeDestinations]);
 
   const planetDestinations = useMemo(() => {
-    return destinations.filter((d) => d.slug !== 'sun' && d.slug !== 'moon');
-  }, [destinations]);
+    return activeDestinations.filter((d) => d.slug !== 'sun' && d.slug !== 'moon');
+  }, [activeDestinations]);
 
   // Synchronize camera target whenever selectedDest prop changes (supports Quick Jump dropdown!)
   useEffect(() => {

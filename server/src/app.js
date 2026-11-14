@@ -13,21 +13,39 @@ import { config } from './config/env.js';
 const app = express();
 
 // Allowed origins
-const allowedOrigins = [
+const explicitOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-  config.clientUrl
-].filter(Boolean);
+  'http://localhost:4173',
+  'http://127.0.0.1:4173',
+  'https://beyond-earth-ten.vercel.app',
+  'https://beyond-earth.vercel.app'
+];
+
+if (config.clientUrl) {
+  // Support comma-separated URLs and strip trailing slashes
+  config.clientUrl.split(',').forEach(url => {
+    const trimmed = url.trim().replace(/\/$/, '');
+    if (trimmed && !explicitOrigins.includes(trimmed)) {
+      explicitOrigins.push(trimmed);
+    }
+  });
+}
 
 // CORS Middleware with development flexibility and production hardening
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (mobile apps, curl, server-to-server) or in development
-    if (!origin || config.nodeEnv === 'development' || allowedOrigins.includes(origin)) {
+    if (!origin || config.nodeEnv === 'development' || explicitOrigins.includes(origin)) {
       return callback(null, true);
     }
-    return callback(new Error(`CORS policy blocked access from origin: ${origin}`));
+    // Allow all Vercel deployment origins (*.vercel.app)
+    if (/^https:\/\/[a-zA-Z0-9_-]+\.vercel\.app$/.test(origin)) {
+      return callback(null, true);
+    }
+    return callback(null, false);
   },
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

@@ -18,12 +18,17 @@ import { api } from '../services/api';
 import StatusBadge from '../components/common/StatusBadge';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import SolarSystemCanvas from '../components/3d/SolarSystemCanvas';
+import { DEFAULT_DESTINATIONS, DEFAULT_DESTINATION_HARDWARE } from '../data/defaultDestinations';
 
 export default function SolarSystemPage() {
-  const [destinations, setDestinations] = useState([]);
-  const [selectedDest, setSelectedDest] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [activeHardwareList, setActiveHardwareList] = useState([]);
+  const [destinations, setDestinations] = useState(DEFAULT_DESTINATIONS);
+  const [selectedDest, setSelectedDest] = useState(() => 
+    DEFAULT_DESTINATIONS.find(d => d.slug === 'mars') || DEFAULT_DESTINATIONS[0]
+  );
+  const [loading, setLoading] = useState(false);
+  const [activeHardwareList, setActiveHardwareList] = useState(() => 
+    DEFAULT_DESTINATION_HARDWARE['mars'] || []
+  );
   const [loadingHardware, setLoadingHardware] = useState(false);
   const [viewMode, setViewMode] = useState('3d'); // '3d', 'schematic', 'grid'
   const [isResetView, setIsResetView] = useState(false);
@@ -32,16 +37,15 @@ export default function SolarSystemPage() {
     async function loadDestinations() {
       try {
         const data = await api.getDestinations();
-        setDestinations(data || []);
         if (data && data.length > 0) {
-          // Default select Mars
-          const defaultTarget = data.find(d => d.slug === 'mars') || data[0];
-          handleSelectDestination(defaultTarget);
+          setDestinations(data);
+          setSelectedDest(prev => {
+            if (!prev) return data.find(d => d.slug === 'mars') || data[0];
+            return data.find(d => d.slug === prev.slug) || prev;
+          });
         }
       } catch (err) {
-        console.error('Failed to load destinations:', err);
-      } finally {
-        setLoading(false);
+        console.warn('Using local planetary ephemeris (API unreachable):', err);
       }
     }
     loadDestinations();
@@ -52,10 +56,10 @@ export default function SolarSystemPage() {
     setLoadingHardware(true);
     try {
       const detailed = await api.getDestination(dest.slug);
-      setActiveHardwareList(detailed.hardware || []);
+      setActiveHardwareList(detailed.hardware || DEFAULT_DESTINATION_HARDWARE[dest.slug] || []);
     } catch (err) {
-      console.error('Failed to load destination hardware:', err);
-      setActiveHardwareList([]);
+      console.warn('Falling back to local hardware manifest:', err);
+      setActiveHardwareList(DEFAULT_DESTINATION_HARDWARE[dest.slug] || []);
     } finally {
       setLoadingHardware(false);
     }

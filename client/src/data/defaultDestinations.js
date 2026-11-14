@@ -1,0 +1,398 @@
+// Fallback astronomical destinations and telemetry for offline resilience & immediate first-frame rendering
+export const DEFAULT_DESTINATIONS = [
+  {
+    "slug": "sun",
+    "name": "The Sun",
+    "type": "STAR",
+    "distance_from_sun_au": 0,
+    "diameter_km": 1392700,
+    "description": "The fiery heart of our solar system. NASA spacecraft like the Parker Solar Probe dip inside its scorching outer atmosphere (corona) to unlock the secrets of solar winds and space weather.",
+    "color": "#FDB813",
+    "texture_key": "sun",
+    "hardware_count": 1,
+    "active_hardware_count": 1
+  },
+  {
+    "slug": "mercury",
+    "name": "Mercury",
+    "type": "PLANET",
+    "distance_from_sun_au": 0.39,
+    "diameter_km": 4879,
+    "description": "The smallest planet and closest to the Sun. Extreme temperatures range from molten hot to freezing cold. NASA's MESSENGER and Mariner 10 revealed its cratered, iron-rich surface and surprise water ice in polar craters.",
+    "color": "#9E9E9E",
+    "texture_key": "mercury",
+    "hardware_count": 1,
+    "active_hardware_count": 0
+  },
+  {
+    "slug": "venus",
+    "name": "Venus",
+    "type": "PLANET",
+    "distance_from_sun_au": 0.72,
+    "diameter_km": 12104,
+    "description": "Earth's 'twisted twin' wrapped in choking clouds of sulfuric acid with crushing surface pressures hot enough to melt lead. Studied by NASA's Pioneer Venus and Magellan radar mapper.",
+    "color": "#E3BB7B",
+    "texture_key": "venus",
+    "hardware_count": 1,
+    "active_hardware_count": 0
+  },
+  {
+    "slug": "earth",
+    "name": "Earth",
+    "type": "PLANET",
+    "distance_from_sun_au": 1,
+    "diameter_km": 12742,
+    "description": "Our cosmic home oasis and the launching pad for every spacecraft in human history.",
+    "color": "#2E86AB",
+    "texture_key": "earth",
+    "hardware_count": 1,
+    "active_hardware_count": 1
+  },
+  {
+    "slug": "moon",
+    "name": "The Moon",
+    "type": "MOON",
+    "distance_from_sun_au": 1,
+    "diameter_km": 3474,
+    "description": "Earth's faithful companion, holding the resting descent stages of Apollo 11 through 17, Surveyor robotic scouts, and orbiting probes preparing humanity for the Artemis era.",
+    "color": "#D5D5D5",
+    "texture_key": "moon",
+    "hardware_count": 1,
+    "active_hardware_count": 0
+  },
+  {
+    "slug": "mars",
+    "name": "Mars",
+    "type": "PLANET",
+    "distance_from_sun_au": 1.52,
+    "diameter_km": 6779,
+    "description": "The Red Planet: a dry, frozen world of ancient river deltas, towering volcanoes, and canyons. The most explored planetary surface in robotic history, hosting Curiosity, Perseverance, Spirit, Opportunity, and InSight.",
+    "color": "#C1440E",
+    "texture_key": "mars",
+    "hardware_count": 5,
+    "active_hardware_count": 2
+  },
+  {
+    "slug": "jupiter",
+    "name": "Jupiter",
+    "type": "PLANET",
+    "distance_from_sun_au": 5.2,
+    "diameter_km": 139820,
+    "description": "The gas giant colossus with its swirling Great Red Spot and dozens of ocean moons (Europa, Ganymede, Callisto). Explored by Galileo, Juno, and legendary flybys by Pioneer and Voyager.",
+    "color": "#D8CA9D",
+    "texture_key": "jupiter",
+    "hardware_count": 7,
+    "active_hardware_count": 4
+  },
+  {
+    "slug": "saturn",
+    "name": "Saturn",
+    "type": "PLANET",
+    "distance_from_sun_au": 9.58,
+    "diameter_km": 116460,
+    "description": "The jewel of the solar system, renowned for its dazzling icy ring system and mysterious moons Enceladus (geysers) and Titan (methane lakes). Explored intimately for 13 years by Cassini-Huygens.",
+    "color": "#EAD6B8",
+    "texture_key": "saturn",
+    "hardware_count": 4,
+    "active_hardware_count": 2
+  },
+  {
+    "slug": "uranus",
+    "name": "Uranus",
+    "type": "PLANET",
+    "distance_from_sun_au": 19.2,
+    "diameter_km": 50724,
+    "description": "An ice giant rolling on its side like a bowling ball. Only visited once in human history: by NASA's intrepid Voyager 2 in January 1986.",
+    "color": "#70D6FF",
+    "texture_key": "uranus",
+    "hardware_count": 1,
+    "active_hardware_count": 1
+  },
+  {
+    "slug": "neptune",
+    "name": "Neptune",
+    "type": "PLANET",
+    "distance_from_sun_au": 30.05,
+    "diameter_km": 49244,
+    "description": "A vivid deep-blue world of supersonic winds and storms, guarded by geyser-spewing moon Triton. Visited solely by Voyager 2 in August 1989.",
+    "color": "#3A86FF",
+    "texture_key": "neptune",
+    "hardware_count": 1,
+    "active_hardware_count": 1
+  },
+  {
+    "slug": "kuiper-belt",
+    "name": "Kuiper Belt & Pluto",
+    "type": "DEEP_SPACE",
+    "distance_from_sun_au": 39.5,
+    "diameter_km": 2376,
+    "description": "The icy twilight zone of frozen relics beyond Neptune. NASA's New Horizons made history here with its historic flyby of Pluto's heart glacier in 2015 and contact binary Arrokoth in 2019.",
+    "color": "#C3A69C",
+    "texture_key": "pluto",
+    "hardware_count": 1,
+    "active_hardware_count": 1
+  },
+  {
+    "slug": "interstellar-space",
+    "name": "Interstellar Space",
+    "type": "DEEP_SPACE",
+    "distance_from_sun_au": 120,
+    "diameter_km": 0,
+    "description": "The ocean of space beyond the heliosphere (the bubble created by the Sun's magnetic field and solar wind). Home to humanity's farthest ambassadors: Voyager 1, Voyager 2, and the silent Pioneer 10 & 11.",
+    "color": "#6B21A8",
+    "texture_key": "interstellar",
+    "hardware_count": 4,
+    "active_hardware_count": 2
+  }
+];
+
+export const DEFAULT_DESTINATION_HARDWARE = {
+  "sun": [
+    {
+      "slug": "parker-solar-probe",
+      "name": "Parker Solar Probe",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "sun",
+      "launch_date": "2018-08-12",
+      "operational_status": "OPERATIONAL"
+    }
+  ],
+  "mercury": [
+    {
+      "slug": "messenger",
+      "name": "MESSENGER",
+      "category": "ORBITER",
+      "destination_slug": "mercury",
+      "launch_date": "2004-08-03",
+      "operational_status": "SURFACE_IMPACT_DESTROYED"
+    }
+  ],
+  "venus": [
+    {
+      "slug": "magellan",
+      "name": "Magellan",
+      "category": "ORBITER",
+      "destination_slug": "venus",
+      "launch_date": "1989-05-04",
+      "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED"
+    }
+  ],
+  "earth": [
+    {
+      "slug": "hubble",
+      "name": "Hubble Space Telescope",
+      "category": "OBSERVATORY",
+      "destination_slug": "earth",
+      "launch_date": "1990-04-24",
+      "operational_status": "OPERATIONAL"
+    }
+  ],
+  "moon": [
+    {
+      "slug": "apollo-11-lm",
+      "name": "Apollo 11 Lunar Module (Eagle) — Descent Stage",
+      "category": "LANDER",
+      "destination_slug": "moon",
+      "launch_date": "1969-07-16",
+      "operational_status": "INACTIVE_SURFACE"
+    }
+  ],
+  "mars": [
+    {
+      "slug": "perseverance",
+      "name": "Perseverance Rover",
+      "category": "ROVER",
+      "destination_slug": "mars",
+      "launch_date": "2020-07-30",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "curiosity",
+      "name": "Curiosity Rover (MSL)",
+      "category": "ROVER",
+      "destination_slug": "mars",
+      "launch_date": "2011-11-26",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "insight",
+      "name": "InSight Lander",
+      "category": "LANDER",
+      "destination_slug": "mars",
+      "launch_date": "2018-05-05",
+      "operational_status": "INACTIVE_SURFACE"
+    },
+    {
+      "slug": "opportunity",
+      "name": "Opportunity Rover (MER-B)",
+      "category": "ROVER",
+      "destination_slug": "mars",
+      "launch_date": "2003-07-08",
+      "operational_status": "INACTIVE_SURFACE"
+    },
+    {
+      "slug": "viking-1",
+      "name": "Viking 1 (Lander)",
+      "category": "LANDER",
+      "destination_slug": "mars",
+      "launch_date": "1975-08-20",
+      "operational_status": "INACTIVE_SURFACE"
+    }
+  ],
+  "jupiter": [
+    {
+      "slug": "voyager-1",
+      "name": "Voyager 1",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-09-05",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "voyager-2",
+      "name": "Voyager 2",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-08-20",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "new-horizons",
+      "name": "New Horizons",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "kuiper-belt",
+      "launch_date": "2006-01-19",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "juno",
+      "name": "Juno",
+      "category": "ORBITER",
+      "destination_slug": "jupiter",
+      "launch_date": "2011-08-05",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "pioneer-10",
+      "name": "Pioneer 10",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1972-03-03",
+      "operational_status": "DEEP_SPACE_TRAVELLING"
+    },
+    {
+      "slug": "pioneer-11",
+      "name": "Pioneer 11",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1973-04-06",
+      "operational_status": "DEEP_SPACE_TRAVELLING"
+    },
+    {
+      "slug": "galileo",
+      "name": "Galileo",
+      "category": "ORBITER",
+      "destination_slug": "jupiter",
+      "launch_date": "1989-10-18",
+      "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED"
+    }
+  ],
+  "saturn": [
+    {
+      "slug": "voyager-1",
+      "name": "Voyager 1",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-09-05",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "voyager-2",
+      "name": "Voyager 2",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-08-20",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "cassini-huygens",
+      "name": "Cassini-Huygens",
+      "category": "ORBITER",
+      "destination_slug": "saturn",
+      "launch_date": "1997-10-15",
+      "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED"
+    },
+    {
+      "slug": "pioneer-11",
+      "name": "Pioneer 11",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1973-04-06",
+      "operational_status": "DEEP_SPACE_TRAVELLING"
+    }
+  ],
+  "uranus": [
+    {
+      "slug": "voyager-2",
+      "name": "Voyager 2",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-08-20",
+      "operational_status": "OPERATIONAL"
+    }
+  ],
+  "neptune": [
+    {
+      "slug": "voyager-2",
+      "name": "Voyager 2",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-08-20",
+      "operational_status": "OPERATIONAL"
+    }
+  ],
+  "kuiper-belt": [
+    {
+      "slug": "new-horizons",
+      "name": "New Horizons",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "kuiper-belt",
+      "launch_date": "2006-01-19",
+      "operational_status": "OPERATIONAL"
+    }
+  ],
+  "interstellar-space": [
+    {
+      "slug": "voyager-1",
+      "name": "Voyager 1",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-09-05",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "voyager-2",
+      "name": "Voyager 2",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1977-08-20",
+      "operational_status": "OPERATIONAL"
+    },
+    {
+      "slug": "pioneer-10",
+      "name": "Pioneer 10",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1972-03-03",
+      "operational_status": "DEEP_SPACE_TRAVELLING"
+    },
+    {
+      "slug": "pioneer-11",
+      "name": "Pioneer 11",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1973-04-06",
+      "operational_status": "DEEP_SPACE_TRAVELLING"
+    }
+  ]
+};
