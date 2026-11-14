@@ -6,12 +6,36 @@ async function fetchJSON(endpoint) {
   try {
     const res = await fetch(`${API_BASE}${endpoint}`);
     if (!res.ok) {
+      // If direct remote API returned error status and API_BASE is remote, fallback to Vercel edge proxy
+      if (API_BASE.startsWith('http')) {
+        try {
+          const fallbackRes = await fetch(`/api/v1${endpoint}`);
+          if (fallbackRes.ok) {
+            const fallbackJson = await fallbackRes.json();
+            return fallbackJson.data;
+          }
+        } catch {
+          // Fall through to error
+        }
+      }
       const errorData = await res.json().catch(() => ({}));
       throw new Error(errorData.message || `Request failed with status ${res.status}`);
     }
     const json = await res.json();
     return json.data;
   } catch (error) {
+    // If browser CORS or network error occurred and API_BASE is remote, fallback to Vercel edge proxy
+    if (API_BASE.startsWith('http')) {
+      try {
+        const fallbackRes = await fetch(`/api/v1${endpoint}`);
+        if (fallbackRes.ok) {
+          const fallbackJson = await fallbackRes.json();
+          return fallbackJson.data;
+        }
+      } catch {
+        // Fallback also failed
+      }
+    }
     console.error(`API Error on ${endpoint}:`, error);
     throw error;
   }
