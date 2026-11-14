@@ -96,7 +96,7 @@ export default function TimelinePage() {
           {/* Event Type Filter */}
           <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-space-border text-xs font-mono">
             <span className="text-slate-400 mr-2">Filter Event:</span>
-            {['', 'LAUNCH', 'LANDING', 'FLYBY', 'ORBIT_INSERTION', 'DISCOVERY', 'FINAL_SIGNAL'].map((type) => (
+            {['', 'LAUNCH', 'LANDING', 'FLYBY', 'ORBIT_INSERTION', 'DISCOVERY', 'MILESTONE', 'FINAL_SIGNAL'].map((type) => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}

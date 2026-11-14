@@ -14,9 +14,11 @@ export const getAllDestinations = (req, res, next) => {
     const destinations = readJSON(destinationsPath);
     const hardware = readJSON(hardwarePath);
 
-    // Enrich each destination with counts of resident hardware
+    // Enrich each destination with counts of resident and flyby visiting hardware
     const enriched = destinations.map((dest) => {
-      const residentHardware = hardware.filter((h) => h.destination_slug === dest.slug);
+      const residentHardware = hardware.filter(
+        (h) => h.destination_slug === dest.slug || (h.visited_destination_slugs && h.visited_destination_slugs.includes(dest.slug))
+      );
       const activeCount = residentHardware.filter((h) => h.operational_status === 'OPERATIONAL').length;
       return {
         ...dest,
@@ -49,7 +51,9 @@ export const getDestinationBySlug = (req, res, next) => {
       });
     }
 
-    const residentHardware = hardware.filter((h) => h.destination_slug === destination.slug);
+    const residentHardware = hardware.filter(
+      (h) => h.destination_slug === destination.slug || (h.visited_destination_slugs && h.visited_destination_slugs.includes(destination.slug))
+    );
 
     res.json({
       success: true,

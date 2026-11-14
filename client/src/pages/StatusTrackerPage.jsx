@@ -78,7 +78,7 @@ export default function StatusTrackerPage() {
           <div>
             {/* Status Summary Metrics Cards */}
             {summary && (
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
                 {[
                   {
                     status: 'OPERATIONAL',
@@ -106,9 +106,17 @@ export default function StatusTrackerPage() {
                   },
                   {
                     status: 'ATMOSPHERIC_ENTRY_DESTROYED',
-                    label: 'Mission Concluded',
+                    label: 'Atmospheric Entry',
                     count: summary.counts.ATMOSPHERIC_ENTRY_DESTROYED,
                     color: 'text-amber-400',
+                    border: 'border-amber-500/30',
+                    bg: 'bg-amber-500/10'
+                  },
+                  {
+                    status: 'SURFACE_IMPACT_DESTROYED',
+                    label: 'Surface Impact',
+                    count: summary.counts.SURFACE_IMPACT_DESTROYED,
+                    color: 'text-amber-300',
                     border: 'border-amber-500/30',
                     bg: 'bg-amber-500/10'
                   },

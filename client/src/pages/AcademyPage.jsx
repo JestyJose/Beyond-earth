@@ -91,7 +91,7 @@ export default function AcademyPage() {
     } else {
       // Completed quiz!
       setQuizCompleted(true);
-      const passed = score + (selectedOption === activeQuiz.questions[currentQuestionIndex].correct_option_index ? 1 : 0) >= Math.ceil(activeQuiz.questions.length * 0.7);
+      const passed = score >= Math.ceil(activeQuiz.questions.length * 0.7);
 
       if (passed) {
         // Trigger celebratory confetti

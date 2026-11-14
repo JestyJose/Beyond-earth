@@ -8,12 +8,26 @@ import scienceRoutes from './routes/scienceRoutes.js';
 import statusRoutes from './routes/statusRoutes.js';
 import quizRoutes from './routes/quizRoutes.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
+import { config } from './config/env.js';
 
 const app = express();
 
-// Middleware
+// Allowed origins
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  config.clientUrl
+].filter(Boolean);
+
+// CORS Middleware with development flexibility and production hardening
 app.use(cors({
-  origin: '*', // Allows local dev and deployment preview access
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, server-to-server) or in development
+    if (!origin || config.nodeEnv === 'development' || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error(`CORS policy blocked access from origin: ${origin}`));
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

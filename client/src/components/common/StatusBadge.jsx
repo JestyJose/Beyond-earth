@@ -33,6 +33,14 @@ const STATUS_CONFIG = {
     dot: 'bg-amber-400',
     pulse: false
   },
+  SURFACE_IMPACT_DESTROYED: {
+    label: 'Surface Impact (Concluded)',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/30',
+    text: 'text-amber-300',
+    dot: 'bg-amber-300',
+    pulse: false
+  },
   LOST_CONTACT: {
     label: 'Lost Contact',
     bg: 'bg-rose-500/10',

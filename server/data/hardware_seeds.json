@@ -12,7 +12,7 @@
     "mission_purpose": "Originally designed to explore Jupiter and Saturn and their rings and moons. Following its primary mission, it embarked on the Voyager Interstellar Mission to characterize the outer boundaries of the heliosphere and interstellar space.",
     "historical_significance": "The farthest human-made object from Earth and the first machine to cross the heliopause into interstellar space (August 25, 2012). Carries the famous Golden Record containing sounds and images of Earth.",
     "power_source": "Radioisotope Thermoelectric Generators (MHW-RTG) powered by Plutonium-238",
-    "mass_kg": 815.0,
+    "mass_kg": 815,
     "image_url": "https://images-assets.nasa.gov/image/PIA17049/PIA17049~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -94,6 +94,11 @@
         "url": "https://voyager.jpl.nasa.gov/mission/status/",
         "quotation_or_reference": "Voyager Mission Status & Telemetry Updates"
       }
+    ],
+    "visited_destination_slugs": [
+      "jupiter",
+      "saturn",
+      "interstellar-space"
     ]
   },
   {
@@ -109,7 +114,7 @@
     "mission_purpose": "Designed to conduct a grand tour of Jupiter, Saturn, Uranus, and Neptune using rare planetary gravitational alignment.",
     "historical_significance": "The only spacecraft in human history to visit all four giant outer planets (Jupiter, Saturn, Uranus, and Neptune) and the second machine to enter interstellar space.",
     "power_source": "Radioisotope Thermoelectric Generators (MHW-RTG)",
-    "mass_kg": 815.0,
+    "mass_kg": 815,
     "image_url": "https://images-assets.nasa.gov/image/PIA02219/PIA02219~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -172,7 +177,20 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1977-076A",
         "quotation_or_reference": "NSSDC ID: 1977-076A | Grand Tour Profile"
+      },
+      {
+        "title": "NASA JPL Voyager 2 Science & Status Archives",
+        "source_type": "JPL",
+        "url": "https://voyager.jpl.nasa.gov/mission/status/",
+        "quotation_or_reference": "Voyager 2 Telemetry & Grand Tour Ephemeris"
       }
+    ],
+    "visited_destination_slugs": [
+      "jupiter",
+      "saturn",
+      "uranus",
+      "neptune",
+      "interstellar-space"
     ]
   },
   {
@@ -188,7 +206,7 @@
     "mission_purpose": "Seek signs of ancient microbial life, characterize Mars' past climate and geology, test oxygen generation from atmospheric CO2, and cache rock samples for Earth return.",
     "historical_significance": "Carried the Ingenuity Mars Helicopter (the first powered flight on another planet) and generated breathable oxygen on Mars using MOXIE.",
     "power_source": "Multi-Mission Radioisotope Thermoelectric Generator (MMRTG)",
-    "mass_kg": 1025.0,
+    "mass_kg": 1025,
     "image_url": "https://images-assets.nasa.gov/image/PIA24487/PIA24487~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -285,7 +303,7 @@
     "mission_purpose": "Assess whether Mars ever had an environment capable of supporting microbial life (planetary habitability).",
     "historical_significance": "First rover to use the revolutionary rocket-powered Sky Crane landing architecture and discovered definitive evidence of ancient freshwater lakes and organic molecules on Mars.",
     "power_source": "Multi-Mission Radioisotope Thermoelectric Generator (MMRTG)",
-    "mass_kg": 899.0,
+    "mass_kg": 899,
     "image_url": "https://images-assets.nasa.gov/image/PIA16239/PIA16239~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -354,6 +372,12 @@
         "source_type": "JPL",
         "url": "https://mars.nasa.gov/msl/",
         "quotation_or_reference": "JPL Curiosity Mission Archives & Science Papers"
+      },
+      {
+        "title": "NASA NSSDCA: Mars Science Laboratory (Curiosity)",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2011-070A",
+        "quotation_or_reference": "NSSDC ID: 2011-070A"
       }
     ]
   },
@@ -370,7 +394,7 @@
     "mission_purpose": "Study Saturn, its magnificent ring systems, magnetic field, and extensive moon system in unprecedented detail.",
     "historical_significance": "Discovered subsurface global saltwater ocean and geysers on Enceladus, dropped the ESA Huygens probe onto Titan's hydrocarbon surface, and revolutionized our understanding of ocean worlds.",
     "power_source": "3 General Purpose Heat Source Radioisotope Thermoelectric Generators (GPHS-RTG)",
-    "mass_kg": 5712.0,
+    "mass_kg": 5712,
     "image_url": "https://images-assets.nasa.gov/image/PIA03883/PIA03883~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -467,7 +491,7 @@
     "mission_purpose": "Conduct the first reconnaissance of the Pluto system and explore the ancient relics of the Kuiper Belt.",
     "historical_significance": "Fastest spacecraft ever launched from Earth at departure (16.26 km/s); transformed Pluto from an indistinct dot into an active world of nitrogen glaciers and mountain ranges.",
     "power_source": "Radioisotope Thermoelectric Generator (GPHS-RTG)",
-    "mass_kg": 478.0,
+    "mass_kg": 478,
     "image_url": "https://images-assets.nasa.gov/image/PIA19952/PIA19952~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -530,7 +554,17 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://science.nasa.gov/mission/new-horizons/",
         "quotation_or_reference": "NASA New Horizons Science Overview"
+      },
+      {
+        "title": "NASA JHUAPL New Horizons Mission Portal",
+        "source_type": "JPL",
+        "url": "http://pluto.jhuapl.edu/",
+        "quotation_or_reference": "New Horizons Science Payload & Kuiper Belt Observations"
       }
+    ],
+    "visited_destination_slugs": [
+      "jupiter",
+      "kuiper-belt"
     ]
   },
   {
@@ -546,7 +580,7 @@
     "mission_purpose": "Study the deep interior of Mars using seismology, geodesy, and heat transport to understand how rocky planets formed.",
     "historical_significance": "Placed the first ultra-sensitive seismometer directly on the surface of Mars, detecting over 1,300 'marsquakes' and mapping the Martian crust, mantle, and molten liquid iron core.",
     "power_source": "Dual 2.15-meter UltraFlex solar arrays",
-    "mass_kg": 358.0,
+    "mass_kg": 358,
     "image_url": "https://images-assets.nasa.gov/image/PIA22232/PIA22232~orig.jpg",
     "is_featured": false,
     "instruments": [
@@ -603,6 +637,12 @@
         "source_type": "JPL",
         "url": "https://mars.nasa.gov/insight/",
         "quotation_or_reference": "InSight Telemetry Archive & Mission Closeout Report"
+      },
+      {
+        "title": "NASA NSSDCA: InSight Lander",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2018-042A",
+        "quotation_or_reference": "NSSDC ID: 2018-042A"
       }
     ]
   },
@@ -619,7 +659,7 @@
     "mission_purpose": "Search for geological clues regarding past water activity on Mars.",
     "historical_significance": "Holds the off-world driving record (over a marathon distance of 45.16 km) and discovered hematite 'blueberries', providing the first definitive ground truth that liquid water soaked ancient Mars.",
     "power_source": "Solar cell arrays generating up to 140 W",
-    "mass_kg": 185.0,
+    "mass_kg": 185,
     "image_url": "https://images-assets.nasa.gov/image/PIA05208/PIA05208~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -682,6 +722,12 @@
         "source_type": "JPL",
         "url": "https://mars.nasa.gov/mer/",
         "quotation_or_reference": "MER Mission Archive & Science Papers"
+      },
+      {
+        "title": "NASA NSSDCA: Mars Exploration Rover - Opportunity",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-032A",
+        "quotation_or_reference": "NSSDC ID: 2003-032A"
       }
     ]
   },
@@ -693,12 +739,12 @@
     "launch_date": "1969-07-16",
     "launch_vehicle": "Saturn V",
     "operational_status": "INACTIVE_SURFACE",
-    "status_verified_date": "1969-07-24",
-    "status_summary": "Rests permanently at Tranquility Base (0.67408 deg N, 23.47297 deg E) on the Moon. Served as the launch pad when the Ascent Stage lifted Neil Armstrong and Buzz Aldrin back into lunar orbit.",
+    "status_verified_date": "2012-03-07",
+    "status_summary": "Rests permanently at Tranquility Base (0.67408 deg N, 23.47297 deg E) on the Moon. High-resolution orbital photography by NASA's Lunar Reconnaissance Orbiter (LRO) in 2009 and 2012 confirmed the descent stage, scientific equipment (EASEP), and astronaut footpaths remain undisturbed in the lunar vacuum.",
     "mission_purpose": "Achieve the national goal set by President John F. Kennedy of landing humans on the Moon and returning them safely to Earth.",
     "historical_significance": "The historic first human landing on another celestial body (July 20, 1969). The Descent Stage remains an immortal monument to human exploration and engineering.",
     "power_source": "5 silver-zinc batteries",
-    "mass_kg": 2034.0,
+    "mass_kg": 2034,
     "image_url": "https://images-assets.nasa.gov/image/AS11-40-5922/AS11-40-5922~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -755,6 +801,12 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://www.nasa.gov/mission/apollo-11/",
         "quotation_or_reference": "NSSDC ID: 1969-059C (Lunar Module Descent Stage)"
+      },
+      {
+        "title": "NASA Lunar Reconnaissance Orbiter (LRO) Apollo 11 Site Confirmation",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://www.nasa.gov/mission/lunar-reconnaissance-orbiter/",
+        "quotation_or_reference": "LRO Narrow Angle Camera (NAC) Feature: Tranquility Base Coordinates Confirmed"
       }
     ]
   },
@@ -771,7 +823,7 @@
     "mission_purpose": "Understand the origin and evolution of Jupiter, map its magnetic and gravitational fields, and measure atmospheric water content.",
     "historical_significance": "Farthest solar-powered spacecraft in history; penetrated Jupiter's radiation belts to reveal that Jupiter has a fuzzy, diluted core and deep atmospheric roots.",
     "power_source": "Three 9-meter solar array panels generating ~500 W at Jupiter",
-    "mass_kg": 3625.0,
+    "mass_kg": 3625,
     "image_url": "https://images-assets.nasa.gov/image/PIA21985/PIA21985~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -834,6 +886,12 @@
         "source_type": "JPL",
         "url": "https://www.nasa.gov/mission/juno/",
         "quotation_or_reference": "NSSDC ID: 2011-040A | Juno Polar Science"
+      },
+      {
+        "title": "NASA NSSDCA: Juno Jupiter Orbiter",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2011-040A",
+        "quotation_or_reference": "NSSDC ID: 2011-040A"
       }
     ]
   },
@@ -850,7 +908,7 @@
     "mission_purpose": "Trace the flow of energy that heats the solar corona and accelerates the supersonic solar wind.",
     "historical_significance": "The fastest human-made object in history, the closest machine to the Sun, and the first NASA spacecraft named after a living scientist (Dr. Eugene Parker). Protected by an 11.4 cm carbon-composite heat shield that endures 1,400 deg C.",
     "power_source": "Liquid-cooled solar array system",
-    "mass_kg": 685.0,
+    "mass_kg": 685,
     "image_url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000492/GSFC_20171208_Archive_e000492~orig.jpg",
     "is_featured": true,
     "instruments": [
@@ -907,6 +965,12 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://www.nasa.gov/mission/parker-solar-probe/",
         "quotation_or_reference": "NSSDC ID: 2018-065A | Parker Solar Probe Science Team"
+      },
+      {
+        "title": "JHUAPL Parker Solar Probe Science Operations",
+        "source_type": "JPL",
+        "url": "http://parkersolarprobe.jhuapl.edu/",
+        "quotation_or_reference": "Parker Solar Probe Telemetry & Science Instruments"
       }
     ]
   },
@@ -923,7 +987,7 @@
     "mission_purpose": "First mission to transit the dangerous asteroid belt and make direct observations of Jupiter.",
     "historical_significance": "First spacecraft to traverse the Asteroid Belt and first to fly past Jupiter (Dec 3, 1973). Carries the iconic gold-anodized Pioneer Plaque depicting human figures and our solar system's address.",
     "power_source": "SNAP-19 Radioisotope Thermoelectric Generators",
-    "mass_kg": 258.0,
+    "mass_kg": 258,
     "image_url": "https://images-assets.nasa.gov/image/ARC-1972-AC72-1400/ARC-1972-AC72-1400~orig.jpg",
     "is_featured": false,
     "instruments": [
@@ -980,7 +1044,17 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-012A",
         "quotation_or_reference": "NSSDC ID: 1972-012A | Pioneer 10 Mission Summary"
+      },
+      {
+        "title": "NASA Ames Pioneer 10 Mission Summary",
+        "source_type": "JPL",
+        "url": "https://www.nasa.gov/centers-and-facilities/ames/pioneer-10-background/",
+        "quotation_or_reference": "Pioneer 10 Final Telemetry & Trajectory"
       }
+    ],
+    "visited_destination_slugs": [
+      "jupiter",
+      "interstellar-space"
     ]
   },
   {
@@ -996,7 +1070,7 @@
     "mission_purpose": "Study Jupiter and perform the first historic flyby of Saturn and its rings.",
     "historical_significance": "First spacecraft to fly past Saturn (Sept 1, 1979), discovering Saturn's F-ring and paving the pathway for the Voyager spacecraft.",
     "power_source": "SNAP-19 Radioisotope Thermoelectric Generators",
-    "mass_kg": 259.0,
+    "mass_kg": 259,
     "image_url": "https://images-assets.nasa.gov/image/ARC-1974-AC74-7043/ARC-1974-AC74-7043~orig.jpg",
     "is_featured": false,
     "instruments": [
@@ -1047,7 +1121,18 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1973-019A",
         "quotation_or_reference": "NSSDC ID: 1973-019A"
+      },
+      {
+        "title": "NASA Ames Pioneer 11 Mission Summary",
+        "source_type": "JPL",
+        "url": "https://www.nasa.gov/centers-and-facilities/ames/pioneer-11-background/",
+        "quotation_or_reference": "Pioneer 11 Final Telemetry Record"
       }
+    ],
+    "visited_destination_slugs": [
+      "jupiter",
+      "saturn",
+      "interstellar-space"
     ]
   },
   {
@@ -1063,7 +1148,7 @@
     "mission_purpose": "First dedicated orbiter of Jupiter and deployed the first atmospheric descent probe into a gas giant.",
     "historical_significance": "Discovered evidence of a subsurface liquid ocean on Europa and volcanic activity on Io; observed Comet Shoemaker-Levy 9 smashing into Jupiter.",
     "power_source": "Two GPHS-RTG nuclear units",
-    "mass_kg": 2564.0,
+    "mass_kg": 2564,
     "image_url": "https://images-assets.nasa.gov/image/PIA00136/PIA00136~orig.jpg",
     "is_featured": false,
     "instruments": [
@@ -1114,6 +1199,12 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1989-084B",
         "quotation_or_reference": "NSSDC ID: 1989-084B"
+      },
+      {
+        "title": "NASA JPL Galileo Legacy Archive",
+        "source_type": "JPL",
+        "url": "https://science.nasa.gov/mission/galileo/",
+        "quotation_or_reference": "JPL Galileo Jupiter Tour Science Summary"
       }
     ]
   },
@@ -1130,7 +1221,7 @@
     "mission_purpose": "Obtain high-resolution imagery of Mars, characterize surface composition, and conduct first automated biology experiments.",
     "historical_significance": "First American spacecraft to safely touch down on Mars and complete its mission, transmitting the historic first clear photographs from the Martian surface.",
     "power_source": "Two SNAP-19 Radioisotope Thermoelectric Generators",
-    "mass_kg": 572.0,
+    "mass_kg": 572,
     "image_url": "https://images-assets.nasa.gov/image/PIA00563/PIA00563~orig.jpg",
     "is_featured": false,
     "instruments": [
@@ -1181,6 +1272,12 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1975-075C",
         "quotation_or_reference": "NSSDC ID: 1975-075C"
+      },
+      {
+        "title": "NASA JPL Viking 1 Mission Archive",
+        "source_type": "JPL",
+        "url": "https://science.nasa.gov/mission/viking-1/",
+        "quotation_or_reference": "JPL Viking 1 Lander Summary"
       }
     ]
   },
@@ -1191,13 +1288,13 @@
     "destination_slug": "mercury",
     "launch_date": "2004-08-03",
     "launch_vehicle": "Delta II 7925H",
-    "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED",
+    "operational_status": "SURFACE_IMPACT_DESTROYED",
     "status_verified_date": "2015-04-30",
-    "status_summary": "Concluded its four-year orbital mission on April 30, 2015, with an intentional high-speed impact into Mercury's surface at 14,000 km/h after completely expelling its hydrazine propellant.",
+    "status_summary": "Concluded its four-year orbital mission on April 30, 2015. Because Mercury has no atmosphere to burn up in, the propellant-depleted spacecraft was guided into an intentional high-speed surface impact at 14,000 km/h, excavating an estimated 16-meter crater.",
     "mission_purpose": "Map the entire surface of Mercury, analyze its magnetic field, and investigate polar craters.",
     "historical_significance": "First spacecraft to ever orbit Mercury; revolutionized our understanding of the innermost planet.",
     "power_source": "Gallium Arsenide solar array panels with ceramic cloth sunshade",
-    "mass_kg": 507.0,
+    "mass_kg": 507,
     "image_url": "https://images-assets.nasa.gov/image/PIA11364/PIA11364~orig.jpg",
     "is_featured": false,
     "instruments": [
@@ -1248,6 +1345,152 @@
         "source_type": "NASA_NSSDCA",
         "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2004-030A",
         "quotation_or_reference": "NSSDC ID: 2004-030A"
+      }
+    ]
+  },
+  {
+    "slug": "magellan",
+    "name": "Magellan",
+    "category": "ORBITER",
+    "destination_slug": "venus",
+    "launch_date": "1989-05-04",
+    "launch_vehicle": "Space Shuttle Atlantis (STS-30)",
+    "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED",
+    "status_verified_date": "1994-10-13",
+    "status_summary": "Concluded its mission on October 13, 1994, when ground controllers commanded it to plunge into Venus's dense carbon dioxide atmosphere during Project Windmill, collecting atmospheric drag data until vaporization.",
+    "mission_purpose": "Map 98% of Venus's surface through its thick cloud cover using synthetic aperture radar at high resolution.",
+    "historical_significance": "First planetary spacecraft launched from a Space Shuttle. Revolutionized planetary geology by proving Venus has a relatively young volcanic surface with towering shield volcanoes and extensive lava rivers.",
+    "power_source": "Gallium Arsenide solar arrays",
+    "mass_kg": 3445,
+    "image_url": "https://images-assets.nasa.gov/image/PIA00271/PIA00271~orig.jpg",
+    "is_featured": false,
+    "instruments": [
+      {
+        "name": "Synthetic Aperture Radar",
+        "acronym": "SAR",
+        "purpose_student_friendly": "Pierced through Venus's impenetrable acid clouds using radar waves to draw razor-sharp surface maps.",
+        "technical_description": "S-band radar operating at 2.385 GHz creating radar swaths with 75-120 meter resolution."
+      },
+      {
+        "name": "Radar Altimeter",
+        "acronym": "ALT",
+        "purpose_student_friendly": "Measured the exact elevation of mountains and craters like a space tape measure.",
+        "technical_description": "Nadir-pointing radar altimeter measuring surface topography to 30 meter vertical precision."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1989-05-04",
+        "title": "Deployed from Shuttle Atlantis",
+        "description": "First planetary spacecraft released from a Space Shuttle cargo bay.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1990-08-10",
+        "title": "Venus Orbit Insertion",
+        "description": "Fired solid rocket motor to enter polar elliptical orbit around Venus.",
+        "event_type": "ORBIT_INSERTION"
+      },
+      {
+        "date": "1994-10-13",
+        "title": "Project Windmill Atmospheric Entry",
+        "description": "Guided into the upper atmosphere to measure aerodynamic torque before destruction.",
+        "event_type": "FINAL_SIGNAL"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Venusian Surface Dominated by Volcanism",
+        "plain_english_summary": "Discovered that 85% of Venus is covered in volcanic basalt plains with hundreds of giant shield volcanoes and molten pancake domes.",
+        "why_it_matters": "Revealed how rocky planets evolve geologically without Earth-like plate tectonics.",
+        "scientific_domain": "GEOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA Master Catalog: Magellan",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1989-033B",
+        "quotation_or_reference": "NSSDC ID: 1989-033B | Magellan Mission Profile"
+      },
+      {
+        "title": "NASA JPL Magellan Venus Mission Archives",
+        "source_type": "JPL",
+        "url": "https://www.jpl.nasa.gov/missions/magellan",
+        "quotation_or_reference": "JPL Magellan Mission Summary & Radar Datasets"
+      }
+    ]
+  },
+  {
+    "slug": "hubble",
+    "name": "Hubble Space Telescope",
+    "category": "OBSERVATORY",
+    "destination_slug": "earth",
+    "launch_date": "1990-04-24",
+    "launch_vehicle": "Space Shuttle Discovery (STS-31)",
+    "operational_status": "OPERATIONAL",
+    "status_verified_date": "2026-11-01",
+    "status_summary": "Operating in low Earth orbit (~535 km altitude) for over 36 years. Continues delivering breakthrough astronomical observations following five astronaut servicing missions.",
+    "mission_purpose": "Gather ultra-sharp optical, ultraviolet, and near-infrared images of planets, stars, and distant galaxies free from Earth's atmospheric distortion.",
+    "historical_significance": "One of the most transformative scientific instruments ever built; measured the age and expansion rate of the universe and proved supermassive black holes exist at galaxy centers.",
+    "power_source": "Two 25-foot solar arrays generating ~2,800 W with nickel-hydrogen batteries",
+    "mass_kg": 11110,
+    "image_url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001828/GSFC_20171208_Archive_e001828~orig.jpg",
+    "is_featured": true,
+    "instruments": [
+      {
+        "name": "Wide Field Camera 3",
+        "acronym": "WFC3",
+        "purpose_student_friendly": "The telescope's primary high-resolution camera, taking dazzling wide-angle color photos across optical, UV, and infrared light.",
+        "technical_description": "Panchromatic camera spanning 200 nm to 1700 nm wavelengths."
+      },
+      {
+        "name": "Cosmic Origins Spectrograph",
+        "acronym": "COS",
+        "purpose_student_friendly": "Breaks ultraviolet starlight into rainbows to study the chemical composition and temperature of intergalactic gas.",
+        "technical_description": "Far-ultraviolet and near-ultraviolet high-throughput spectrograph."
+      }
+    ],
+    "milestones": [
+      {
+        "date": "1990-04-24",
+        "title": "Launch aboard Shuttle Discovery",
+        "description": "Deployed into low Earth orbit at an altitude of 600 kilometers.",
+        "event_type": "LAUNCH"
+      },
+      {
+        "date": "1993-12-02",
+        "title": "Historic First Servicing Mission (STS-61)",
+        "description": "Spacewalking astronauts installed COSTAR corrective optics, restoring crystal-clear vision.",
+        "event_type": "MILESTONE"
+      },
+      {
+        "date": "1995-12-18",
+        "title": "The Hubble Deep Field",
+        "description": "Stared at an empty patch of space for 10 days, revealing thousands of previously unseen distant galaxies.",
+        "event_type": "DISCOVERY"
+      }
+    ],
+    "discoveries": [
+      {
+        "title": "Accelerating Expansion of the Universe (Dark Energy)",
+        "plain_english_summary": "By observing distant exploding stars (supernovae), Hubble helped prove that the expansion of the universe is speeding up due to mysterious dark energy.",
+        "why_it_matters": "Fundamentally transformed cosmology, proving that 68% of the universe consists of unknown dark energy.",
+        "scientific_domain": "COSMOLOGY"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NSSDCA Master Catalog: Hubble",
+        "source_type": "NASA_NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1990-037B",
+        "quotation_or_reference": "NSSDC ID: 1990-037B | Hubble Mission Overview"
+      },
+      {
+        "title": "NASA Goddard Hubble Space Telescope Portal",
+        "source_type": "JPL",
+        "url": "https://science.nasa.gov/mission/hubble/",
+        "quotation_or_reference": "NASA Science Mission Directorate: Hubble Operations"
       }
     ]
   }

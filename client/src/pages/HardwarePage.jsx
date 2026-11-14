@@ -92,7 +92,8 @@ export default function HardwarePage() {
                 <option value="OPERATIONAL">Operational</option>
                 <option value="INACTIVE_SURFACE">Resting on Surface</option>
                 <option value="DEEP_SPACE_TRAVELLING">Deep Space Travelling</option>
-                <option value="ATMOSPHERIC_ENTRY_DESTROYED">Mission Concluded</option>
+                <option value="ATMOSPHERIC_ENTRY_DESTROYED">Atmospheric Entry</option>
+                <option value="SURFACE_IMPACT_DESTROYED">Surface Impact</option>
               </select>
             </div>
 

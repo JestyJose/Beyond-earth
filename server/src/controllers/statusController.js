@@ -18,6 +18,7 @@ export const getStatusSummary = (req, res, next) => {
       INACTIVE_SURFACE: 0,
       DEEP_SPACE_TRAVELLING: 0,
       ATMOSPHERIC_ENTRY_DESTROYED: 0,
+      SURFACE_IMPACT_DESTROYED: 0,
       LOST_CONTACT: 0
     };
 
