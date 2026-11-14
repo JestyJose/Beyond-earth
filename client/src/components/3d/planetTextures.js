@@ -236,6 +236,42 @@ export function getPlanetTexture(slug) {
       });
       break;
 
+    case 'ceres':
+    case 'asteroid-belt':
+      texture = createProceduralCanvas(512, 256, (ctx, w, h) => {
+        // Dark carbonaceous gray base
+        ctx.fillStyle = '#4A4B4F';
+        ctx.fillRect(0, 0, w, h);
+        // Surface craters and tonal variations
+        for (let i = 0; i < 240; i++) {
+          const x = Math.random() * w;
+          const y = Math.random() * h;
+          const r = Math.random() * 5 + 1;
+          ctx.fillStyle = i % 2 === 0 ? '#38393D' : '#5E6066';
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // Occator Crater Bright Spots (Cerealia & Vinalia Faculae - sodium carbonate salts)
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.arc(w * 0.48, h * 0.45, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.beginPath();
+        ctx.arc(w * 0.48, h * 0.45, 12, 0, Math.PI * 2);
+        ctx.fill();
+        for (let j = 0; j < 6; j++) {
+          const ox = w * 0.48 + (Math.random() - 0.5) * 16;
+          const oy = h * 0.45 + (Math.random() - 0.5) * 16;
+          ctx.fillStyle = '#FFFFFF';
+          ctx.beginPath();
+          ctx.arc(ox, oy, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+      break;
+
     default:
       texture = createProceduralCanvas(128, 64, (ctx, w, h) => {
         ctx.fillStyle = '#94A3B8';

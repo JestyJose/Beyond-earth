@@ -73,6 +73,18 @@ export const DEFAULT_DESTINATIONS = [
     "active_hardware_count": 2
   },
   {
+    "slug": "asteroid-belt",
+    "name": "Main Asteroid Belt & Ceres",
+    "type": "ASTEROID_BELT",
+    "distance_from_sun_au": 2.77,
+    "diameter_km": 940,
+    "description": "A vast doughnut-shaped ring of millions of rocky and metallic remnants left over from the formation of the solar system between Mars and Jupiter. It is home to dwarf planet Ceres, giant asteroid Vesta, and thousands of ancient planetesimals explored by NASA's Dawn mission.",
+    "color": "#A8A29E",
+    "texture_key": "asteroid",
+    "hardware_count": 3,
+    "active_hardware_count": 0
+  },
+  {
     "slug": "jupiter",
     "name": "Jupiter",
     "type": "PLANET",
@@ -237,6 +249,35 @@ export const DEFAULT_DESTINATION_HARDWARE = {
       "destination_slug": "mars",
       "launch_date": "1975-08-20",
       "operational_status": "INACTIVE_SURFACE"
+    }
+  ],
+  "asteroid-belt": [
+    {
+      "slug": "dawn",
+      "name": "Dawn Spacecraft",
+      "category": "ORBITER",
+      "destination_slug": "asteroid-belt",
+      "launch_date": "2007-09-27",
+      "operational_status": "INACTIVE_ORBIT",
+      "status_summary": "In a perpetual silent orbit around dwarf planet Ceres after becoming the first spacecraft to orbit two extraterrestrial bodies (Vesta and Ceres)."
+    },
+    {
+      "slug": "galileo",
+      "name": "Galileo (Asteroid Flybys)",
+      "category": "ORBITER",
+      "destination_slug": "jupiter",
+      "launch_date": "1989-10-18",
+      "operational_status": "ATMOSPHERIC_ENTRY_DESTROYED",
+      "status_summary": "Made history with the first close asteroid encounters: 951 Gaspra (1991) and 243 Ida (1993), discovering Dactyl, the first known asteroid moon."
+    },
+    {
+      "slug": "pioneer-10",
+      "name": "Pioneer 10 (First Belt Crossing)",
+      "category": "DEEP_SPACE_PROBE",
+      "destination_slug": "interstellar-space",
+      "launch_date": "1972-03-03",
+      "operational_status": "INACTIVE_DEEP_SPACE",
+      "status_summary": "First human artifact to safely traverse the Main Asteroid Belt (1972–1973), proving that asteroid density allows safe navigation."
     }
   ],
   "jupiter": [

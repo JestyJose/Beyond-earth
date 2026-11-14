@@ -215,7 +215,15 @@ export default function SolarSystemPage() {
                               className="w-8 h-8 rounded-full flex items-center justify-center shadow-md relative"
                               style={{ backgroundColor: dest.color || '#38BDF8' }}
                             >
-                              <div className="w-2.5 h-2.5 rounded-full bg-white/40" />
+                              {dest.slug === 'asteroid-belt' ? (
+                                <div className="flex items-center gap-0.5">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-white/90" />
+                                  <div className="w-1 h-1 rounded-full bg-white/60" />
+                                  <div className="w-1.5 h-1.5 rounded-full bg-white/90" />
+                                </div>
+                              ) : (
+                                <div className="w-2.5 h-2.5 rounded-full bg-white/40" />
+                              )}
                             </div>
 
                             <div>
@@ -324,6 +332,61 @@ export default function SolarSystemPage() {
                     <p className="mt-2 text-xs text-slate-300 leading-relaxed">
                       {selectedDest.description}
                     </p>
+
+                    {/* Educational Dossier: Main Asteroid Belt & Ceres Deep Dive */}
+                    {selectedDest.slug === 'asteroid-belt' && (
+                      <div className="mt-4 p-3.5 rounded-2xl bg-space-navy/90 border border-amber-500/30 space-y-3">
+                        <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-300">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                          <span>Asteroid Belt Science Dossier</span>
+                        </div>
+
+                        {/* Location & Orbital Gulf */}
+                        <div className="text-[11px] text-slate-300 leading-relaxed">
+                          <span className="font-semibold text-white">Location:</span> Situated in the vast 140-million-km gap between the orbits of <strong className="text-amber-200">Mars (1.52 AU)</strong> and <strong className="text-amber-200">Jupiter (5.2 AU)</strong>, spanning 2.2 to 3.2 AU from the Sun.
+                        </div>
+
+                        {/* Planetesimals & Jupiter Gravity */}
+                        <div className="text-[11px] text-slate-300 leading-relaxed">
+                          <span className="font-semibold text-white">Cosmic Origin:</span> Millions of primitive rocky fragments left over from the birth of the solar system 4.6 billion years ago. They were prevented from coalescing into a planet by the intense gravitational tides of nearby proto-Jupiter.
+                        </div>
+
+                        {/* Queen of the Belt: Dwarf Planet Ceres */}
+                        <div className="p-2.5 rounded-xl bg-space-black/60 border border-white/5 space-y-1">
+                          <div className="text-[11.5px] font-heading font-bold text-white flex items-center justify-between">
+                            <span>Dwarf Planet Ceres</span>
+                            <span className="text-[10px] font-mono text-space-cyan">940 km Diameter</span>
+                          </div>
+                          <p className="text-[10.5px] text-slate-300 leading-relaxed">
+                            Ceres accounts for nearly <strong>one-third of the entire belt's mass</strong>. Large enough to be shaped into a sphere by its own gravity, Ceres has a rocky core, a water-ice mantle, and famous bright sodium carbonate salt deposits inside <em>Occator Crater</em>, discovered up close by NASA's <strong>Dawn</strong> mission.
+                          </p>
+                        </div>
+
+                        {/* Composition Types */}
+                        <div className="grid grid-cols-3 gap-1.5 text-[9.5px] font-mono text-center pt-1">
+                          <div className="p-1.5 rounded-lg bg-white/5 border border-white/5">
+                            <span className="text-slate-400 block">C-Type (75%)</span>
+                            <span className="text-white font-semibold">Carbonaceous</span>
+                          </div>
+                          <div className="p-1.5 rounded-lg bg-white/5 border border-white/5">
+                            <span className="text-slate-400 block">S-Type (17%)</span>
+                            <span className="text-white font-semibold">Stony Silicate</span>
+                          </div>
+                          <div className="p-1.5 rounded-lg bg-white/5 border border-white/5">
+                            <span className="text-slate-400 block">M-Type (8%)</span>
+                            <span className="text-white font-semibold">Metallic Fe-Ni</span>
+                          </div>
+                        </div>
+
+                        {/* Space Navigation Fact */}
+                        <div className="text-[10px] font-mono text-slate-400 border-t border-white/5 pt-2 flex items-start gap-1.5">
+                          <Info className="w-3.5 h-3.5 text-space-cyan shrink-0 mt-0.5" />
+                          <span>
+                            Unlike sci-fi movies, asteroids are separated by an average distance of over 1 to 3 million km—NASA probes like Pioneer 10, Voyager, Galileo, and New Horizons sailed through with zero collisions!
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Hardware at this Destination */}

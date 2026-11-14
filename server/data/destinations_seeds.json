@@ -60,6 +60,16 @@
     "texture_key": "mars"
   },
   {
+    "slug": "asteroid-belt",
+    "name": "Main Asteroid Belt & Ceres",
+    "type": "ASTEROID_BELT",
+    "distance_from_sun_au": 2.77,
+    "diameter_km": 940,
+    "description": "A vast doughnut-shaped ring of millions of rocky and metallic remnants left over from the formation of the solar system between Mars and Jupiter. It is home to dwarf planet Ceres, giant asteroid Vesta, and thousands of ancient planetesimals explored by NASA's Dawn mission.",
+    "color": "#A8A29E",
+    "texture_key": "asteroid"
+  },
+  {
     "slug": "jupiter",
     "name": "Jupiter",
     "type": "PLANET",

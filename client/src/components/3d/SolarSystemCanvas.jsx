@@ -6,6 +6,7 @@ import Sun from './Sun';
 import Planet from './Planet';
 import CameraDirector from './CameraDirector';
 import SpacecraftBeacon from './SpacecraftBeacon';
+import AsteroidBelt from './AsteroidBelt';
 import { getPlanetTexture } from './planetTextures';
 import { DEFAULT_DESTINATIONS } from '../../data/defaultDestinations';
 
@@ -49,6 +50,7 @@ const PLANET_CONFIG = {
   'earth': { orbitRadius: 29, radius: 1.1, angle: 2.15, speed: 0.5, beaconType: 'orbit' },
   'moon': { isLunar: true, radius: 0.42, localDistance: 2.6, speed: 0.6, beaconType: 'surface' },
   'mars': { orbitRadius: 42, radius: 0.85, angle: 3.10, speed: 0.45, beaconType: 'surface' },
+  'asteroid-belt': { orbitRadius: 50, radius: 1.8, angle: 2.10, speed: 0.35, isBelt: true },
   'jupiter': { orbitRadius: 58, radius: 2.8, angle: 4.05, speed: 0.3, beaconType: 'orbit' },
   'saturn': { orbitRadius: 78, radius: 2.3, angle: 5.15, speed: 0.25, hasRings: true, beaconType: 'flyby' },
   'uranus': { orbitRadius: 98, radius: 1.6, angle: 0.85, speed: 0.2, beaconType: 'flyby' },
@@ -166,8 +168,18 @@ export default function SolarSystemCanvas({
     return activeDestinations.find((d) => d.slug === 'moon') || { slug: 'moon', name: 'The Moon', hardware_count: 1 };
   }, [activeDestinations]);
 
+  const asteroidBeltDest = useMemo(() => {
+    return activeDestinations.find((d) => d.slug === 'asteroid-belt') || {
+      slug: 'asteroid-belt',
+      name: 'Main Asteroid Belt & Ceres',
+      type: 'ASTEROID_BELT',
+      distance_from_sun_au: 2.77,
+      hardware_count: 1
+    };
+  }, [activeDestinations]);
+
   const planetDestinations = useMemo(() => {
-    return activeDestinations.filter((d) => d.slug !== 'sun' && d.slug !== 'moon');
+    return activeDestinations.filter((d) => d.slug !== 'sun' && d.slug !== 'moon' && d.slug !== 'asteroid-belt');
   }, [activeDestinations]);
 
   // Synchronize camera target whenever selectedDest prop changes (supports Quick Jump dropdown!)
@@ -250,6 +262,16 @@ export default function SolarSystemCanvas({
             onSelect={handleSunSelect}
             isSelected={selectedDest?.slug === 'sun'}
             hardwareCount={sunDest.hardware_count || 1}
+          />
+
+          {/* Main Asteroid Belt between Mars (orbit 42) and Jupiter (orbit 58) */}
+          <AsteroidBelt
+            innerRadius={46.5}
+            outerRadius={53.5}
+            count={650}
+            isSelected={selectedDest?.slug === 'asteroid-belt'}
+            onSelect={(pos, d, r) => handlePlanetSelect(pos, d, r)}
+            destination={asteroidBeltDest}
           />
 
           {/* Planet Spheres & Orbit Lines */}
