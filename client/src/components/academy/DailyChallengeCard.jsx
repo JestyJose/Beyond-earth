@@ -132,9 +132,11 @@ export default function DailyChallengeCard({
               return (
                 <button
                   key={idx}
+                  type="button"
                   disabled={isSubmitted}
+                  aria-pressed={isSelected}
                   onClick={() => setSelectedIdx(idx)}
-                  className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between ${style}`}
+                  className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between focus-ring ${style}`}
                 >
                   <span>{opt}</span>
                   {isSubmitted && isCorrect && (
@@ -173,9 +175,10 @@ export default function DailyChallengeCard({
           {/* Action Button */}
           {!isSubmitted ? (
             <button
+              type="button"
               disabled={selectedIdx === null}
               onClick={handleSubmit}
-              className="w-full py-3 rounded-xl bg-amber-400 text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-amber-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md font-bold"
+              className="w-full py-3 rounded-xl bg-amber-400 text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-amber-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md font-bold focus-ring"
             >
               Lock In Daily Answer
             </button>

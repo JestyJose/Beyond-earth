@@ -93,7 +93,8 @@ export default function SolarSystemPage() {
             <div className="flex items-center gap-1 p-1 rounded-xl bg-space-navy border border-purple-500/25">
               <button
                 onClick={() => setViewMode('3d')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 ${
+                aria-pressed={viewMode === '3d'}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors flex items-center gap-1.5 focus-ring ${
                   viewMode === '3d'
                     ? 'btn-violet text-white font-bold shadow-violet-glow'
                     : 'text-slate-400 hover:text-white'
@@ -104,7 +105,8 @@ export default function SolarSystemPage() {
               </button>
               <button
                 onClick={() => setViewMode('schematic')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                aria-pressed={viewMode === 'schematic'}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors focus-ring ${
                   viewMode === 'schematic'
                     ? 'bg-purple-900/40 text-purple-200 border border-purple-500/40'
                     : 'text-slate-400 hover:text-white'
@@ -114,7 +116,8 @@ export default function SolarSystemPage() {
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                aria-pressed={viewMode === 'grid'}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors focus-ring ${
                   viewMode === 'grid'
                     ? 'bg-purple-900/40 text-purple-200 border border-purple-500/40'
                     : 'text-slate-400 hover:text-white'
@@ -128,7 +131,8 @@ export default function SolarSystemPage() {
             {viewMode === '3d' && (
               <button
                 onClick={handleResetCamera}
-                className="px-3 py-2 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-purple-500/25 text-slate-300 hover:text-purple-300 text-xs font-mono transition-colors flex items-center gap-1.5"
+                aria-label="Reset camera to overarching solar perspective"
+                className="px-3 py-2 rounded-xl bg-space-navy/90 hover:bg-space-navy border border-purple-500/25 text-slate-300 hover:text-purple-300 text-xs font-mono transition-colors flex items-center gap-1.5 focus-ring"
                 title="Reset camera to overarching solar perspective"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -151,12 +155,13 @@ export default function SolarSystemPage() {
           <div className="flex items-center gap-2 shrink-0">
             <span className="text-[11px] font-mono text-slate-400">Quick Jump:</span>
             <select
+              aria-label="Quick jump to celestial body"
               value={selectedDest?.slug || ''}
               onChange={(e) => {
                 const target = destinations.find(d => d.slug === e.target.value);
                 if (target) handleSelectDestination(target);
               }}
-              className="bg-space-black border border-purple-500/30 text-xs font-mono text-purple-200 px-2.5 py-1 rounded-lg focus:outline-none focus:border-purple-400"
+              className="bg-space-black border border-purple-500/30 text-xs font-mono text-purple-200 px-2.5 py-1 rounded-lg focus-ring"
             >
               {destinations.map((d) => (
                 <option key={d.slug} value={d.slug}>

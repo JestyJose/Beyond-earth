@@ -75,11 +75,14 @@ export default function TimelineEventCard({ milestone, onOpenDetail }) {
         </div>
 
         {/* Title */}
-        <h3
-          onClick={() => onOpenDetail(milestone)}
-          className="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-space-cyan transition-colors cursor-pointer"
-        >
-          {milestone.title}
+        <h3 className="font-heading font-bold text-lg sm:text-xl text-white">
+          <button
+            type="button"
+            onClick={() => onOpenDetail(milestone)}
+            className="text-left hover:text-purple-300 transition-colors focus-ring rounded"
+          >
+            {milestone.title}
+          </button>
         </h3>
 
         {/* Description */}
@@ -90,7 +93,7 @@ export default function TimelineEventCard({ milestone, onOpenDetail }) {
         {/* Educational Context Snippet if available */}
         {milestone.educational_context && milestone.educational_context !== milestone.description && (
           <div className="mt-3 p-3 rounded-xl bg-space-navy/80 border border-white/5 text-xs text-slate-300">
-            <span className="text-space-cyan font-mono font-semibold block mb-0.5 text-[10.5px] uppercase tracking-wide">
+            <span className="text-purple-300 font-mono font-semibold block mb-0.5 text-[10.5px] uppercase tracking-wide">
               Historical Context:
             </span>
             {milestone.educational_context}
@@ -102,10 +105,10 @@ export default function TimelineEventCard({ milestone, onOpenDetail }) {
           <div className="flex flex-wrap items-center gap-3">
             {/* Spacecraft Pill */}
             <div className="flex items-center gap-1.5 text-slate-300">
-              <Rocket className="w-3.5 h-3.5 text-space-violet shrink-0" />
+              <Rocket className="w-3.5 h-3.5 text-purple-300 shrink-0" />
               <Link
                 to={`/hardware/${milestone.hardware_slug}`}
-                className="hover:text-space-cyan transition-colors font-medium truncate max-w-[180px] sm:max-w-none"
+                className="hover:text-purple-300 transition-colors font-medium truncate max-w-[180px] sm:max-w-none focus-ring rounded"
                 title={milestone.hardware_name}
               >
                 {milestone.hardware_name}
@@ -113,8 +116,8 @@ export default function TimelineEventCard({ milestone, onOpenDetail }) {
             </div>
 
             {/* Destination Pill */}
-            <div className="flex items-center gap-1 text-slate-400">
-              <Compass className="w-3.5 h-3.5 text-space-cyan shrink-0" />
+            <div className="flex items-center gap-1 text-[#A99BBF]">
+              <Compass className="w-3.5 h-3.5 text-purple-300 shrink-0" />
               <span>{milestone.destination_name}</span>
             </div>
           </div>
@@ -123,7 +126,8 @@ export default function TimelineEventCard({ milestone, onOpenDetail }) {
           <div className="flex items-center gap-3 ml-auto">
             <button
               onClick={() => onOpenDetail(milestone)}
-              className="text-space-cyan hover:text-white flex items-center gap-1 text-xs font-medium transition-colors"
+              aria-label={`Inspect event details for ${milestone.title}`}
+              className="text-purple-300 hover:text-white flex items-center gap-1 text-xs font-medium transition-colors focus-ring rounded p-1"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>Inspect Event</span>
@@ -131,7 +135,7 @@ export default function TimelineEventCard({ milestone, onOpenDetail }) {
 
             <Link
               to={`/hardware/${milestone.hardware_slug}`}
-              className="text-slate-400 hover:text-space-cyan flex items-center gap-1 transition-colors"
+              className="text-[#A99BBF] hover:text-purple-300 flex items-center gap-1 transition-colors focus-ring rounded p-1"
             >
               <span>Craft &rarr;</span>
             </Link>

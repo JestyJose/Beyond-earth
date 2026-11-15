@@ -267,7 +267,14 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
       </div>
 
       {/* Progress Bar Track */}
-      <div className="w-full h-1.5 bg-space-black/60 rounded-full mb-6 overflow-hidden">
+      <div 
+        role="progressbar" 
+        aria-valuenow={currentIndex + 1} 
+        aria-valuemin={1} 
+        aria-valuemax={totalQuestions} 
+        aria-label={`Question ${currentIndex + 1} of ${totalQuestions}`}
+        className="w-full h-1.5 bg-space-black/60 rounded-full mb-6 overflow-hidden"
+      >
         <div
           className="h-full bg-gradient-to-r from-purple-500 to-violet-500 transition-all duration-300 ease-out"
           style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
@@ -280,7 +287,7 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
       </h3>
 
       {/* Answer Options */}
-      <div className="space-y-3 mb-6">
+      <div className="space-y-3 mb-6" role="group" aria-label="Answer options">
         {currentQ.options.map((option, idx) => {
           const isSelected = selectedOption === idx;
           const isCorrect = idx === currentQ.correct_option_index;
@@ -304,7 +311,8 @@ export default function InteractiveQuizEngine({ quiz, onComplete, onExit }) {
               key={idx}
               disabled={isSubmitted}
               onClick={() => handleSelect(idx)}
-              className={`w-full p-4 rounded-2xl border text-left text-sm transition-all flex items-center justify-between ${optionStyle}`}
+              aria-pressed={isSelected}
+              className={`w-full p-4 rounded-2xl border text-left text-sm transition-all flex items-center justify-between focus-ring ${optionStyle}`}
             >
               <span>{option}</span>
               {isSubmitted && isCorrect && (

@@ -100,19 +100,21 @@ export default function HardwarePage() {
               <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
               <input
                 type="text"
+                aria-label="Search spacecraft catalog by name, mission, or payload"
                 placeholder="Search spacecraft (e.g. Voyager, Perseverance, laser)..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-space-navy/80 border border-space-border rounded-xl text-sm text-white placeholder-slate-400 focus:outline-none focus:border-space-cyan/60"
+                className="w-full pl-10 pr-4 py-2 bg-space-navy/80 border border-purple-500/25 rounded-xl text-sm text-white placeholder-slate-400 focus-ring"
               />
             </div>
 
             {/* Status Filter */}
             <div className="md:col-span-2">
               <select
+                aria-label="Filter by operational status"
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full px-3 py-2 bg-space-navy/80 border border-space-border rounded-xl text-sm text-slate-200 focus:outline-none focus:border-space-cyan/60"
+                className="w-full px-3 py-2 bg-space-navy/80 border border-purple-500/25 rounded-xl text-sm text-slate-200 focus-ring"
               >
                 <option value="">All Statuses</option>
                 <option value="OPERATIONAL">Operational</option>
@@ -126,9 +128,10 @@ export default function HardwarePage() {
             {/* Destination Filter */}
             <div className="md:col-span-3">
               <select
+                aria-label="Filter by planetary destination"
                 value={selectedDestination}
                 onChange={(e) => handleDestinationChange(e.target.value)}
-                className="w-full px-3 py-2 bg-space-navy/80 border border-space-border rounded-xl text-sm text-slate-200 focus:outline-none focus:border-space-cyan/60"
+                className="w-full px-3 py-2 bg-space-navy/80 border border-purple-500/25 rounded-xl text-sm text-slate-200 focus-ring"
               >
                 <option value="">All Destinations</option>
                 {destinations.map((d) => (
@@ -142,9 +145,10 @@ export default function HardwarePage() {
             {/* Sort Dropdown */}
             <div className="md:col-span-2">
               <select
+                aria-label="Sort spacecraft catalog"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-3 py-2 bg-space-navy/80 border border-space-border rounded-xl text-sm text-slate-200 focus:outline-none focus:border-space-cyan/60"
+                className="w-full px-3 py-2 bg-space-navy/80 border border-purple-500/25 rounded-xl text-sm text-slate-200 focus-ring"
               >
                 <option value="launch_date:asc">Oldest Launch</option>
                 <option value="launch_date:desc">Newest Launch</option>
@@ -222,9 +226,10 @@ export default function HardwarePage() {
                   <div className="relative h-48 w-full overflow-hidden bg-space-navy">
                     <img
                       src={item.image_url}
-                      alt={item.name}
+                      alt={`${item.name} spacecraft`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-space-card via-transparent to-black/30" />
                     

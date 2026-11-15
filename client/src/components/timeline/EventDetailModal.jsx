@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   X, 
@@ -17,21 +17,39 @@ import {
 import StatusBadge from '../common/StatusBadge';
 
 export default function EventDetailModal({ milestone, onClose }) {
-  // Close on Escape key press
+  const closeBtnRef = useRef(null);
+  const previouslyFocusedElement = useRef(null);
+
+  // Focus management & Escape key handling (WCAG 2.1 AA)
   useEffect(() => {
+    previouslyFocusedElement.current = document.activeElement;
+    if (closeBtnRef.current) {
+      closeBtnRef.current.focus();
+    }
+
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      if (previouslyFocusedElement.current && previouslyFocusedElement.current.focus) {
+        previouslyFocusedElement.current.focus();
+      }
+    };
   }, [onClose]);
 
   if (!milestone) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-space-black/80 backdrop-blur-md animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-space-black/80 backdrop-blur-md animate-fadeIn"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-event-title"
+    >
       {/* Click outside backdrop to close */}
-      <div className="fixed inset-0" onClick={onClose} />
+      <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
       {/* Modal Dialog Content */}
       <div className="relative w-full max-w-3xl glass-panel rounded-3xl border border-space-border/80 shadow-2xl overflow-hidden z-10 bg-space-navy/95 max-h-[90vh] flex flex-col">
@@ -45,9 +63,10 @@ export default function EventDetailModal({ milestone, onClose }) {
           </div>
 
           <button
+            ref={closeBtnRef}
             onClick={onClose}
-            aria-label="Close modal"
-            className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            aria-label="Close event dossier"
+            className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors focus-ring"
           >
             <X className="w-5 h-5" />
           </button>
@@ -97,7 +116,7 @@ export default function EventDetailModal({ milestone, onClose }) {
               )}
             </div>
 
-            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-white">
+            <h2 id="modal-event-title" className="font-heading font-extrabold text-2xl sm:text-3xl text-white">
               {milestone.title}
             </h2>
           </div>

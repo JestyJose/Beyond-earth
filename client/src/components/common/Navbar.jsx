@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Rocket, 
@@ -25,12 +25,23 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Close mobile drawer on Escape key press (WCAG 2.1 AA Keyboard Navigation)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#080512]/80 backdrop-blur-2xl border-b border-purple-500/20 shadow-glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group focus-ring rounded-xl">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-violet-500 to-purple-400 flex items-center justify-center shadow-violet-glow group-hover:scale-105 transition-transform">
               <Rocket className="w-5 h-5 text-white" />
             </div>
@@ -45,7 +56,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1.5">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1.5">
             {NAV_LINKS.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
@@ -53,7 +64,8 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 focus-ring ${
                     isActive
                       ? 'bg-purple-600/20 text-[#F5F0FF] border border-purple-400/40 shadow-violet-glow font-semibold'
                       : 'text-[#A99BBF] hover:text-[#F5F0FF] hover:bg-purple-500/10'
@@ -70,8 +82,10 @@ export default function Navbar() {
           <div className="flex md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-purple-200 hover:text-white hover:bg-purple-500/15 transition-colors border border-purple-500/20"
-              aria-label="Toggle navigation menu"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              className="p-2 rounded-xl text-purple-200 hover:text-white hover:bg-purple-500/15 transition-colors border border-purple-500/20 focus-ring"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -81,7 +95,11 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#110B20]/95 border-b border-purple-500/20 px-4 pt-2 pb-6 space-y-1.5 backdrop-blur-2xl shadow-glass">
+        <nav
+          id="mobile-navigation"
+          aria-label="Mobile navigation"
+          className="md:hidden bg-[#110B20]/95 border-b border-purple-500/20 px-4 pt-2 pb-6 space-y-1.5 backdrop-blur-2xl shadow-glass animate-fadeIn"
+        >
           {NAV_LINKS.map((link) => {
             const Icon = link.icon;
             const isActive = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
@@ -90,7 +108,8 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                aria-current={isActive ? 'page' : undefined}
+                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors focus-ring ${
                   isActive
                     ? 'bg-purple-600/25 text-[#F5F0FF] border border-purple-400/40 shadow-violet-glow'
                     : 'text-[#A99BBF] hover:text-[#F5F0FF] hover:bg-purple-500/10'
@@ -101,7 +120,7 @@ export default function Navbar() {
               </Link>
             );
           })}
-        </div>
+        </nav>
       )}
     </header>
   );

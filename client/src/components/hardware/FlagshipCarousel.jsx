@@ -35,7 +35,8 @@ export default function FlagshipCarousel({ hardware = [] }) {
         <img
           key={current.slug}
           src={current.image_url}
-          alt={current.name}
+          alt={`${current.name} flagship spacecraft`}
+          decoding="async"
           className="w-full h-full object-cover object-center transition-all duration-700 ease-out animate-fadeIn"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-space-black via-space-black/60 to-black/30" />
@@ -58,14 +59,14 @@ export default function FlagshipCarousel({ hardware = [] }) {
       <button
         onClick={handlePrev}
         aria-label="Previous flagship"
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-space-black/60 hover:bg-space-black border border-white/10 text-white flex items-center justify-center transition-all backdrop-blur-md"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-space-black/60 hover:bg-space-black border border-white/10 text-white flex items-center justify-center transition-all backdrop-blur-md focus-ring"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
       <button
         onClick={handleNext}
         aria-label="Next flagship"
-        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-space-black/60 hover:bg-space-black border border-white/10 text-white flex items-center justify-center transition-all backdrop-blur-md"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-space-black/60 hover:bg-space-black border border-white/10 text-white flex items-center justify-center transition-all backdrop-blur-md focus-ring"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
@@ -118,7 +119,8 @@ export default function FlagshipCarousel({ hardware = [] }) {
               key={f.slug}
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Jump to slide ${idx + 1}`}
-              className={`h-1.5 rounded-full transition-all ${
+              aria-current={idx === currentIndex ? 'true' : undefined}
+              className={`h-1.5 rounded-full transition-all focus-ring ${
                 idx === currentIndex ? 'w-8 bg-purple-400' : 'w-2 bg-white/20 hover:bg-white/40'
               }`}
             />

@@ -283,8 +283,9 @@ export default function AcademyPage() {
                     </div>
 
                     <button
+                      type="button"
                       onClick={() => handleStartQuiz(quiz.slug)}
-                      className="w-full py-3 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono uppercase tracking-wider hover:bg-space-cyan/90 transition-all flex items-center justify-center gap-2 shadow-cyan-glow"
+                      className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs font-mono uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-violet-glow focus-ring"
                     >
                       <span>{isPassed ? 'Retake Exam' : 'Start Flight Exam'}</span>
                       <ArrowRight className="w-4 h-4" />

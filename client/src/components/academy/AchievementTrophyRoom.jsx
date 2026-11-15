@@ -104,8 +104,9 @@ export default function AchievementTrophyRoom({
         {/* Certificate CTA */}
         {unlockedCount > 0 && (
           <button
+            type="button"
             onClick={onOpenCertificate}
-            className="btn-violet inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow shrink-0"
+            className="btn-violet focus-ring inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow shrink-0"
           >
             <Printer className="w-4 h-4" />
             <span>Generate Academy Certificate</span>

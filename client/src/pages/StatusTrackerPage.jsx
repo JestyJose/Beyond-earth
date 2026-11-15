@@ -132,17 +132,18 @@ export default function StatusTrackerPage() {
                   <button
                     key={card.status}
                     onClick={() => setFilterStatus(filterStatus === card.status ? '' : card.status)}
-                    className={`p-4 rounded-2xl glass-panel text-left transition-all border ${card.border} ${
-                      filterStatus === card.status ? 'ring-2 ring-space-cyan' : ''
+                    aria-pressed={filterStatus === card.status}
+                    className={`p-4 rounded-2xl glass-panel text-left transition-all border ${card.border} focus-ring ${
+                      filterStatus === card.status ? 'ring-2 ring-purple-400 shadow-violet-glow' : ''
                     }`}
                   >
                     <div className="text-2xl font-mono font-bold text-white mb-1">
-                      {card.count}
+                      {card.count ?? 0}
                     </div>
                     <div className={`text-xs font-semibold ${card.color}`}>
                       {card.label}
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-1 font-mono">
+                    <div className="text-[10px] text-[#A99BBF] mt-1 font-mono">
                       {filterStatus === card.status ? 'Filtered [Active]' : 'Click to filter'}
                     </div>
                   </button>
@@ -200,7 +201,7 @@ export default function StatusTrackerPage() {
                   <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
                     <Link
                       to={`/hardware/${item.slug}`}
-                      className="px-4 py-2 rounded-xl bg-space-cyan/15 hover:bg-space-cyan text-space-cyan hover:text-space-black font-semibold text-xs font-mono transition-all flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-200 hover:text-white font-semibold text-xs font-mono transition-all flex items-center gap-1.5 focus-ring"
                     >
                       <span>Telemetry Profile</span>
                       <ChevronRight className="w-4 h-4" />

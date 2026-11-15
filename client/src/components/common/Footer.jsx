@@ -33,27 +33,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-[#A99BBF]">
               <li>
-                <Link to="/solar-system" className="hover:text-purple-300 transition-colors">
+                <Link to="/solar-system" className="hover:text-purple-300 transition-colors focus-ring rounded">
                   Solar System Explorer
                 </Link>
               </li>
               <li>
-                <Link to="/hardware" className="hover:text-purple-300 transition-colors">
+                <Link to="/hardware" className="hover:text-purple-300 transition-colors focus-ring rounded">
                   Hardware Explorer
                 </Link>
               </li>
               <li>
-                <Link to="/timeline" className="hover:text-purple-300 transition-colors">
+                <Link to="/timeline" className="hover:text-purple-300 transition-colors focus-ring rounded">
                   Mission Timeline (1960s+)
                 </Link>
               </li>
               <li>
-                <Link to="/science" className="hover:text-purple-300 transition-colors">
+                <Link to="/science" className="hover:text-purple-300 transition-colors focus-ring rounded">
                   Science Behind the Machine
                 </Link>
               </li>
               <li>
-                <Link to="/academy" className="hover:text-purple-300 transition-colors">
+                <Link to="/academy" className="hover:text-purple-300 transition-colors focus-ring rounded">
                   Space Academy Challenges
                 </Link>
               </li>
@@ -71,7 +71,8 @@ export default function Footer() {
                   href="https://nssdc.gsfc.nasa.gov/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors"
+                  aria-label="NASA NSSDCA Master Catalog (opens in a new tab)"
+                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors focus-ring rounded"
                 >
                   <span>NASA NSSDCA Master Catalog</span>
                   <ExternalLink className="w-3 h-3" />
@@ -82,7 +83,8 @@ export default function Footer() {
                   href="https://www.jpl.nasa.gov/missions"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors"
+                  aria-label="NASA JPL Missions (opens in a new tab)"
+                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors focus-ring rounded"
                 >
                   <span>NASA JPL Missions</span>
                   <ExternalLink className="w-3 h-3" />
@@ -93,7 +95,8 @@ export default function Footer() {
                   href="https://pds.nasa.gov/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors"
+                  aria-label="NASA Planetary Data System (opens in a new tab)"
+                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors focus-ring rounded"
                 >
                   <span>NASA Planetary Data System</span>
                   <ExternalLink className="w-3 h-3" />
@@ -104,7 +107,8 @@ export default function Footer() {
                   href="https://eyes.nasa.gov/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors"
+                  aria-label="NASA Eyes on the Solar System (opens in a new tab)"
+                  className="flex items-center gap-1.5 hover:text-purple-300 transition-colors focus-ring rounded"
                 >
                   <span>NASA Eyes on the Solar System</span>
                   <ExternalLink className="w-3 h-3" />

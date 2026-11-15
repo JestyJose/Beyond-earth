@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Printer, Award, Sparkles, Check, Info } from 'lucide-react';
 
 export default function PrintableCertificateModal({
@@ -6,6 +6,9 @@ export default function PrintableCertificateModal({
   unlockedBadges = [],
   onClose
 }) {
+  const closeBtnRef = useRef(null);
+  const previouslyFocusedElement = useRef(null);
+
   const [studentName, setStudentName] = useState(() => {
     return localStorage.getItem('beyond_earth_student_name') || 'Cadet Explorer';
   });
@@ -27,26 +30,41 @@ export default function PrintableCertificateModal({
     window.print();
   };
 
-  // Close on Escape key
+  // Close on Escape key & manage focus restoration (WCAG 2.1 AA)
   useEffect(() => {
+    previouslyFocusedElement.current = document.activeElement;
+    if (closeBtnRef.current) {
+      closeBtnRef.current.focus();
+    }
+
     const handleKey = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    return () => {
+      window.removeEventListener('keydown', handleKey);
+      if (previouslyFocusedElement.current && previouslyFocusedElement.current.focus) {
+        previouslyFocusedElement.current.focus();
+      }
+    };
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-space-black/85 backdrop-blur-md animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-space-black/85 backdrop-blur-md animate-fadeIn"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="certificate-modal-title"
+    >
       {/* Click outside to close */}
-      <div className="fixed inset-0 print:hidden" onClick={onClose} />
+      <div className="fixed inset-0 print:hidden" onClick={onClose} aria-hidden="true" />
 
       <div className="relative w-full max-w-4xl glass-panel rounded-3xl border border-space-border/80 shadow-2xl overflow-hidden z-10 bg-space-navy/95 max-h-[92vh] flex flex-col print:max-h-none print:w-full print:m-0 print:p-0 print:border-none print:shadow-none print:bg-white print:text-black">
         {/* Modal Toolbar (Hidden during print) */}
         <div className="flex flex-wrap items-center justify-between p-5 border-b border-space-border gap-4 print:hidden">
           <div className="flex items-center gap-2">
             <Award className="w-5 h-5 text-purple-300" />
-            <h3 className="font-heading font-bold text-lg text-white">
+            <h3 id="certificate-modal-title" className="font-heading font-bold text-lg text-white">
               Academy Completion Certificate
             </h3>
           </div>
@@ -54,16 +72,17 @@ export default function PrintableCertificateModal({
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrint}
-              className="btn-violet inline-flex items-center gap-2 px-4 py-2 rounded-xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow"
+              className="btn-violet inline-flex items-center gap-2 px-4 py-2 rounded-xl font-mono font-bold text-xs hover:scale-105 transition-all shadow-violet-glow focus-ring"
             >
               <Printer className="w-4 h-4" />
               <span>Print Certificate (PDF)</span>
             </button>
 
             <button
+              ref={closeBtnRef}
               onClick={onClose}
               aria-label="Close certificate dialog"
-              className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+              className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors focus-ring"
             >
               <X className="w-5 h-5" />
             </button>

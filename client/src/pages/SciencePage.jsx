@@ -58,24 +58,34 @@ export default function SciencePage() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex border-b border-space-border gap-6 mb-8 text-sm">
+        <div className="flex border-b border-space-border gap-6 mb-8 text-sm" role="tablist" aria-label="Science learning categories">
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'concepts'}
+            aria-controls="concepts-panel"
+            id="tab-concepts"
             onClick={() => setActiveTab('concepts')}
-            className={`pb-3 font-medium transition-colors flex items-center gap-2 border-b-2 ${
+            className={`pb-3 font-medium transition-colors flex items-center gap-2 border-b-2 focus-ring rounded-t ${
               activeTab === 'concepts'
-                ? 'border-space-cyan text-space-cyan font-bold'
-                : 'border-transparent text-slate-400 hover:text-white'
+                ? 'border-purple-400 text-purple-300 font-bold'
+                : 'border-transparent text-[#A99BBF] hover:text-white'
             }`}
           >
             <Zap className="w-4 h-4" />
             <span>Engineering Concepts ({concepts.length})</span>
           </button>
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'discoveries'}
+            aria-controls="discoveries-panel"
+            id="tab-discoveries"
             onClick={() => setActiveTab('discoveries')}
-            className={`pb-3 font-medium transition-colors flex items-center gap-2 border-b-2 ${
+            className={`pb-3 font-medium transition-colors flex items-center gap-2 border-b-2 focus-ring rounded-t ${
               activeTab === 'discoveries'
-                ? 'border-space-cyan text-space-cyan font-bold'
-                : 'border-transparent text-slate-400 hover:text-white'
+                ? 'border-purple-400 text-purple-300 font-bold'
+                : 'border-transparent text-[#A99BBF] hover:text-white'
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -87,14 +97,14 @@ export default function SciencePage() {
           <LoadingSpinner message="Translating complex astrophysics into student explainers..." />
         ) : activeTab === 'concepts' ? (
           /* Engineering Concepts View */
-          <div className="space-y-12">
+          <div id="concepts-panel" role="tabpanel" aria-labelledby="tab-concepts" className="space-y-12">
             {concepts.map((concept) => (
               <div
                 key={concept.slug}
                 className="glass-panel p-6 sm:p-8 rounded-3xl border border-space-border relative overflow-hidden"
               >
                 <div className="max-w-3xl">
-                  <div className="text-xs font-mono uppercase tracking-widest text-space-cyan mb-1">
+                  <div className="text-xs font-mono uppercase tracking-widest text-purple-300 mb-1">
                     Fundamental Space Technology
                   </div>
                   <h2 className="font-heading font-bold text-2xl sm:text-3xl text-white mb-2">
@@ -103,16 +113,16 @@ export default function SciencePage() {
                   <p className="text-sm font-semibold text-slate-200 mb-4">
                     {concept.headline}
                   </p>
-                  <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                  <p className="text-sm text-[#A99BBF] leading-relaxed mb-6">
                     {concept.summary}
                   </p>
                 </div>
 
                 {/* Step-by-Step Mechanism */}
                 <div className="mt-6 mb-6">
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-[#A99BBF] mb-3">
                     How It Works — Step by Step:
-                  </h4>
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {concept.how_it_works?.map((step) => (
                       <div
@@ -120,13 +130,13 @@ export default function SciencePage() {
                         className="p-4 rounded-2xl bg-space-navy/80 border border-space-border flex flex-col justify-between"
                       >
                         <div>
-                          <div className="w-7 h-7 rounded-full bg-space-cyan/20 text-space-cyan flex items-center justify-center font-mono font-bold text-xs mb-3">
+                          <div className="w-7 h-7 rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center font-mono font-bold text-xs mb-3">
                             {step.step}
                           </div>
-                          <h5 className="font-heading font-bold text-sm text-white mb-1.5">
+                          <h4 className="font-heading font-bold text-sm text-white mb-1.5">
                             {step.title}
-                          </h5>
-                          <p className="text-xs text-slate-300 leading-relaxed">
+                          </h4>
+                          <p className="text-xs text-[#A99BBF] leading-relaxed">
                             {step.description}
                           </p>
                         </div>
@@ -136,13 +146,13 @@ export default function SciencePage() {
                 </div>
 
                 {/* Why It Matters on Earth */}
-                <div className="p-4 rounded-2xl bg-space-violet/10 border border-space-violet/30 flex items-start gap-3">
-                  <HeartHandshake className="w-5 h-5 text-space-violet shrink-0 mt-0.5" />
+                <div className="p-4 rounded-2xl bg-purple-900/20 border border-purple-500/30 flex items-start gap-3">
+                  <HeartHandshake className="w-5 h-5 text-purple-300 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-xs font-mono text-space-violet uppercase tracking-wider block mb-0.5">
+                    <strong className="text-xs font-mono text-purple-300 uppercase tracking-wider block mb-0.5">
                       Why It Matters for Life on Earth:
                     </strong>
-                    <p className="text-xs text-slate-200 leading-relaxed">
+                    <p className="text-xs text-[#F5F0FF] leading-relaxed">
                       {concept.why_it_matters_on_earth}
                     </p>
                   </div>
@@ -151,12 +161,12 @@ export default function SciencePage() {
                 {/* Related Spacecraft Links */}
                 {concept.related_hardware_slugs && (
                   <div className="mt-5 pt-4 border-t border-space-border flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-mono text-slate-400">Used by:</span>
+                    <span className="text-xs font-mono text-[#A99BBF]">Used by:</span>
                     {concept.related_hardware_slugs.map((slug) => (
                       <Link
                         key={slug}
                         to={`/hardware/${slug}`}
-                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-space-cyan/20 hover:text-space-cyan text-slate-300 border border-white/10 transition-colors flex items-center gap-1"
+                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-purple-900/40 hover:text-purple-300 text-slate-300 border border-white/10 transition-colors flex items-center gap-1 focus-ring"
                       >
                         <Cpu className="w-3 h-3" />
                         <span>{slug.replace(/-/g, ' ')}</span>
@@ -169,18 +179,20 @@ export default function SciencePage() {
           </div>
         ) : (
           /* Scientific Discoveries View */
-          <div>
+          <div id="discoveries-panel" role="tabpanel" aria-labelledby="tab-discoveries">
             {/* Domain Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2 mb-6 text-xs font-mono">
-              <span className="text-slate-400">Scientific Domain:</span>
+            <div className="flex flex-wrap items-center gap-2 mb-6 text-xs font-mono" role="group" aria-label="Filter by scientific domain">
+              <span className="text-[#A99BBF]">Scientific Domain:</span>
               {['', 'ASTROBIOLOGY', 'GEOLOGY', 'ATMOSPHERE', 'COSMOLOGY'].map((dom) => (
                 <button
                   key={dom}
+                  type="button"
+                  aria-pressed={selectedDomain === dom}
                   onClick={() => setSelectedDomain(dom)}
-                  className={`px-3 py-1.5 rounded-lg transition-colors ${
+                  className={`px-3 py-1.5 rounded-lg transition-colors focus-ring ${
                     selectedDomain === dom
-                      ? 'bg-space-violet text-white font-semibold'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-purple-600 text-white font-semibold'
+                      : 'text-[#A99BBF] hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {dom === '' ? 'ALL DOMAINS' : dom}
@@ -196,28 +208,28 @@ export default function SciencePage() {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-space-violet/20 text-space-violet border border-space-violet/30">
+                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-purple-900/40 text-purple-300 border border-purple-500/30">
                         {d.scientific_domain}
                       </span>
                       <Link
                         to={`/hardware/${d.hardware_slug}`}
-                        className="text-xs font-mono text-slate-400 hover:text-space-cyan"
+                        className="text-xs font-mono text-[#A99BBF] hover:text-purple-300 focus-ring rounded px-1"
                       >
                         {d.hardware_name}
                       </Link>
                     </div>
 
-                    <h3 className="font-heading font-bold text-xl text-white mb-2">
+                    <h2 className="font-heading font-bold text-xl text-white mb-2">
                       {d.title}
-                    </h3>
+                    </h2>
 
-                    <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                    <p className="text-xs text-[#A99BBF] leading-relaxed mb-4">
                       {d.plain_english_summary}
                     </p>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-space-navy border border-white/5">
-                    <span className="text-[10px] font-mono text-space-cyan uppercase tracking-wider block mb-1 font-bold">
+                    <span className="text-[10px] font-mono text-purple-300 uppercase tracking-wider block mb-1 font-bold">
                       Educational Significance:
                     </span>
                     <p className="text-xs text-slate-300 leading-relaxed">

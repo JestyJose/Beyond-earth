@@ -84,7 +84,8 @@ export default function DecadeNavigator({ activeEra = '', onSelectEra, countsByE
             <button
               key={d.decade}
               onClick={() => onSelectEra(d.id)}
-              className={`shrink-0 px-4 py-2.5 rounded-2xl text-left border transition-all ${
+              aria-pressed={isSelected}
+              className={`shrink-0 px-4 py-2.5 rounded-2xl text-left border transition-all focus-ring ${
                 isSelected
                   ? 'bg-gradient-to-r from-purple-600 to-violet-600 text-white border-purple-400 shadow-violet-glow'
                   : 'bg-space-navy/80 hover:bg-[#1A1230] text-slate-200 border-space-border hover:border-purple-400/50'

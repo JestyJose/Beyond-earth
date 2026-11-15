@@ -19,26 +19,35 @@ export default function HardwareDetailPage() {
   const [hardware, setHardware] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function loadDetail() {
-      setLoading(true);
-      try {
-        const data = await api.getHardwareBySlug(slug);
-        setHardware(data);
-      } catch (err) {
-        console.error('Failed to load hardware detail:', err);
-      } finally {
-        setLoading(false);
-      }
+  const [fetchError, setFetchError] = useState(null);
+
+  const loadDetail = async () => {
+    setLoading(true);
+    setFetchError(null);
+    try {
+      const data = await api.getHardwareBySlug(slug);
+      setHardware(data);
+    } catch (err) {
+      console.error('Failed to load hardware detail:', err);
+      setFetchError(err.message || 'Telemetry connection failed');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     loadDetail();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
   }, [slug]);
 
   const scrollToSection = (sectionId) => {
     const el = document.getElementById(sectionId);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+    } else {
+      console.warn(`[Scroll] Target section "${sectionId}" not found in current document.`);
     }
   };
 
@@ -50,21 +59,31 @@ export default function HardwareDetailPage() {
     );
   }
 
-  if (!hardware) {
+  if (fetchError || !hardware) {
     return (
-      <div className="min-h-screen pt-28 pb-16 bg-deep-space text-center">
-        <div className="max-w-md mx-auto p-8 glass-panel rounded-2xl">
-          <h2 className="text-xl font-bold text-white mb-2">Spacecraft Not Found</h2>
-          <p className="text-sm text-slate-400 mb-6">
-            The requested spacecraft record does not exist or telemetry was lost in deep space.
+      <div className="min-h-screen pt-28 pb-16 bg-deep-space text-center px-4">
+        <div className="max-w-md mx-auto p-8 glass-panel rounded-3xl border border-purple-500/30 shadow-violet-glow">
+          <h2 className="font-heading text-xl font-bold text-white mb-2">Spacecraft Telemetry Unavailable</h2>
+          <p className="text-sm text-[#A99BBF] mb-6 leading-relaxed">
+            {fetchError 
+              ? `Unable to acquire deep-space communications: ${fetchError}.`
+              : 'The requested spacecraft record does not exist or telemetry was lost in deep space.'}
           </p>
-          <Link
-            to="/hardware"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-space-cyan text-space-black font-semibold text-xs shadow-cyan-glow"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Hardware Catalog</span>
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={loadDetail}
+              className="btn-violet inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs shadow-violet-glow focus-ring"
+            >
+              <span>Retry Telemetry Link</span>
+            </button>
+            <Link
+              to="/hardware"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-space-navy border border-purple-500/30 text-slate-200 hover:text-white font-semibold text-xs focus-ring transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 text-purple-300" />
+              <span>Hardware Catalog</span>
+            </Link>
+          </div>
         </div>
       </div>
     );

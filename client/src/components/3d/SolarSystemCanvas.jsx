@@ -32,7 +32,7 @@ class CanvasErrorBoundary extends Component {
           </p>
           <button
             onClick={this.props.onFallback}
-            className="px-4 py-2 rounded-xl bg-space-cyan text-space-black font-semibold text-xs font-mono"
+            className="btn-violet px-5 py-2.5 rounded-xl font-semibold text-xs font-mono shadow-violet-glow focus-ring"
           >
             Switch to 2D Orbital Map
           </button>

@@ -10,7 +10,8 @@ export default function CinematicHero({ hardware, onScrollToSection }) {
       <div className="relative h-[380px] sm:h-[480px] lg:h-[540px] w-full overflow-hidden bg-space-navy">
         <img
           src={hardware.image_url}
-          alt={hardware.name}
+          alt={`${hardware.name || 'NASA'} mission spacecraft`}
+          decoding="async"
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out"
         />
         {/* Cinematic Multi-Layer Gradients for Legibility */}

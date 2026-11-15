@@ -7,11 +7,31 @@
     border-color: rgba(168, 85, 247, 0.18);
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: #080512;
     color: #F5F0FF;
     overflow-x: hidden;
   }
+
+  /* Accessible Keyboard Focus Indicators (WCAG 2.1 AA) */
+  :focus-visible {
+    outline: 2px solid #A855F7;
+    outline-offset: 2px;
+  }
+}
+
+/* Reusable accessible focus ring class */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #A855F7;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(8, 5, 18, 0.8), 0 0 15px rgba(168, 85, 247, 0.5);
 }
 
 /* Starry Violet Glassmorphism Primitives */
@@ -86,9 +106,22 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .animate-nebula,
   .animate-twinkle {
-    animation: none;
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

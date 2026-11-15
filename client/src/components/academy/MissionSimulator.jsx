@@ -191,7 +191,8 @@ export default function MissionSimulator({
               <button
                 key={option.id}
                 onClick={() => setChosenOptionId(option.id)}
-                className={`w-full p-4 rounded-2xl border text-left transition-all ${
+                aria-pressed={isSelected}
+                className={`w-full p-4 rounded-2xl border text-left transition-all focus-ring ${
                   isSelected
                     ? 'bg-purple-900/40 border-purple-400 text-white shadow-violet-glow'
                     : 'bg-space-navy/60 border-space-border hover:border-purple-400/50 text-slate-200'
@@ -210,7 +211,7 @@ export default function MissionSimulator({
           <button
             disabled={!chosenOptionId}
             onClick={handleConfirmDecision}
-            className="btn-violet w-full mt-4 py-3.5 rounded-xl font-semibold text-xs font-mono uppercase tracking-wider disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-violet-glow"
+            className="btn-violet w-full mt-4 py-3.5 rounded-xl font-semibold text-xs font-mono uppercase tracking-wider disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-violet-glow focus-ring"
           >
             Execute Flight Command Decision
           </button>

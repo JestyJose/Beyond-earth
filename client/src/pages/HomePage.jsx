@@ -128,14 +128,14 @@ export default function HomePage() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/solar-system"
-            className="btn-violet flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm hover:scale-105 transition-all shadow-violet-glow"
+            className="btn-violet focus-ring flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm hover:scale-105 transition-all shadow-violet-glow"
           >
             <Compass className="w-4 h-4" />
             Launch Solar System Explorer
           </Link>
           <Link
             to="/hardware"
-            className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#170F2C]/80 hover:bg-[#20153D]/90 text-[#F5F0FF] font-semibold text-sm border border-purple-500/30 hover:border-purple-400/60 transition-all backdrop-blur-md"
+            className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#170F2C]/80 hover:bg-[#20153D]/90 text-[#F5F0FF] font-semibold text-sm border border-purple-500/30 hover:border-purple-400/60 transition-all backdrop-blur-md focus-ring"
           >
             <Cpu className="w-4 h-4 text-purple-300" />
             Explore NASA Hardware
@@ -174,7 +174,7 @@ export default function HomePage() {
               <Link
                 key={i}
                 to={wing.path}
-                className={`group relative p-6 rounded-2xl glass-panel bg-gradient-to-br ${wing.color} border border-space-border ${wing.border} transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl flex flex-col justify-between`}
+                className={`group relative p-6 rounded-2xl glass-panel bg-gradient-to-br ${wing.color} border border-space-border ${wing.border} transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl flex flex-col justify-between focus-ring`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -216,7 +216,7 @@ export default function HomePage() {
           </div>
           <Link
             to="/hardware"
-            className="inline-flex items-center text-sm font-semibold text-purple-300 hover:text-purple-200 transition-colors"
+            className="inline-flex items-center text-sm font-semibold text-purple-300 hover:text-purple-200 transition-colors focus-ring rounded"
           >
             <span>View All 16 Spacecraft</span>
             <ArrowRight className="w-4 h-4 ml-1" />
@@ -231,14 +231,15 @@ export default function HomePage() {
               <Link
                 key={item.slug}
                 to={`/hardware/${item.slug}`}
-                className="group rounded-2xl overflow-hidden glass-panel glass-panel-hover flex flex-col"
+                className="group rounded-2xl overflow-hidden glass-panel glass-panel-hover flex flex-col focus-ring"
               >
                 <div className="relative h-48 w-full overflow-hidden bg-space-navy">
                   <img
                     src={item.image_url}
-                    alt={item.name}
+                    alt={`${item.name} spacecraft`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-space-card via-transparent to-black/30" />
                   <div className="absolute top-3 right-3">
@@ -249,18 +250,18 @@ export default function HomePage() {
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="text-[11px] font-mono text-purple-300 uppercase">
-                      {item.category.replace(/_/g, ' ')}
+                      {item.category?.replace(/_/g, ' ') || 'Spacecraft'}
                     </div>
                     <h3 className="font-heading font-bold text-lg text-white group-hover:text-purple-300 transition-colors mt-1">
                       {item.name}
                     </h3>
                     <p className="mt-2 text-xs text-[#A99BBF] line-clamp-2 leading-relaxed">
-                      {item.historical_significance}
+                      {item.historical_significance || 'Historical NASA mission exploration.'}
                     </p>
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-space-border flex items-center justify-between text-xs text-[#A99BBF] font-mono">
-                    <span>Launched {item.launch_date.slice(0, 4)}</span>
+                    <span>Launched {item.launch_date ? item.launch_date.slice(0, 4) : 'Historical'}</span>
                     <span className="text-purple-300 group-hover:underline">Explore &rarr;</span>
                   </div>
                 </div>
