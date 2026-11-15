@@ -11,8 +11,8 @@ import { getPlanetTexture } from './planetTextures';
  * Features Dwarf Planet Ceres at mid-belt with its famous Occator bright spots.
  */
 export default function AsteroidBelt({
-  innerRadius = 46.5,
-  outerRadius = 53.5,
+  innerRadius = 48.5,
+  outerRadius = 55.5,
   count = 650,
   isSelected = false,
   onSelect,
@@ -25,8 +25,8 @@ export default function AsteroidBelt({
 
   // Dwarf Planet Ceres orbital telemetry
   const ceresRadius = 0.52;
-  const ceresOrbitRadius = (innerRadius + outerRadius) / 2; // ~50.0 AU visual scale
-  const ceresAngle = 2.10; // Fixed orbital azimuth
+  const ceresOrbitRadius = (innerRadius + outerRadius) / 2; // ~52.0 AU visual scale
+  const ceresAngle = 2.50; // Fixed orbital azimuth
 
   const ceresPosition = useMemo(() => {
     return new THREE.Vector3(
@@ -165,6 +165,23 @@ export default function AsteroidBelt({
 
       {/* 3. Dwarf Planet Ceres (Flagship of the Asteroid Belt) */}
       <group position={ceresPosition}>
+        {/* Invisible Hit Proxy Sphere for reliable raycasting from overview */}
+        <mesh
+          onClick={handleSelect}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            setHovered(true);
+            document.body.style.cursor = 'pointer';
+          }}
+          onPointerOut={() => {
+            setHovered(false);
+            document.body.style.cursor = 'auto';
+          }}
+        >
+          <sphereGeometry args={[3.6, 16, 16]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+
         <mesh
           ref={ceresMeshRef}
           onClick={handleSelect}
@@ -200,28 +217,41 @@ export default function AsteroidBelt({
           </mesh>
         )}
 
-        {/* 3D Billboarding HTML Label */}
+        {/* 3D Billboarding HTML Label (fixed screen scale prevents zoom explosion, clickable, adaptive offset in overview) */}
         <Html
-          position={[0, ceresRadius + 1.1, 0]}
+          position={isSelected ? [0, ceresRadius + 0.8, 0] : [-5.5, 2.2, 3.5]}
           center
-          distanceFactor={52}
-          className="pointer-events-none select-none"
+          className="select-none z-10"
         >
           <div
-            className={`px-2.5 py-1 rounded-lg backdrop-blur-md border text-center transition-all ${
+            onClick={(e) => {
+              e.stopPropagation();
+              handleSelect(e);
+            }}
+            onPointerOver={() => {
+              setHovered(true);
+              document.body.style.cursor = 'pointer';
+            }}
+            onPointerOut={() => {
+              setHovered(false);
+              document.body.style.cursor = 'auto';
+            }}
+            className={`px-2.5 py-1 rounded-xl backdrop-blur-md border text-center transition-all max-w-[130px] shadow-lg cursor-pointer hover:scale-105 active:scale-95 ${
               isSelected
-                ? 'bg-space-cyan/20 border-space-cyan text-space-cyan shadow-cyan-glow scale-110'
+                ? 'bg-space-cyan/20 border-space-cyan text-space-cyan shadow-cyan-glow scale-105'
                 : hovered
                 ? 'bg-space-navy/90 border-space-cyan/60 text-white'
-                : 'bg-space-navy/70 border-white/10 text-slate-300'
+                : 'bg-[#110B20]/85 border-purple-500/25 text-[#F5F0FF]'
             }`}
           >
-            <div className="font-heading font-bold text-xs whitespace-nowrap">
-              Main Asteroid Belt
+            <div className="flex items-center justify-center gap-1.5 leading-tight truncate">
+              <span className="w-1.5 h-1.5 rounded-full bg-space-cyan shrink-0 shadow-[0_0_6px_#00F0FF]" />
+              <span className="font-heading font-bold text-xs truncate">
+                Main Asteroid Belt
+              </span>
             </div>
-            <div className="text-[9px] font-mono text-amber-300 flex items-center justify-center gap-1">
-              <span>Ceres (Dwarf Planet)</span>
-              <span className="text-slate-400">• 2.77 AU</span>
+            <div className="text-[8.5px] font-mono text-amber-300 leading-tight truncate mt-0.5">
+              Ceres (Dwarf Planet) • 2.77 AU
             </div>
           </div>
         </Html>

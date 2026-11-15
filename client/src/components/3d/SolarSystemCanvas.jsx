@@ -45,18 +45,18 @@ class CanvasErrorBoundary extends Component {
 
 // Scientifically calibrated visibility scale configuration
 const PLANET_CONFIG = {
-  'mercury': { orbitRadius: 14, radius: 0.6, angle: 0.45, speed: 0.8, beaconType: 'impact' },
-  'venus': { orbitRadius: 21, radius: 1.0, angle: 1.25, speed: 0.4, beaconType: 'atmospheric_entry' },
-  'earth': { orbitRadius: 29, radius: 1.1, angle: 2.15, speed: 0.5, beaconType: 'orbit' },
-  'moon': { isLunar: true, radius: 0.42, localDistance: 2.6, speed: 0.6, beaconType: 'surface' },
-  'mars': { orbitRadius: 42, radius: 0.85, angle: 3.10, speed: 0.45, beaconType: 'surface' },
-  'asteroid-belt': { orbitRadius: 50, radius: 1.8, angle: 2.10, speed: 0.35, isBelt: true },
-  'jupiter': { orbitRadius: 58, radius: 2.8, angle: 4.05, speed: 0.3, beaconType: 'orbit' },
-  'saturn': { orbitRadius: 78, radius: 2.3, angle: 5.15, speed: 0.25, hasRings: true, beaconType: 'flyby' },
-  'uranus': { orbitRadius: 98, radius: 1.6, angle: 0.85, speed: 0.2, beaconType: 'flyby' },
-  'neptune': { orbitRadius: 116, radius: 1.5, angle: 1.95, speed: 0.18, beaconType: 'flyby' },
-  'kuiper-belt': { orbitRadius: 134, radius: 0.6, angle: 2.85, speed: 0.15, beaconType: 'flyby' },
-  'interstellar-space': { orbitRadius: 152, radius: 0.5, angle: 3.75, speed: 0.1, beaconType: 'flyby' }
+  'mercury': { orbitRadius: 15, radius: 0.65, angle: 0.20, speed: 0.8, beaconType: 'impact', labelOffset: [5.2, -0.5, 3.2] },
+  'venus': { orbitRadius: 23, radius: 1.05, angle: 1.75, speed: 0.4, beaconType: 'atmospheric_entry', labelOffset: [-5.0, 0.5, 4.8] },
+  'earth': { orbitRadius: 32, radius: 1.15, angle: 3.40, speed: 0.5, beaconType: 'orbit', labelOffset: [-6.2, 2.5, -3.5] },
+  'moon': { isLunar: true, radius: 0.45, localDistance: 4.8, speed: 0.6, beaconType: 'surface', labelOffset: [1.2, -3.8, 6.4] },
+  'mars': { orbitRadius: 44, radius: 0.90, angle: 4.95, speed: 0.45, beaconType: 'surface', labelOffset: [4.5, 2.8, -4.5] },
+  'asteroid-belt': { orbitRadius: 52, radius: 1.8, angle: 2.50, speed: 0.35, isBelt: true, labelOffset: [-5.5, 2.2, 3.5] },
+  'jupiter': { orbitRadius: 65, radius: 2.8, angle: 4.15, speed: 0.3, beaconType: 'orbit', labelOffset: [-6.5, 4.5, -3.0] },
+  'saturn': { orbitRadius: 84, radius: 2.3, angle: 5.85, speed: 0.25, hasRings: true, beaconType: 'flyby', labelOffset: [7.0, 4.0, -1.5] },
+  'uranus': { orbitRadius: 102, radius: 1.6, angle: 1.15, speed: 0.2, beaconType: 'flyby', labelOffset: [4.5, 3.8, -5.5] },
+  'neptune': { orbitRadius: 118, radius: 1.5, angle: 2.05, speed: 0.18, beaconType: 'flyby', labelOffset: [-4.0, 4.5, -8.0] },
+  'kuiper-belt': { orbitRadius: 136, radius: 0.6, angle: 3.85, speed: 0.15, beaconType: 'flyby', labelOffset: [-5.0, 3.5, -4.0] },
+  'interstellar-space': { orbitRadius: 154, radius: 0.5, angle: 5.35, speed: 0.1, beaconType: 'flyby', labelOffset: [6.0, 3.5, -4.0] }
 };
 
 // Earth's Moon component rendered locally in Earth's orbit
@@ -90,6 +90,26 @@ function MoonInEarthOrbit({ moonDest, isSelected, onSelect }) {
 
       {/* Moon Mesh */}
       <group position={moonPos}>
+        {/* Invisible Hit Proxy Sphere for reliable raycasting from overview */}
+        <mesh
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect(moonAbsolutePos, moonDest, cfg.radius);
+          }}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            setHovered(true);
+            document.body.style.cursor = 'pointer';
+          }}
+          onPointerOut={() => {
+            setHovered(false);
+            document.body.style.cursor = 'auto';
+          }}
+        >
+          <sphereGeometry args={[2.4, 16, 16]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+
         <mesh
           onClick={(e) => {
             e.stopPropagation();
@@ -125,15 +145,38 @@ function MoonInEarthOrbit({ moonDest, isSelected, onSelect }) {
           isSelected={isSelected}
         />
 
-        {/* 3D Label */}
-        <Html position={[0, cfg.radius + 0.8, 0]} center distanceFactor={50} className="pointer-events-none select-none">
-          <div className={`px-2 py-0.5 rounded-lg backdrop-blur-md border text-center transition-all ${
-            isSelected
-              ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200 shadow-violet-glow scale-105'
-              : 'bg-[#110B20]/80 border-purple-500/20 text-[#F5F0FF]'
-          }`}>
-            <div className="font-heading font-bold text-[11px] whitespace-nowrap">The Moon</div>
-            <div className="text-[8px] font-mono text-purple-300 font-semibold">Tranquility Base (Apollo 11)</div>
+        {/* 3D Label (fixed screen scale prevents zoom explosion, clickable, adaptive offset in overview) */}
+        <Html
+          position={isSelected ? [0, cfg.radius + 0.6, 0] : (cfg.labelOffset || [1.2, -3.8, 6.4])}
+          center
+          className="select-none z-10"
+        >
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect(moonAbsolutePos, moonDest, cfg.radius);
+            }}
+            onPointerOver={() => {
+              setHovered(true);
+              document.body.style.cursor = 'pointer';
+            }}
+            onPointerOut={() => {
+              setHovered(false);
+              document.body.style.cursor = 'auto';
+            }}
+            className={`px-2 py-0.5 rounded-xl backdrop-blur-md border text-center transition-all max-w-[110px] shadow-lg cursor-pointer hover:scale-105 active:scale-95 ${
+              isSelected
+                ? 'bg-[#170F2C]/95 border-purple-400 text-purple-200 shadow-violet-glow scale-105'
+                : hovered
+                ? 'bg-space-navy/90 border-space-cyan/60 text-white'
+                : 'bg-[#110B20]/85 border-purple-500/25 text-[#F5F0FF]'
+            }`}
+          >
+            <div className="flex items-center justify-center gap-1.5 leading-tight truncate">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0 shadow-sm" />
+              <span className="font-heading font-bold text-xs truncate">The Moon</span>
+            </div>
+            <div className="text-[8px] font-mono text-purple-300 font-semibold leading-tight truncate mt-0.5">Apollo 11 Site</div>
           </div>
         </Html>
       </group>
@@ -184,11 +227,24 @@ export default function SolarSystemCanvas({
 
   // Synchronize camera target whenever selectedDest prop changes (supports Quick Jump dropdown!)
   useEffect(() => {
-    if (!selectedDest) return;
+    if (!selectedDest) {
+      setTargetPosition(null);
+      return;
+    }
 
     if (selectedDest.slug === 'sun') {
       setTargetPosition(new THREE.Vector3(0, 0, 0));
       setTargetRadius(5.0);
+      return;
+    }
+
+    if (selectedDest.slug === 'asteroid-belt') {
+      setTargetPosition(new THREE.Vector3(
+        Math.cos(2.50) * 52.0,
+        0,
+        Math.sin(2.50) * 52.0
+      ));
+      setTargetRadius(2.2);
       return;
     }
 
@@ -226,7 +282,7 @@ export default function SolarSystemCanvas({
     <CanvasErrorBoundary onFallback={onFallback}>
       <div className="w-full h-[420px] sm:h-[500px] lg:h-[680px] rounded-3xl overflow-hidden glass-panel border border-space-border relative">
         <Canvas
-          camera={{ position: [0, 65, 120], fov: 45, near: 0.1, far: 2000 }}
+          camera={{ position: [0, 150, 220], fov: 45, near: 0.1, far: 2000 }}
           gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
         >
           {/* Deep midnight violet cosmic background */}
@@ -264,10 +320,10 @@ export default function SolarSystemCanvas({
             hardwareCount={sunDest.hardware_count || 1}
           />
 
-          {/* Main Asteroid Belt between Mars (orbit 42) and Jupiter (orbit 58) */}
+          {/* Main Asteroid Belt between Mars (orbit 44) and Jupiter (orbit 65) */}
           <AsteroidBelt
-            innerRadius={46.5}
-            outerRadius={53.5}
+            innerRadius={48.5}
+            outerRadius={55.5}
             count={650}
             isSelected={selectedDest?.slug === 'asteroid-belt'}
             onSelect={(pos, d, r) => handlePlanetSelect(pos, d, r)}
@@ -297,6 +353,7 @@ export default function SolarSystemCanvas({
                 beaconType={config.beaconType}
                 isSelected={isSelected}
                 hardwareCount={dest.hardware_count}
+                labelOffset={config.labelOffset}
                 onSelect={(pos, d, r) => handlePlanetSelect(pos, d, r)}
               >
                 {/* If Earth, nest the Moon orbiting Earth locally! */}

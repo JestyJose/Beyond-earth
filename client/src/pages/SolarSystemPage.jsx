@@ -12,7 +12,8 @@ import {
   RotateCcw,
   Sparkles,
   ShieldCheck,
-  Eye
+  Eye,
+  MousePointerClick
 } from 'lucide-react';
 import { api } from '../services/api';
 import StatusBadge from '../components/common/StatusBadge';
@@ -22,13 +23,9 @@ import { DEFAULT_DESTINATIONS, DEFAULT_DESTINATION_HARDWARE } from '../data/defa
 
 export default function SolarSystemPage() {
   const [destinations, setDestinations] = useState(DEFAULT_DESTINATIONS);
-  const [selectedDest, setSelectedDest] = useState(() => 
-    DEFAULT_DESTINATIONS.find(d => d.slug === 'mars') || DEFAULT_DESTINATIONS[0]
-  );
+  const [selectedDest, setSelectedDest] = useState(null); // Neutral initial state (no celestial body selected by default)
   const [loading, setLoading] = useState(false);
-  const [activeHardwareList, setActiveHardwareList] = useState(() => 
-    DEFAULT_DESTINATION_HARDWARE['mars'] || []
-  );
+  const [activeHardwareList, setActiveHardwareList] = useState([]);
   const [loadingHardware, setLoadingHardware] = useState(false);
   const [viewMode, setViewMode] = useState('3d'); // '3d', 'schematic', 'grid'
   const [isResetView, setIsResetView] = useState(false);
@@ -40,7 +37,7 @@ export default function SolarSystemPage() {
         if (data && data.length > 0) {
           setDestinations(data);
           setSelectedDest(prev => {
-            if (!prev) return data.find(d => d.slug === 'mars') || data[0];
+            if (!prev) return null; // Retain full overview neutral state on fresh load
             return data.find(d => d.slug === prev.slug) || prev;
           });
         }
@@ -66,6 +63,8 @@ export default function SolarSystemPage() {
   };
 
   const handleResetCamera = () => {
+    setSelectedDest(null);
+    setActiveHardwareList([]);
     setIsResetView(true);
   };
 
@@ -158,11 +157,16 @@ export default function SolarSystemPage() {
               aria-label="Quick jump to celestial body"
               value={selectedDest?.slug || ''}
               onChange={(e) => {
+                if (!e.target.value) {
+                  handleResetCamera();
+                  return;
+                }
                 const target = destinations.find(d => d.slug === e.target.value);
                 if (target) handleSelectDestination(target);
               }}
               className="bg-space-black border border-purple-500/30 text-xs font-mono text-purple-200 px-2.5 py-1 rounded-lg focus-ring"
             >
+              <option value="">Select a destination...</option>
               {destinations.map((d) => (
                 <option key={d.slug} value={d.slug}>
                   {d.name} ({d.hardware_count} craft)
@@ -453,8 +457,93 @@ export default function SolarSystemPage() {
                   </div>
                 </div>
               ) : (
-                <div className="glass-panel p-8 rounded-3xl text-center text-slate-400 text-xs font-mono">
-                  Select a destination to view telemetry and spacecraft profiles.
+                <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-500/30 relative overflow-hidden animate-fadeIn shadow-2xl">
+                  {/* Cosmic ambient glow */}
+                  <div className="absolute top-0 right-0 w-60 h-60 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                  {/* Header Badge */}
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <div className="p-2 rounded-xl bg-purple-900/40 border border-purple-500/30 text-purple-300">
+                      <Compass className="w-5 h-5 text-purple-300" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-purple-300 font-bold block">
+                        NASA Educational Archive • Orbital Overview
+                      </span>
+                      <span className="text-xs font-mono text-[#A99BBF]">Cosmic Planetary Explorer</span>
+                    </div>
+                  </div>
+
+                  {/* Welcome Title */}
+                  <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-white mb-2 leading-tight">
+                    Explore Our Solar System
+                  </h2>
+
+                  {/* Welcome Description */}
+                  <p className="text-sm text-[#A99BBF] leading-relaxed mb-6">
+                    Journey across our cosmic neighborhood. Discover planets, moons, spacecraft and the mysteries of space.
+                  </p>
+
+                  {/* Interactive Visual Cue Box */}
+                  <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-950/60 via-purple-900/30 to-space-navy border border-purple-500/40 mb-6 flex items-start gap-3.5 shadow-sm">
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-purple-200 shrink-0 mt-0.5 animate-pulse">
+                      <MousePointerClick className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-sm text-white mb-1">
+                        Click any celestial body to explore its details.
+                      </h3>
+                      <p className="text-xs text-[#A99BBF] leading-relaxed">
+                        Select a planet, moon, the Sun, or the Asteroid Belt in the 3D scene or from the Quick Jump menu to inspect live telemetry and historical NASA missions.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Fast-jump suggestions / popular exploration targets */}
+                  <div className="pt-1">
+                    <span className="text-[11px] font-mono text-purple-300 uppercase tracking-wider block mb-2.5 font-bold">
+                      Popular Celestial Targets:
+                    </span>
+                    <div className="grid grid-cols-2 gap-2">
+                      {destinations.slice(0, 6).map((dest) => (
+                        <button
+                          key={dest.slug}
+                          type="button"
+                          onClick={() => handleSelectDestination(dest)}
+                          className="p-2.5 rounded-xl bg-space-navy/70 hover:bg-purple-900/40 border border-space-border hover:border-purple-400/50 text-left transition-all flex items-center justify-between group focus-ring"
+                        >
+                          <div className="flex items-center gap-2 overflow-hidden">
+                            <div
+                              className="w-3 h-3 rounded-full shrink-0 shadow-sm"
+                              style={{ backgroundColor: dest.color || '#8B5CF6' }}
+                            />
+                            <span className="font-heading text-xs font-bold text-slate-200 group-hover:text-purple-200 truncate">
+                              {dest.name}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono text-purple-300 shrink-0 ml-1">
+                            {dest.hardware_count} 🛰️
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Quick Solar System Overview Stats */}
+                  <div className="mt-6 pt-4 border-t border-space-border grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                    <div className="p-2.5 rounded-xl bg-space-black/50 border border-white/5">
+                      <span className="text-purple-300 font-bold block text-sm">1 Star</span>
+                      <span className="text-[10px] text-[#A99BBF]">Central Sun</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-space-black/50 border border-white/5">
+                      <span className="text-purple-300 font-bold block text-sm">8 Planets</span>
+                      <span className="text-[10px] text-[#A99BBF]">Major Orbits</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-space-black/50 border border-white/5">
+                      <span className="text-purple-300 font-bold block text-sm">16 Craft</span>
+                      <span className="text-[10px] text-[#A99BBF]">NASA Missions</span>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

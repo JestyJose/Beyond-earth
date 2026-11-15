@@ -18,10 +18,20 @@ export default function Planet({
   onSelect,
   hardwareCount = 0,
   beaconType = 'orbit',
+  labelOffset = null,
   children
 }) {
   const meshRef = useRef();
   const [hovered, setHovered] = useState(false);
+
+  // Adaptive label positioning: uses calibrated collision-free offset in overview,
+  // centers neatly directly above the celestial body when selected and inspected.
+  const effectiveLabelPos = useMemo(() => {
+    if (isSelected) {
+      return [0, radius + 0.9, 0];
+    }
+    return labelOffset || [0, radius + 1.0, 0];
+  }, [isSelected, radius, labelOffset]);
 
   const texture = useMemo(() => getPlanetTexture(destination.slug), [destination.slug]);
 
@@ -43,19 +53,19 @@ export default function Planet({
   const badgeInfo = useMemo(() => {
     if (!hardwareCount || hardwareCount === 0) return null;
     if (beaconType === 'surface') {
-      return { text: `${hardwareCount} on Surface (Rovers/Landers)`, color: 'text-emerald-400' };
+      return { text: `${hardwareCount} on Surface`, color: 'text-emerald-400' };
     }
     if (beaconType === 'orbit') {
-      return { text: `${hardwareCount} in Active Orbit`, color: 'text-space-cyan' };
+      return { text: `${hardwareCount} in Orbit`, color: 'text-space-cyan' };
     }
     if (beaconType === 'flyby') {
-      return { text: `Historic Flyby (Deep Space)`, color: 'text-purple-300' };
+      return { text: `Historic Flyby`, color: 'text-purple-300' };
     }
     if (beaconType === 'impact') {
-      return { text: `Surface Impact Site`, color: 'text-amber-400' };
+      return { text: `Impact Site`, color: 'text-amber-400' };
     }
     if (beaconType === 'atmospheric_entry') {
-      return { text: `Atmospheric Entry Site`, color: 'text-amber-400' };
+      return { text: `Atmospheric Entry`, color: 'text-amber-400' };
     }
     return { text: `${hardwareCount} craft`, color: 'text-space-cyan' };
   }, [hardwareCount, beaconType]);
@@ -70,6 +80,7 @@ export default function Planet({
       {/* Planet Group positioned along orbit */}
       <group position={position}>
         {/* Planet Sphere */}
+        {/* Primary Planet Mesh */}
         <mesh
           ref={meshRef}
           onClick={(e) => {
@@ -93,6 +104,26 @@ export default function Planet({
             roughness={0.7}
             metalness={0.1}
           />
+        </mesh>
+
+        {/* Generous invisible raycast hit proxy (minimum 3.2 units radius) for effortless overview clicking */}
+        <mesh
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect(position, destination, radius);
+          }}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            setHovered(true);
+            document.body.style.cursor = 'pointer';
+          }}
+          onPointerOut={() => {
+            setHovered(false);
+            document.body.style.cursor = 'auto';
+          }}
+        >
+          <sphereGeometry args={[Math.max(radius * 1.8, 3.2), 16, 16]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
         </mesh>
 
         {/* Selection / Hover Indicator Ring */}
@@ -123,30 +154,46 @@ export default function Planet({
           />
         )}
 
-        {/* 3D Billboarding HTML Label */}
+        {/* 3D Billboarding HTML Label with Direct Click Selection (Adaptive positioning prevents overview collisions) */}
         <Html
-          position={[0, radius + 1.2, 0]}
+          position={effectiveLabelPos}
           center
-          distanceFactor={55}
-          className="pointer-events-none select-none"
+          className="select-none z-10"
         >
           <div
-            className={`px-2.5 py-1 rounded-lg backdrop-blur-md border text-center transition-all ${
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect(position, destination, radius);
+            }}
+            onPointerOver={(e) => {
+              e.stopPropagation();
+              setHovered(true);
+            }}
+            onPointerOut={() => {
+              setHovered(false);
+            }}
+            className={`px-2.5 py-1 rounded-xl backdrop-blur-md border text-center transition-all max-w-[125px] sm:max-w-[135px] shadow-lg cursor-pointer hover:scale-105 active:scale-95 ${
               isSelected
-                ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200 shadow-violet-glow scale-110'
+                ? 'bg-[#170F2C]/95 border-purple-400 text-purple-200 shadow-violet-glow scale-105'
                 : hovered
-                ? 'bg-[#110B20]/90 border-purple-400/60 text-white'
-                : 'bg-[#110B20]/80 border-purple-500/20 text-[#F5F0FF]'
+                ? 'bg-[#110B20]/95 border-purple-400/60 text-white'
+                : 'bg-[#110B20]/85 border-purple-500/25 text-[#F5F0FF]'
             }`}
           >
-            <div className="font-heading font-bold text-xs whitespace-nowrap">
-              {destination.name}
+            <div className="flex items-center justify-center gap-1.5 leading-tight truncate">
+              <span
+                className="w-1.5 h-1.5 rounded-full shrink-0 shadow-sm"
+                style={{ backgroundColor: destination.color || '#A855F7' }}
+              />
+              <span className="font-heading font-bold text-xs truncate">
+                {destination.name}
+              </span>
             </div>
-            <div className="text-[9px] font-mono text-slate-400">
+            <div className="text-[9px] font-mono text-[#A99BBF] leading-tight mt-0.5">
               {destination.distance_from_sun_au} AU
             </div>
             {badgeInfo && (
-              <div className={`text-[8.5px] font-mono font-semibold ${badgeInfo.color} whitespace-nowrap`}>
+              <div className={`text-[8.5px] font-mono font-semibold ${badgeInfo.color} leading-tight truncate mt-0.5`}>
                 {badgeInfo.text}
               </div>
             )}

@@ -7,11 +7,11 @@ export default function CameraDirector({ targetPosition, targetRadius = 1.0, isR
   const controlsRef = useRef();
   const { camera } = useThree();
 
-  const defaultCamPos = useRef(new THREE.Vector3(0, 65, 120));
-  const defaultTarget = useRef(new THREE.Vector3(0, 0, 0));
+  const defaultCamPos = useRef(new THREE.Vector3(0, 150, 220));
+  const defaultTarget = useRef(new THREE.Vector3(0, 0, 10));
 
-  const desiredCamPos = useRef(new THREE.Vector3(0, 65, 120));
-  const desiredTarget = useRef(new THREE.Vector3(0, 0, 0));
+  const desiredCamPos = useRef(new THREE.Vector3(0, 150, 220));
+  const desiredTarget = useRef(new THREE.Vector3(0, 0, 10));
   const isTransitioning = useRef(false);
 
   // When target planet changes
@@ -25,6 +25,11 @@ export default function CameraDirector({ targetPosition, targetRadius = 1.0, isR
         targetPosition.y + camDist * 0.42,
         targetPosition.z + camDist * 0.85
       );
+      isTransitioning.current = true;
+    } else {
+      // When targetPosition is null (full solar overview), lerp back to default overarching perspective
+      desiredCamPos.current.copy(defaultCamPos.current);
+      desiredTarget.current.copy(defaultTarget.current);
       isTransitioning.current = true;
     }
   }, [targetPosition, targetRadius]);
@@ -64,7 +69,7 @@ export default function CameraDirector({ targetPosition, targetRadius = 1.0, isR
       enableDamping={true}
       dampingFactor={0.05}
       minDistance={5}
-      maxDistance={380}
+      maxDistance={550}
       maxPolarAngle={Math.PI / 2 + 0.1} // Prevent looking from below orbit plane
     />
   );

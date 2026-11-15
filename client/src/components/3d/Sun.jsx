@@ -23,6 +23,10 @@ export default function Sun({ onSelect, isSelected, hardwareCount }) {
     }
   });
 
+  const effectiveLabelPos = useMemo(() => {
+    return isSelected ? [0, 5.8, 0] : [0, 10.5, -6.5];
+  }, [isSelected]);
+
   return (
     <group position={[0, 0, 0]}>
       {/* Central Sunlight Emitter */}
@@ -72,23 +76,38 @@ export default function Sun({ onSelect, isSelected, hardwareCount }) {
         />
       </mesh>
 
-      {/* Solar Label Overlay */}
+      {/* Solar Label Overlay with Direct Click Selection (Offset in overview to prevent inner planet collision) */}
       <Html
-        position={[0, 6.2, 0]}
+        position={effectiveLabelPos}
         center
-        distanceFactor={65}
-        className="pointer-events-none select-none"
+        className="select-none z-10"
       >
-        <div className={`px-2.5 py-1 rounded-lg backdrop-blur-md border text-center transition-all ${
-          isSelected
-            ? 'bg-amber-500/30 border-amber-400 text-amber-300 shadow-md'
-            : hovered
-            ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200'
-            : 'bg-[#110B20]/80 border-purple-500/20 text-[#F5F0FF]'
-        }`}>
-          <div className="font-heading font-bold text-xs">The Sun</div>
-          <div className="text-[9px] font-mono text-amber-300">
-            {hardwareCount > 0 ? `${hardwareCount} Craft (Parker Solar Probe)` : 'Solar Core'}
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect();
+          }}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            setHovered(true);
+          }}
+          onPointerOut={() => {
+            setHovered(false);
+          }}
+          className={`px-2.5 py-1 rounded-xl backdrop-blur-md border text-center transition-all max-w-[130px] shadow-lg cursor-pointer hover:scale-105 active:scale-95 ${
+            isSelected
+              ? 'bg-amber-500/30 border-amber-400 text-amber-200 shadow-md scale-105'
+              : hovered
+              ? 'bg-[#170F2C]/90 border-purple-400 text-purple-200'
+              : 'bg-[#110B20]/85 border-purple-500/25 text-[#F5F0FF]'
+          }`}
+        >
+          <div className="flex items-center justify-center gap-1.5 leading-tight truncate">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_6px_#FDB813]" />
+            <span className="font-heading font-bold text-xs truncate">The Sun</span>
+          </div>
+          <div className="text-[8.5px] font-mono text-amber-300 leading-tight truncate mt-0.5">
+            {hardwareCount > 0 ? `${hardwareCount} Craft (Parker)` : 'Solar Core'}
           </div>
         </div>
       </Html>
